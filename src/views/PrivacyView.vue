@@ -28,8 +28,8 @@ function handleConfirmClear() {
 <template>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8 animate-fadeIn">
     
-    <!-- Header -->
-    <div class="space-y-3 border-b border-[#E5E4EA] dark:border-[#242738] pb-6">
+    <!-- Header Modular Frame -->
+    <div class="modular-frame p-8 sm:p-10 space-y-3">
       <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-[#F2EEFF] text-[#6947FF] dark:bg-[#1E202E] dark:text-[#B096FF] text-[11px] font-mono uppercase tracking-wider border border-[#E6DCFF] dark:border-[#2A1783]/40">
         <ShieldCheck class="w-3.5 h-3.5" />
         TRANSPARENCY & PRIVACY
@@ -42,9 +42,9 @@ function handleConfirmClear() {
       </p>
     </div>
 
-    <!-- Core Principles -->
+    <!-- Core Principles Modular Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="card-surface p-4 space-y-2 border border-[#E5E4EA] dark:border-[#242738]">
+      <div class="modular-frame p-5 space-y-2">
         <div class="w-8 h-8 rounded-lg bg-[#F2EEFF] dark:bg-[#1E202E] text-[#6947FF] flex items-center justify-center font-mono text-xs font-bold">
           01
         </div>
@@ -54,7 +54,7 @@ function handleConfirmClear() {
         </p>
       </div>
 
-      <div class="card-surface p-4 space-y-2 border border-[#E5E4EA] dark:border-[#242738]">
+      <div class="modular-frame p-5 space-y-2">
         <div class="w-8 h-8 rounded-lg bg-[#F2EEFF] dark:bg-[#1E202E] text-[#6947FF] flex items-center justify-center font-mono text-xs font-bold">
           02
         </div>
@@ -64,7 +64,7 @@ function handleConfirmClear() {
         </p>
       </div>
 
-      <div class="card-surface p-4 space-y-2 border border-[#E5E4EA] dark:border-[#242738]">
+      <div class="modular-frame p-5 space-y-2">
         <div class="w-8 h-8 rounded-lg bg-[#F2EEFF] dark:bg-[#1E202E] text-[#6947FF] flex items-center justify-center font-mono text-xs font-bold">
           03
         </div>
@@ -75,8 +75,8 @@ function handleConfirmClear() {
       </div>
     </div>
 
-    <!-- Detailed Policies -->
-    <div class="card-surface p-6 sm:p-7 space-y-5 text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] leading-relaxed border border-[#E5E4EA] dark:border-[#242738]">
+    <!-- Detailed Policies Modular Frame -->
+    <div class="modular-frame p-6 sm:p-8 space-y-5 text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] leading-relaxed">
       <div class="space-y-1.5">
         <h3 class="text-sm sm:text-base font-bold text-[#14151B] dark:text-[#F1F2F6]">
           1. Local Storage Usage

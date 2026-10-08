@@ -104,7 +104,7 @@ function confirmReset() {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
     
     <!-- Top Utility Row -->
     <div class="flex items-center justify-between gap-3 text-xs border-b border-[#E5E4EA] dark:border-[#242738] pb-3">
@@ -137,7 +137,7 @@ function confirmReset() {
         <button 
           @click="showResetModal = true"
           type="button"
-          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[#696976] hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-[#1E202E] transition-colors text-xs"
+          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[#696976] hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-[#1E202E] transition-colors text-xs font-medium"
           title="Clear all fields"
         >
           <RotateCcw class="w-3.5 h-3.5" />
@@ -154,7 +154,7 @@ function confirmReset() {
     />
 
     <!-- Main Wizard Form Container -->
-    <main class="card-surface p-6 sm:p-8 border border-[#E5E4EA] dark:border-[#242738]">
+    <main class="modular-frame p-6 sm:p-10">
       <StepProfile v-if="currentStep === 1" />
       <StepSkills v-else-if="currentStep === 2" />
       <StepProjects v-else-if="currentStep === 3" />

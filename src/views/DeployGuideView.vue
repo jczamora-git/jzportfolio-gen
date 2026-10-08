@@ -105,27 +105,27 @@ jobs:
 </script>
 
 <template>
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12 animate-fadeIn">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 animate-fadeIn">
     
     <!-- Hero Header -->
-    <div class="space-y-4 border-b border-[#E5E4EA] dark:border-[#242738] pb-8">
+    <div class="modular-frame p-8 sm:p-10 space-y-4">
       <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-[#F2EEFF] text-[#6947FF] dark:bg-[#1E202E] dark:text-[#B096FF] text-[11px] font-mono uppercase tracking-wider border border-[#E6DCFF] dark:border-[#2A1783]/40">
         <BookOpen class="w-3.5 h-3.5" />
         TECHNICAL DOCUMENTATION // DEPLOYMENT
       </div>
-      <h1 class="font-display text-3xl sm:text-5xl font-bold text-[#14151B] dark:text-[#F1F2F6] tracking-tight">
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14151B] dark:text-[#F1F2F6] tracking-tight">
         From AI Prompt to Live Website
       </h1>
-      <p class="text-sm sm:text-base text-[#696976] dark:text-[#9496A6] max-w-3xl leading-relaxed">
+      <p class="text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] max-w-3xl leading-relaxed">
         A step-by-step developer tutorial on generating static portfolio source files, setting up local version control, and automating production deployments via GitHub Actions.
       </p>
     </div>
 
     <!-- Documentation Layout: Sidebar + Main Content -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
       <!-- Table of Contents Sidebar (3 cols, desktop sticky) -->
-      <aside class="hidden lg:block lg:col-span-3 sticky top-24 space-y-3">
+      <aside class="hidden lg:block lg:col-span-3 sticky top-24 space-y-3 modular-frame p-6">
         <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#6947FF]">
           Table of Contents
         </div>
@@ -153,7 +153,7 @@ jobs:
           </a>
         </nav>
 
-        <div class="pt-4">
+        <div class="pt-4 border-t border-[#E5E4EA] dark:border-[#242738]">
           <router-link to="/builder" class="btn-primary text-xs w-full py-2">
             Open Prompt Builder
           </router-link>
@@ -161,28 +161,26 @@ jobs:
       </aside>
 
       <!-- Main Documentation Stream (9 cols) -->
-      <div class="lg:col-span-9 space-y-12">
+      <div class="lg:col-span-9 space-y-8">
         
         <!-- 01. Architecture Notice -->
-        <section id="architecture" class="space-y-4">
-          <div class="p-5 rounded-2xl bg-[#F8F8F7] dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-2">
-            <div class="flex items-center gap-2 font-bold text-xs sm:text-sm text-[#14151B] dark:text-[#F1F2F6]">
-              <Info class="w-4 h-4 text-[#6947FF] shrink-0" />
-              <span>Two Distinct Deployments</span>
-            </div>
-            <ul class="text-xs text-[#696976] dark:text-[#9496A6] space-y-1.5 list-disc list-inside ml-1 leading-relaxed">
-              <li>
-                <strong class="text-[#14151B] dark:text-[#F1F2F6]">Portfolio Launchpad (this app):</strong> A client-side Vue 3 SPA deployed on Vercel designed to generate deterministic developer prompts.
-              </li>
-              <li>
-                <strong class="text-[#14151B] dark:text-[#F1F2F6]">Your Personal Portfolio:</strong> A static website (HTML5, CSS3, Vanilla JS) living in your GitHub repository and published automatically via GitHub Actions to GitHub Pages.
-              </li>
-            </ul>
+        <section id="architecture" class="modular-frame p-6 sm:p-8 space-y-3">
+          <div class="flex items-center gap-2 font-bold text-xs sm:text-sm text-[#14151B] dark:text-[#F1F2F6]">
+            <Info class="w-4 h-4 text-[#6947FF] shrink-0" />
+            <span>Two Distinct Deployments</span>
           </div>
+          <ul class="text-xs text-[#696976] dark:text-[#9496A6] space-y-1.5 list-disc list-inside ml-1 leading-relaxed">
+            <li>
+              <strong class="text-[#14151B] dark:text-[#F1F2F6]">Portfolio Launchpad (this app):</strong> A client-side Vue 3 SPA deployed on Vercel designed to generate deterministic developer prompts.
+            </li>
+            <li>
+              <strong class="text-[#14151B] dark:text-[#F1F2F6]">Your Personal Portfolio:</strong> A static website (HTML5, CSS3, Vanilla JS) living in your GitHub repository and published automatically via GitHub Actions to GitHub Pages.
+            </li>
+          </ul>
         </section>
 
         <!-- 02. Essential Concepts -->
-        <section id="concepts" class="space-y-4">
+        <section id="concepts" class="modular-frame p-6 sm:p-8 space-y-5">
           <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-3 flex items-center justify-between">
             <h2 class="font-display text-xl font-bold text-[#14151B] dark:text-[#F1F2F6]">
               01 // Core Concepts
@@ -191,19 +189,19 @@ jobs:
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
+            <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
               <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">Git</span>
               <p class="text-[#696976] dark:text-[#9496A6]">Local version control system tracking source code modifications.</p>
             </div>
-            <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
+            <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
               <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">GitHub & Repositories</span>
               <p class="text-[#696976] dark:text-[#9496A6]">Remote cloud hosting platform storing your portfolio codebase.</p>
             </div>
-            <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
+            <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
               <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">GitHub Actions</span>
               <p class="text-[#696976] dark:text-[#9496A6]">CI/CD automation that builds and packages static files on push.</p>
             </div>
-            <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
+            <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
               <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">GitHub Pages</span>
               <p class="text-[#696976] dark:text-[#9496A6]">High-availability static web hosting with free SSL and public URL.</p>
             </div>
@@ -211,7 +209,7 @@ jobs:
         </section>
 
         <!-- 03. Code Generation -->
-        <section id="generation" class="space-y-4">
+        <section id="generation" class="modular-frame p-6 sm:p-8 space-y-4">
           <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-3 flex items-center justify-between">
             <h2 class="font-display text-xl font-bold text-[#14151B] dark:text-[#F1F2F6]">
               02 // AI Code Generation
@@ -224,7 +222,7 @@ jobs:
         </section>
 
         <!-- 04. Local Workspace -->
-        <section id="workspace" class="space-y-4">
+        <section id="workspace" class="modular-frame p-6 sm:p-8 space-y-4">
           <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-3 flex items-center justify-between">
             <h2 class="font-display text-xl font-bold text-[#14151B] dark:text-[#F1F2F6]">
               03 // Local Workspace & Preview
@@ -246,7 +244,7 @@ jobs:
         </section>
 
         <!-- 05. Git & GitHub Setup -->
-        <section id="git-setup" class="space-y-4">
+        <section id="git-setup" class="modular-frame p-6 sm:p-8 space-y-4">
           <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-3 flex items-center justify-between">
             <h2 class="font-display text-xl font-bold text-[#14151B] dark:text-[#F1F2F6]">
               04 // Git Initialization & Remote Push
@@ -269,7 +267,7 @@ jobs:
         </section>
 
         <!-- 06. GitHub Actions CI/CD -->
-        <section id="actions" class="space-y-4">
+        <section id="actions" class="modular-frame p-6 sm:p-8 space-y-4">
           <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-3 flex items-center justify-between">
             <h2 class="font-display text-xl font-bold text-[#14151B] dark:text-[#F1F2F6]">
               05 // GitHub Actions Automated Workflow
@@ -295,7 +293,7 @@ jobs:
         </section>
 
         <!-- 07. Verify & Live URL -->
-        <section id="live-url" class="space-y-4">
+        <section id="live-url" class="modular-frame p-6 sm:p-8 space-y-4">
           <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-3 flex items-center justify-between">
             <h2 class="font-display text-xl font-bold text-[#14151B] dark:text-[#F1F2F6]">
               06 // Verify Deployment & Live URL

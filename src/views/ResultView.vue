@@ -82,12 +82,12 @@ function handleConfirmReset() {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-8 animate-fadeIn">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-8 animate-fadeIn">
     
     <!-- Empty State Recovery -->
     <div 
       v-if="!hasValidDraft" 
-      class="card-surface p-8 sm:p-12 text-center max-w-md mx-auto space-y-4 border border-dashed border-[#E5E4EA] dark:border-[#242738]"
+      class="modular-frame p-8 sm:p-12 text-center max-w-md mx-auto space-y-4 border-dashed"
     >
       <div class="w-10 h-10 rounded-xl bg-[#F2EEFF] dark:bg-[#1E202E] text-[#6947FF] flex items-center justify-center mx-auto">
         <AlertTriangle class="w-5 h-5" />
@@ -108,15 +108,15 @@ function handleConfirmReset() {
     <!-- Active Result View -->
     <template v-else>
       
-      <!-- 1. Header Banner -->
-      <div class="space-y-4 border-b border-[#E5E4EA] dark:border-[#242738] pb-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <!-- 1. Header Modular Banner -->
+      <div class="modular-frame p-6 sm:p-8 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E5E4EA] dark:border-[#242738] pb-5">
           <div>
             <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#F2EEFF] text-[#6947FF] dark:bg-[#1E202E] dark:text-[#B096FF] text-[11px] font-mono uppercase tracking-wider mb-2 border border-[#E6DCFF] dark:border-[#2A1783]/40">
               <CheckCircle2 class="w-3.5 h-3.5" />
               BRIEF READY // 05
             </div>
-            <h1 class="font-display text-2xl sm:text-4xl font-bold text-[#14151B] dark:text-[#F1F2F6] tracking-tight">
+            <h1 class="font-display text-2xl sm:text-3xl font-bold text-[#14151B] dark:text-[#F1F2F6] tracking-tight">
               Ready to make it yours.
             </h1>
             <p class="text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] mt-1">
@@ -144,28 +144,28 @@ function handleConfirmReset() {
         </div>
 
         <!-- Mini Profile Snapshot -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs text-[#696976] dark:text-[#9496A6]">
-          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-[#696976] dark:text-[#9496A6]">
+          <div class="p-3 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738]">
             <span class="block text-[10px] font-mono uppercase text-slate-400">Developer</span>
             <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] truncate block">{{ draft.profile.fullName }}</span>
           </div>
-          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+          <div class="p-3 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738]">
             <span class="block text-[10px] font-mono uppercase text-slate-400">Tech Stack</span>
             <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">{{ draft.background.skills.length }} verified skills</span>
           </div>
-          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+          <div class="p-3 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738]">
             <span class="block text-[10px] font-mono uppercase text-slate-400">Projects</span>
             <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">{{ draft.projects.length }} showcase build(s)</span>
           </div>
-          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+          <div class="p-3 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738]">
             <span class="block text-[10px] font-mono uppercase text-slate-400">Aesthetic</span>
             <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] capitalize block">{{ draft.preferences.style }}</span>
           </div>
         </div>
       </div>
 
-      <!-- 2. Export Bar -->
-      <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] shadow-subtle text-xs">
+      <!-- 2. Export Actions Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] shadow-subtle text-xs">
         <div class="flex items-center gap-2 text-[#696976] dark:text-[#9496A6]">
           <FileText class="w-4 h-4 text-[#6947FF]" />
           <span class="font-semibold text-[#14151B] dark:text-[#F1F2F6]">Download Deliverables</span>
@@ -198,11 +198,11 @@ function handleConfirmReset() {
         </div>
       </div>
 
-      <!-- 3. Prompt Container Component -->
+      <!-- 3. Prompt Output Container -->
       <PromptOutput :prompt-text="promptText" />
 
       <!-- 4. Next Steps Walkthrough -->
-      <div class="card-surface p-6 sm:p-8 space-y-5 border border-[#E5E4EA] dark:border-[#242738]">
+      <div class="modular-frame p-6 sm:p-8 space-y-5">
         <div class="flex items-center justify-between pb-3 border-b border-[#E5E4EA] dark:border-[#242738]">
           <div>
             <span class="text-[10px] font-mono uppercase tracking-wider text-[#6947FF] block">
