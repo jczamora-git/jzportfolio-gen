@@ -14,6 +14,7 @@ import { gsap } from 'gsap'
 import { useSmoothScroll } from '@/composables/useSmoothScroll'
 import { useScrollAnimations } from '@/composables/useScrollAnimations'
 import { EASING, isReducedMotion } from '@/lib/motion/motionPresets'
+import TextMarquee from '@/components/common/TextMarquee.vue'
 
 const router = useRouter()
 const activeTab = ref<'profile' | 'projects' | 'design' | 'output'>('profile')
@@ -523,8 +524,13 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- LOWER STAGE: Responsive Full-Width Stage Flowing Beneath the Upper Sheet -->
-    <div class="lower-stage w-full bg-[#F1F0F6] dark:bg-[#0F0F15] text-[#17171D] dark:text-[#F1F2F6] pt-10 sm:pt-14 pb-20 sm:pb-28 space-y-16 sm:space-y-24">
+    <div class="lower-stage w-full bg-[#F1F0F6] dark:bg-[#0F0F15] text-[#17171D] dark:text-[#F1F2F6] pt-8 sm:pt-12 pb-20 sm:pb-28 space-y-14 sm:space-y-20">
       
+      <!-- CONTINUOUS VALUE MARQUEE TICKER -->
+      <div class="w-full">
+        <TextMarquee speed="normal" />
+      </div>
+
       <!-- INTEGRATED STATISTICS SECTION: Seamlessly Beginning Lower Stage -->
       <section class="stats-section max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left border-b border-[#E2E1EA] dark:border-[#242738]/60 pb-12 sm:pb-16">

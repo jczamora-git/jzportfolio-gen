@@ -8,7 +8,8 @@
 
 ## 1. Project Status Summary
 The application is fully functional and stable. All primary user journeys are working:
-- **Landing Page (`/`)**: Creatix-inspired physical upper sheet with fluid headline, responsive stats, 4-stage process, interactive capabilities showcase, deployment pipeline, and final CTA.
+- **Landing Page (`/`)**: Creatix-inspired physical upper sheet with fluid headline, continuous value marquee ticker, responsive stats, 4-stage process, interactive capabilities showcase, deployment pipeline, and final CTA.
+- **Continuous Marquee (`TextMarquee.vue`)**: Hardware-accelerated, infinite looping marquee animation with pause-on-hover, subtle edge gradient masking, and reduced-motion fallback.
 - **Guided Wizard (`/builder`)**: 5-step wizard (Profile, Skills, Projects, Design, Review) with validation, draft autosave, reset confirmation, and sample persona loader.
 - **Prompt Output (`/result`)**: Structured, hallucination-free AI prompt generation with copy and Markdown download.
 - **Deployment Guide (`/learn/deploy`)**: 5-step GitHub Actions static deployment documentation.
@@ -20,10 +21,9 @@ The application is fully functional and stable. All primary user journeys are wo
 ---
 
 ## 2. Latest Architectural & Harness Additions
-- Created `src/composables/useMobileNavigation.ts` providing deterministic open/close/toggle actions, idempotent state transitions, composedPath boundary containment, and responsive breakpoint auto-reset.
-- Updated `AppHeader.vue` with `@click.stop="toggleMobileMenu"` and `pointer-events-none` on SVG icons to eliminate the race condition where unmounted DOM nodes caused the document outside-click listener to immediately close the menu.
-- Expanded `tests/theme-and-navigation.test.ts` to 16 comprehensive tests covering initial closed state, toggles, rapid tapping, outside-click containment, detached element protection, Escape key, desktop resize auto-dismiss, and theme toggle independence.
-- Updated `.agents/contracts/REGRESSION_MATRIX.md` and `.agents/KNOWN_ISSUES.md` (`ISSUE-08`).
+- Built `src/components/common/TextMarquee.vue` featuring infinite CSS ticker animation (`CODE ✦ BUILD ✦ DEPLOY ✦ LAUNCH ✦ NO HALLUCINATIONS ✦ GITHUB ACTIONS ✦ STATIC SITES`).
+- Added keyframe definitions `animate-marquee-left` / `animate-marquee-right` and accessibility `@media (prefers-reduced-motion: reduce)` in `main.css`.
+- Mounted marquee onto `LandingView.vue` with seamless light/dark mode gradient masking.
 
 ---
 
