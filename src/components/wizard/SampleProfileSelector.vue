@@ -5,15 +5,10 @@ import { useToast } from '@/composables/useToast'
 import { SAMPLE_PROFILES, type SampleProfileMeta } from '@/data/sampleProfiles'
 import ConfirmModal from '@/components/common/ConfirmModal.vue'
 import { 
-  Sparkles, 
   X, 
   Check, 
-  GraduationCap, 
-  Code2, 
-  Palette, 
-  BarChart3, 
-  Briefcase,
-  RotateCcw
+  RotateCcw,
+  ArrowRight
 } from 'lucide-vue-next'
 
 defineProps<{
@@ -30,19 +25,16 @@ const { showToast } = useToast()
 const pendingSample = ref<SampleProfileMeta | null>(null)
 const showConfirmModal = ref(false)
 
-const getCategoryIcon = (category: string) => {
-  switch (category) {
-    case 'Student Developer': return GraduationCap
-    case 'Fresh Graduate': return Code2
-    case 'UI/UX Designer': return Palette
-    case 'Data Analyst': return BarChart3
-    case 'Freelancer': return Briefcase
-    default: return Code2
-  }
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .map(n => n[0])
+    .join('')
+    .toUpperCase()
+    .substring(0, 2)
 }
 
 function handleSelectSample(sample: SampleProfileMeta) {
-  // If user already has entered data and is not just switching from another sample
   if (portfolioStore.hasUserEnteredData && !portfolioStore.isUsingSampleData) {
     pendingSample.value = sample
     showConfirmModal.value = true
@@ -89,20 +81,20 @@ function handleStartBlank() {
       @click.self="emit('close')"
     >
       <div 
-        class="bg-white dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738] rounded-2xl max-w-2xl w-full p-6 shadow-elevated space-y-5 max-h-[90vh] overflow-y-auto"
+        class="bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] rounded-2xl max-w-xl w-full p-6 shadow-elevated space-y-5 max-h-[90vh] overflow-y-auto"
       >
         <!-- Modal Header -->
-        <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#232738] pb-4">
+        <div class="flex items-center justify-between border-b border-[#E5E4EA] dark:border-[#242738] pb-4">
           <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-xl bg-[#F2EEFF] dark:bg-brand-950/60 text-[#6D4AFF] flex items-center justify-center">
-              <Sparkles class="w-4 h-4" />
+            <div class="w-8 h-8 rounded-xl bg-[#F2EEFF] dark:bg-[#1E202E] text-[#6947FF] flex items-center justify-center font-mono text-xs font-bold">
+              05
             </div>
             <div>
-              <h3 class="text-base font-bold text-[#181824] dark:text-[#F3F4F8]">
-                Explore Example Profiles
+              <h3 class="font-display text-base font-bold text-[#14151B] dark:text-[#F1F2F6]">
+                Example Profiles
               </h3>
-              <p class="text-xs text-[#737385] dark:text-[#9496A8]">
-                Select a persona to test the wizard with realistic, pre-configured information.
+              <p class="text-xs text-[#696976] dark:text-[#9496A6]">
+                Select a verified persona to test the wizard with realistic data.
               </p>
             </div>
           </div>
@@ -110,74 +102,79 @@ function handleStartBlank() {
           <button 
             type="button"
             @click="emit('close')"
-            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg transition-colors"
+            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg transition-colors"
             aria-label="Close modal"
           >
-            <X class="w-5 h-5" />
+            <X class="w-4 h-4" />
           </button>
         </div>
 
-        <!-- Sample Profile Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+        <!-- Compact Persona List -->
+        <div class="space-y-2.5">
           <div 
             v-for="sample in SAMPLE_PROFILES"
             :key="sample.id"
             @click="handleSelectSample(sample)"
-            class="group p-4 rounded-xl border transition-all duration-150 cursor-pointer flex flex-col justify-between text-left"
+            class="group p-3.5 rounded-xl border transition-all duration-150 cursor-pointer flex items-center justify-between gap-3 text-left"
             :class="[
               portfolioStore.activeSampleId === sample.id
-                ? 'border-[#6D4AFF] bg-[#F2EEFF]/50 dark:bg-[#6D4AFF]/10 ring-2 ring-[#6D4AFF]/20'
-                : 'border-[#E8E8EF] dark:border-[#232738] bg-white dark:bg-[#141827] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-subtle'
+                ? 'border-[#6947FF] bg-[#F2EEFF]/40 dark:bg-[#6947FF]/10 ring-1 ring-[#6947FF]'
+                : 'border-[#E5E4EA] dark:border-[#242738] bg-[#F8F8F7] dark:bg-[#0E1017] hover:border-slate-300 dark:hover:border-slate-700'
             ]"
           >
-            <div class="space-y-2">
-              <div class="flex items-start justify-between gap-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-lg bg-[#F2EEFF] dark:bg-[#1A2033] text-[#6D4AFF] dark:text-brand-300 flex items-center justify-center shrink-0">
-                    <component :is="getCategoryIcon(sample.category)" class="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <h4 class="text-xs font-bold text-[#181824] dark:text-[#F3F4F8] group-hover:text-[#6D4AFF] transition-colors">
-                      {{ sample.name }}
-                    </h4>
-                    <span class="text-[11px] font-medium text-[#6D4AFF] dark:text-brand-400 block">
-                      {{ sample.category }}
-                    </span>
-                  </div>
-                </div>
-
-                <span 
-                  v-if="portfolioStore.activeSampleId === sample.id" 
-                  class="w-5 h-5 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px] shrink-0"
-                >
-                  <Check class="w-3 h-3 stroke-[2.5]" />
-                </span>
+            <!-- Left: Initials + Info -->
+            <div class="flex items-center gap-3 min-w-0">
+              <div 
+                class="w-9 h-9 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors"
+                :class="portfolioStore.activeSampleId === sample.id ? 'bg-[#6947FF] text-white' : 'bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[#14151B] dark:text-[#F1F2F6]'"
+              >
+                {{ getInitials(sample.name) }}
               </div>
 
-              <p class="text-xs text-[#737385] dark:text-[#9496A8] leading-relaxed line-clamp-2">
-                {{ sample.summary }}
-              </p>
+              <div class="min-w-0 space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs sm:text-sm text-[#14151B] dark:text-[#F1F2F6] truncate group-hover:text-[#6947FF] transition-colors">
+                    {{ sample.name }}
+                  </span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[#6947FF] dark:text-brand-300 shrink-0">
+                    {{ sample.category }}
+                  </span>
+                </div>
+                <p class="text-xs text-[#696976] dark:text-[#9496A6] truncate">
+                  {{ sample.summary }}
+                </p>
+              </div>
             </div>
 
-            <!-- Focus tag -->
-            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px] text-[#737385] dark:text-[#9496A8]">
-              <span class="truncate">{{ sample.focus }}</span>
-              <span class="text-[#6D4AFF] dark:text-brand-400 font-semibold group-hover:translate-x-0.5 transition-transform">
-                Load &rarr;
+            <!-- Right: Action Indicator -->
+            <div class="shrink-0 flex items-center gap-1 text-xs">
+              <span 
+                v-if="portfolioStore.activeSampleId === sample.id" 
+                class="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-[#6947FF]"
+              >
+                <Check class="w-3.5 h-3.5 stroke-[2.5]" />
+                Active
+              </span>
+              <span 
+                v-else 
+                class="text-xs font-mono text-[#696976] dark:text-[#9496A6] group-hover:text-[#6947FF] flex items-center gap-1"
+              >
+                Load
+                <ArrowRight class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
               </span>
             </div>
           </div>
         </div>
 
-        <!-- Footer with Blank option -->
-        <div class="pt-3 border-t border-[#E8E8EF] dark:border-[#232738] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <!-- Footer -->
+        <div class="pt-3 border-t border-[#E5E4EA] dark:border-[#242738] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <button 
             type="button"
             @click="handleStartBlank"
-            class="text-[#737385] dark:text-[#9496A8] hover:text-[#181824] dark:hover:text-[#F3F4F8] inline-flex items-center gap-1.5 transition-colors"
+            class="text-[#696976] dark:text-[#9496A6] hover:text-[#14151B] dark:hover:text-[#F1F2F6] inline-flex items-center gap-1.5 transition-colors font-medium"
           >
             <RotateCcw class="w-3.5 h-3.5" />
-            Start with Blank Profile
+            Clear to Blank Slate
           </button>
 
           <button 
@@ -185,7 +182,7 @@ function handleStartBlank() {
             @click="emit('close')"
             class="btn-secondary text-xs py-1.5 px-4 w-full sm:w-auto"
           >
-            Cancel
+            Close
           </button>
         </div>
 

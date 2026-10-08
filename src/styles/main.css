@@ -4,9 +4,11 @@
 
 @layer base {
   :root {
-    --color-primary: #6D4AFF;
-    --color-primary-hover: #5938E8;
-    --color-lavender: #F2EEFF;
+    --color-brand: #6947FF;
+    --color-brand-hover: #5736EB;
+    --color-brand-subtle: #F2EEFF;
+    --color-bg-light: #F8F8F7;
+    --color-bg-dark: #0E1017;
   }
   
   html {
@@ -15,7 +17,13 @@
   }
 
   body {
-    @apply font-sans bg-[#FAFAFC] text-[#181824] dark:bg-[#0B0D17] dark:text-[#F3F4F8] transition-colors duration-200;
+    @apply font-sans bg-[#F8F8F7] text-[#14151B] dark:bg-[#0E1017] dark:text-[#F1F2F6] transition-colors duration-200;
+  }
+
+  /* Editorial display headings */
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
   }
 
   /* Custom minimal scrollbar */
@@ -33,58 +41,70 @@
 
 @layer utilities {
   .shadow-subtle {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 3px 0 rgba(20, 21, 27, 0.04), 0 1px 2px -1px rgba(20, 21, 27, 0.04);
   }
   .shadow-card-soft {
-    box-shadow: 0 4px 20px -2px rgba(24, 24, 36, 0.04);
+    box-shadow: 0 4px 20px -2px rgba(20, 21, 27, 0.03);
   }
   .shadow-card-hover {
-    box-shadow: 0 10px 25px -3px rgba(24, 24, 36, 0.08);
+    box-shadow: 0 10px 25px -3px rgba(20, 21, 27, 0.06);
   }
   .shadow-elevated {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  }
+  .hairline-b {
+    border-bottom: 1px solid rgba(229, 228, 234, 0.8);
+  }
+  .dark .hairline-b {
+    border-bottom: 1px solid rgba(36, 39, 56, 0.8);
   }
 }
 
 @layer components {
-  /* Premium Minimal Buttons */
+  /* Editorial Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center font-semibold rounded-xl px-5 py-2.5 text-sm 
-           bg-[#6D4AFF] hover:bg-[#5938E8] text-white shadow-sm
-           transition-all duration-200 
-           focus:outline-none focus:ring-2 focus:ring-[#6D4AFF] focus:ring-offset-2 
-           dark:focus:ring-offset-[#0B0D17] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center font-medium rounded-xl px-5 py-2.5 text-sm 
+           bg-[#6947FF] hover:bg-[#5736EB] text-white shadow-sm
+           transition-all duration-150 
+           focus:outline-none focus:ring-2 focus:ring-[#6947FF] focus:ring-offset-2 
+           dark:focus:ring-offset-[#0E1017] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center font-medium rounded-xl px-4 py-2 text-sm 
-           bg-white dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738] 
-           text-[#181824] dark:text-[#F3F4F8] hover:bg-[#FAFAFC] dark:hover:bg-[#1A2033] 
-           hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200 
-           focus:outline-none focus:ring-2 focus:ring-[#6D4AFF]/30 focus:ring-offset-2 
-           dark:focus:ring-offset-[#0B0D17] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+           bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] 
+           text-[#14151B] dark:text-[#F1F2F6] hover:bg-[#F8F8F7] dark:hover:bg-[#1E202E] 
+           hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-150 
+           focus:outline-none focus:ring-2 focus:ring-[#6947FF]/30 focus:ring-offset-2 
+           dark:focus:ring-offset-[#0E1017] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
   }
 
   .btn-ghost {
     @apply inline-flex items-center justify-center font-medium rounded-xl px-3.5 py-2 text-sm 
-           text-[#737385] dark:text-[#9496A8] hover:text-[#181824] dark:hover:text-[#F3F4F8] 
-           hover:bg-[#F2EEFF]/60 dark:hover:bg-[#1A2033] transition-all duration-150 
-           focus:outline-none focus:ring-2 focus:ring-[#6D4AFF]/20 active:scale-[0.98];
+           text-[#696976] dark:text-[#9496A6] hover:text-[#14151B] dark:hover:text-[#F1F2F6] 
+           hover:bg-[#F2EEFF]/60 dark:hover:bg-[#1E202E] transition-all duration-150 
+           focus:outline-none focus:ring-2 focus:ring-[#6947FF]/20 active:scale-[0.98];
   }
 
-  /* Refined Form Inputs */
+  /* Form Inputs */
   .input-base {
-    @apply w-full rounded-xl border border-[#E8E8EF] dark:border-[#232738] 
-           bg-white dark:bg-[#141827] px-3.5 py-2.5 text-sm text-[#181824] dark:text-[#F3F4F8] 
+    @apply w-full rounded-xl border border-[#E5E4EA] dark:border-[#242738] 
+           bg-white dark:bg-[#161822] px-3.5 py-2.5 text-sm text-[#14151B] dark:text-[#F1F2F6] 
            placeholder:text-slate-400 dark:placeholder:text-slate-500 
-           focus:border-[#6D4AFF] focus:outline-none focus:ring-2 focus:ring-[#6D4AFF]/15 
+           focus:border-[#6947FF] focus:outline-none focus:ring-2 focus:ring-[#6947FF]/15 
            transition-all duration-150;
   }
 
   /* Clean Surface Cards */
   .card-surface {
-    @apply bg-white dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738] 
+    @apply bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] 
            rounded-2xl transition-all duration-200;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 3px 0 rgba(20, 21, 27, 0.03), 0 1px 2px -1px rgba(20, 21, 27, 0.03);
+  }
+
+  /* Editorial Sequence Tag */
+  .editorial-tag {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono uppercase tracking-wider
+           bg-[#F2EEFF] text-[#6947FF] dark:bg-[#1E202E] dark:text-[#B096FF] border border-[#E6DCFF] dark:border-[#2A1783]/50;
   }
 }

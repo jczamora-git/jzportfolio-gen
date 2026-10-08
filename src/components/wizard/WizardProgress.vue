@@ -29,10 +29,10 @@ function handleStepClick(stepNumber: number) {
   <nav aria-label="Wizard Progress" class="w-full">
     <!-- Desktop Minimal Stepper -->
     <div class="hidden md:flex items-center justify-between relative py-2">
-      <!-- Progress Track -->
-      <div class="absolute left-8 right-8 top-6 h-[2px] bg-[#E8E8EF] dark:bg-[#232738] -z-0">
+      <!-- Progress Track Line -->
+      <div class="absolute left-8 right-8 top-5 h-[1.5px] bg-[#E5E4EA] dark:bg-[#242738] -z-0">
         <div 
-          class="h-full bg-[#6D4AFF] transition-all duration-300 ease-out"
+          class="h-full bg-[#6947FF] transition-all duration-300 ease-out"
           :style="{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }"
         ></div>
       </div>
@@ -45,18 +45,18 @@ function handleStepClick(stepNumber: number) {
         class="relative z-10 flex flex-col items-center group focus:outline-none transition-transform"
         :disabled="step.number > (maxStepAllowed || currentStep)"
       >
-        <!-- Step Circle -->
+        <!-- Step Number Indicator -->
         <div 
-          class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-200"
+          class="w-7 h-7 rounded-full flex items-center justify-center font-mono font-bold text-xs transition-all duration-200"
           :class="[
             currentStep === step.number 
-              ? 'bg-[#6D4AFF] text-white shadow-sm ring-4 ring-[#F2EEFF] dark:ring-brand-950/80 scale-110' 
+              ? 'bg-[#6947FF] text-white shadow-sm ring-4 ring-[#F2EEFF] dark:ring-[#1E202E] scale-105' 
               : currentStep > step.number 
                 ? 'bg-emerald-600 text-white hover:bg-emerald-700' 
-                : 'bg-white dark:bg-[#141827] text-[#737385] dark:text-[#9496A8] border border-[#E8E8EF] dark:border-[#232738]'
+                : 'bg-white dark:bg-[#161822] text-[#696976] dark:text-[#9496A6] border border-[#E5E4EA] dark:border-[#242738]'
           ]"
         >
-          <Check v-if="currentStep > step.number" class="w-4 h-4 stroke-[2.5]" />
+          <Check v-if="currentStep > step.number" class="w-3.5 h-3.5 stroke-[2.5]" />
           <span v-else>{{ step.number }}</span>
         </div>
 
@@ -64,11 +64,11 @@ function handleStepClick(stepNumber: number) {
         <div class="text-center mt-2">
           <span 
             class="block text-xs font-semibold tracking-tight transition-colors"
-            :class="currentStep === step.number ? 'text-[#6D4AFF] dark:text-brand-400' : currentStep > step.number ? 'text-[#181824] dark:text-[#F3F4F8]' : 'text-[#737385] dark:text-[#9496A8]'"
+            :class="currentStep === step.number ? 'text-[#6947FF] dark:text-brand-300' : currentStep > step.number ? 'text-[#14151B] dark:text-[#F1F2F6]' : 'text-[#696976] dark:text-[#9496A6]'"
           >
             {{ step.title }}
           </span>
-          <span class="block text-[10px] text-[#737385] dark:text-[#9496A8] font-normal">
+          <span class="block text-[10px] text-[#696976] dark:text-[#9496A6] font-normal">
             {{ step.subtitle }}
           </span>
         </div>
@@ -78,16 +78,16 @@ function handleStepClick(stepNumber: number) {
     <!-- Mobile Compact Stepper -->
     <div class="flex md:hidden flex-col gap-2">
       <div class="flex items-center justify-between text-xs">
-        <span class="font-bold text-[#6D4AFF] dark:text-brand-400">
-          Step {{ currentStep }} of {{ steps.length }}: 
-          <span class="text-[#181824] dark:text-[#F3F4F8] font-semibold ml-1">{{ steps[currentStep - 1]?.title }}</span>
+        <span class="font-mono font-bold text-[#6947FF] dark:text-brand-300">
+          STEP 0{{ currentStep }} / 0{{ steps.length }}: 
+          <span class="text-[#14151B] dark:text-[#F1F2F6] font-sans font-semibold ml-1">{{ steps[currentStep - 1]?.title }}</span>
         </span>
-        <span class="text-[#737385] dark:text-[#9496A8] text-[11px]">
+        <span class="text-[#696976] dark:text-[#9496A6] text-[11px]">
           {{ steps[currentStep - 1]?.subtitle }}
         </span>
       </div>
 
-      <!-- Segmented Bar -->
+      <!-- Segmented Track -->
       <div class="grid grid-cols-5 gap-1.5 h-1">
         <div 
           v-for="step in steps" 
@@ -95,10 +95,10 @@ function handleStepClick(stepNumber: number) {
           class="rounded-full transition-all duration-300"
           :class="[
             currentStep === step.number 
-              ? 'bg-[#6D4AFF]' 
+              ? 'bg-[#6947FF]' 
               : currentStep > step.number 
                 ? 'bg-emerald-500' 
-                : 'bg-[#E8E8EF] dark:bg-[#232738]'
+                : 'bg-[#E5E4EA] dark:bg-[#242738]'
           ]"
         ></div>
       </div>

@@ -107,9 +107,9 @@ function confirmReset() {
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
     
     <!-- Top Utility Row -->
-    <div class="flex items-center justify-between gap-3 text-xs border-b border-[#E8E8EF] dark:border-[#232738] pb-3">
+    <div class="flex items-center justify-between gap-3 text-xs border-b border-[#E5E4EA] dark:border-[#242738] pb-3">
       <!-- Autosave Status Indicator -->
-      <div class="flex items-center gap-2 text-[#737385] dark:text-[#9496A8]">
+      <div class="flex items-center gap-2 text-[#696976] dark:text-[#9496A6] font-mono text-[11px]">
         <span 
           class="w-2 h-2 rounded-full"
           :class="{
@@ -118,7 +118,7 @@ function confirmReset() {
             'bg-slate-300 dark:bg-slate-700': portfolioStore.saveIndicator === 'idle'
           }"
         ></span>
-        <span v-if="portfolioStore.saveIndicator === 'saving'">Saving...</span>
+        <span v-if="portfolioStore.saveIndicator === 'saving'">Saving draft...</span>
         <span v-else-if="portfolioStore.lastSavedAt">Saved locally ({{ portfolioStore.lastSavedAt }})</span>
         <span v-else>Saved locally</span>
       </div>
@@ -128,16 +128,16 @@ function confirmReset() {
         <button 
           @click="showSampleSelector = true"
           type="button"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E8E8EF] dark:border-[#232738] bg-white dark:bg-[#141827] text-[#181824] dark:text-[#F3F4F8] hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-subtle"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E5E4EA] dark:border-[#242738] bg-white dark:bg-[#161822] text-[#14151B] dark:text-[#F1F2F6] hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-subtle text-xs font-medium"
         >
-          <Sparkles class="w-3.5 h-3.5 text-[#6D4AFF]" />
+          <Sparkles class="w-3.5 h-3.5 text-[#6947FF]" />
           Explore Examples
         </button>
 
         <button 
           @click="showResetModal = true"
           type="button"
-          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[#737385] hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-[#1A2033] transition-colors"
+          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[#696976] hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-[#1E202E] transition-colors text-xs"
           title="Clear all fields"
         >
           <RotateCcw class="w-3.5 h-3.5" />
@@ -154,7 +154,7 @@ function confirmReset() {
     />
 
     <!-- Main Wizard Form Container -->
-    <main class="card-surface p-6 sm:p-8">
+    <main class="card-surface p-6 sm:p-8 border border-[#E5E4EA] dark:border-[#242738]">
       <StepProfile v-if="currentStep === 1" />
       <StepSkills v-else-if="currentStep === 2" />
       <StepProjects v-else-if="currentStep === 3" />

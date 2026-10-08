@@ -45,20 +45,20 @@ async function handleCopy() {
 </script>
 
 <template>
-  <div class="card-surface overflow-hidden border border-[#E8E8EF] dark:border-[#232738] shadow-subtle">
+  <div class="card-surface overflow-hidden border border-[#E5E4EA] dark:border-[#242738] shadow-elevated">
     <!-- Top Bar -->
-    <div class="bg-[#FAFAFC] dark:bg-[#0B0D17] px-4 py-3 border-b border-[#E8E8EF] dark:border-[#232738] flex items-center justify-between">
-      <div class="flex items-center gap-2 text-xs font-mono text-[#737385] dark:text-[#9496A8]">
-        <Terminal class="w-3.5 h-3.5 text-[#6D4AFF]" />
-        <span>generated-prompt.md</span>
+    <div class="bg-[#F8F8F7] dark:bg-[#12131C] px-4 sm:px-5 py-3 border-b border-[#E5E4EA] dark:border-[#242738] flex items-center justify-between">
+      <div class="flex items-center gap-2 text-xs font-mono text-[#696976] dark:text-[#9496A6]">
+        <Terminal class="w-3.5 h-3.5 text-[#6947FF]" />
+        <span class="font-medium text-[#14151B] dark:text-[#F1F2F6]">generated-prompt.md</span>
         <span class="text-slate-400">({{ promptText.length }} chars)</span>
       </div>
 
       <button 
         type="button" 
         @click="handleCopy"
-        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-sm"
-        :class="copied ? 'bg-emerald-600 text-white' : 'bg-[#6D4AFF] hover:bg-[#5938E8] text-white'"
+        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-sm"
+        :class="copied ? 'bg-emerald-600 text-white' : 'bg-[#6947FF] hover:bg-[#5736EB] text-white'"
       >
         <Check v-if="copied" class="w-3.5 h-3.5 stroke-[2.5]" />
         <Copy v-else class="w-3.5 h-3.5" />
@@ -67,7 +67,7 @@ async function handleCopy() {
     </div>
 
     <!-- Monospace Prompt Display -->
-    <div class="p-5 max-h-[480px] overflow-y-auto bg-[#0B0D17] text-[#F3F4F8] font-mono text-xs leading-relaxed whitespace-pre-wrap selection:bg-[#6D4AFF] selection:text-white">
+    <div class="p-5 sm:p-6 max-h-[500px] overflow-y-auto bg-[#0E1017] text-[#F1F2F6] font-mono text-xs leading-relaxed whitespace-pre-wrap selection:bg-[#6947FF] selection:text-white">
       {{ promptText }}
     </div>
   </div>

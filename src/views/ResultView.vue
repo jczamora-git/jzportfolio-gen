@@ -17,7 +17,8 @@ import {
   CheckCircle2, 
   ArrowRight, 
   FileText, 
-  AlertTriangle
+  AlertTriangle,
+  ArrowUpRight
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -86,14 +87,14 @@ function handleConfirmReset() {
     <!-- Empty State Recovery -->
     <div 
       v-if="!hasValidDraft" 
-      class="card-surface p-8 sm:p-12 text-center max-w-md mx-auto space-y-4 border-dashed"
+      class="card-surface p-8 sm:p-12 text-center max-w-md mx-auto space-y-4 border border-dashed border-[#E5E4EA] dark:border-[#242738]"
     >
-      <div class="w-10 h-10 rounded-xl bg-[#F2EEFF] dark:bg-brand-950/60 text-[#6D4AFF] flex items-center justify-center mx-auto">
+      <div class="w-10 h-10 rounded-xl bg-[#F2EEFF] dark:bg-[#1E202E] text-[#6947FF] flex items-center justify-center mx-auto">
         <AlertTriangle class="w-5 h-5" />
       </div>
       <div class="space-y-1">
-        <h2 class="text-base font-bold text-[#181824] dark:text-[#F3F4F8]">No Active Draft Found</h2>
-        <p class="text-xs text-[#737385] dark:text-[#9496A8]">
+        <h2 class="font-display text-base font-bold text-[#14151B] dark:text-[#F1F2F6]">No Active Draft Found</h2>
+        <p class="text-xs text-[#696976] dark:text-[#9496A6]">
           You haven't entered your profile details yet. Let's start building your customized portfolio prompt!
         </p>
       </div>
@@ -108,18 +109,18 @@ function handleConfirmReset() {
     <template v-else>
       
       <!-- 1. Header Banner -->
-      <div class="space-y-4 border-b border-[#E8E8EF] dark:border-[#232738] pb-6">
+      <div class="space-y-4 border-b border-[#E5E4EA] dark:border-[#242738] pb-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold mb-1.5 border border-emerald-200 dark:border-emerald-800">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#F2EEFF] text-[#6947FF] dark:bg-[#1E202E] dark:text-[#B096FF] text-[11px] font-mono uppercase tracking-wider mb-2 border border-[#E6DCFF] dark:border-[#2A1783]/40">
               <CheckCircle2 class="w-3.5 h-3.5" />
-              Prompt Ready
+              BRIEF READY // 05
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-[#181824] dark:text-[#F3F4F8] tracking-tight">
-              Your Portfolio Prompt Is Ready
+            <h1 class="font-display text-2xl sm:text-4xl font-bold text-[#14151B] dark:text-[#F1F2F6] tracking-tight">
+              Ready to make it yours.
             </h1>
-            <p class="text-xs sm:text-sm text-[#737385] dark:text-[#9496A8] mt-1">
-              Review, copy, and bring your portfolio to life with ChatGPT, Gemini, or Claude.
+            <p class="text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] mt-1">
+              Your portfolio brief is ready for your AI coding assistant.
             </p>
           </div>
 
@@ -130,44 +131,44 @@ function handleConfirmReset() {
               class="btn-secondary text-xs"
             >
               <Edit3 class="w-3.5 h-3.5 mr-1.5" />
-              Edit Data
+              Edit Details
             </button>
             <button 
               @click="handleRegenerate" 
               class="btn-secondary text-xs"
             >
               <RotateCcw class="w-3.5 h-3.5 mr-1.5" />
-              Refresh
+              Regenerate
             </button>
           </div>
         </div>
 
-        <!-- Mini Stats Summary -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs text-[#737385] dark:text-[#9496A8]">
-          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
-            <span class="block text-[10px] text-slate-400">Name / Role</span>
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] truncate block">{{ draft.profile.fullName }}</span>
+        <!-- Mini Profile Snapshot -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs text-[#696976] dark:text-[#9496A6]">
+          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+            <span class="block text-[10px] font-mono uppercase text-slate-400">Developer</span>
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] truncate block">{{ draft.profile.fullName }}</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
-            <span class="block text-[10px] text-slate-400">Skills</span>
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] block">{{ draft.background.skills.length }} verified skills</span>
+          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+            <span class="block text-[10px] font-mono uppercase text-slate-400">Tech Stack</span>
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">{{ draft.background.skills.length }} verified skills</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
-            <span class="block text-[10px] text-slate-400">Projects</span>
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] block">{{ draft.projects.length }} showcase build(s)</span>
+          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+            <span class="block text-[10px] font-mono uppercase text-slate-400">Projects</span>
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] block">{{ draft.projects.length }} showcase build(s)</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
-            <span class="block text-[10px] text-slate-400">Aesthetic</span>
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] capitalize block">{{ draft.preferences.style }} ({{ draft.preferences.theme }})</span>
+          <div class="p-3 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738]">
+            <span class="block text-[10px] font-mono uppercase text-slate-400">Aesthetic</span>
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] capitalize block">{{ draft.preferences.style }}</span>
           </div>
         </div>
       </div>
 
       <!-- 2. Export Bar -->
-      <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738] shadow-subtle text-xs">
-        <div class="flex items-center gap-2 text-[#737385] dark:text-[#9496A8]">
-          <FileText class="w-4 h-4 text-[#6D4AFF]" />
-          <span class="font-semibold text-[#181824] dark:text-[#F3F4F8]">Download Files</span>
+      <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] shadow-subtle text-xs">
+        <div class="flex items-center gap-2 text-[#696976] dark:text-[#9496A6]">
+          <FileText class="w-4 h-4 text-[#6947FF]" />
+          <span class="font-semibold text-[#14151B] dark:text-[#F1F2F6]">Download Deliverables</span>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
@@ -175,7 +176,7 @@ function handleConfirmReset() {
             @click="handleDownloadPrompt" 
             class="btn-secondary text-xs py-1.5 px-3"
           >
-            <Download class="w-3.5 h-3.5 mr-1 text-[#6D4AFF]" />
+            <Download class="w-3.5 h-3.5 mr-1 text-[#6947FF]" />
             Prompt (.md)
           </button>
 
@@ -183,13 +184,13 @@ function handleConfirmReset() {
             @click="handleDownloadBrief" 
             class="btn-secondary text-xs py-1.5 px-3"
           >
-            <Download class="w-3.5 h-3.5 mr-1 text-[#6D4AFF]" />
+            <Download class="w-3.5 h-3.5 mr-1 text-[#6947FF]" />
             Portfolio Brief (.md)
           </button>
 
           <button 
             @click="showResetModal = true" 
-            class="text-[#737385] hover:text-rose-600 p-1.5 rounded transition-colors text-xs"
+            class="text-[#696976] hover:text-rose-600 p-1.5 rounded transition-colors text-xs font-medium"
             title="Start fresh with a new portfolio"
           >
             Start Fresh
@@ -201,54 +202,63 @@ function handleConfirmReset() {
       <PromptOutput :prompt-text="promptText" />
 
       <!-- 4. Next Steps Walkthrough -->
-      <div class="card-surface p-6 space-y-4">
-        <div class="space-y-0.5">
-          <div class="text-[11px] font-bold text-[#6D4AFF] uppercase tracking-wider">
-            Execution Steps
+      <div class="card-surface p-6 sm:p-8 space-y-5 border border-[#E5E4EA] dark:border-[#242738]">
+        <div class="flex items-center justify-between pb-3 border-b border-[#E5E4EA] dark:border-[#242738]">
+          <div>
+            <span class="text-[10px] font-mono uppercase tracking-wider text-[#6947FF] block">
+              EXECUTION PIPELINE
+            </span>
+            <h3 class="font-display text-base font-bold text-[#14151B] dark:text-[#F1F2F6]">
+              Next Steps: Build & Deploy
+            </h3>
           </div>
-          <h3 class="text-base font-bold text-[#181824] dark:text-[#F3F4F8]">
-            What to do next?
-          </h3>
+          <router-link 
+            to="/learn/deploy" 
+            class="text-xs text-[#6947FF] hover:underline font-semibold inline-flex items-center gap-1"
+          >
+            <span>View Full Docs</span>
+            <ArrowUpRight class="w-3.5 h-3.5" />
+          </router-link>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
-              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">1</span>
+          <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1.5">
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-[#6947FF] text-white flex items-center justify-center text-[10px] font-mono">1</span>
               Paste Prompt into AI
             </span>
-            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
-              Open ChatGPT, Gemini, or Claude. Paste the copied prompt and request complete source code files.
+            <p class="text-[#696976] dark:text-[#9496A6] leading-relaxed">
+              Open ChatGPT, Gemini, or Claude. Paste your copied brief to generate complete static files.
             </p>
           </div>
 
-          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
-              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">2</span>
-              Save Files in VS Code
+          <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1.5">
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-[#6947FF] text-white flex items-center justify-center text-[10px] font-mono">2</span>
+              Save in VS Code
             </span>
-            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
-              Save the generated output as <code class="text-[#6D4AFF]">index.html</code>, <code class="text-[#6D4AFF]">styles.css</code>, and <code class="text-[#6D4AFF]">script.js</code>.
+            <p class="text-[#696976] dark:text-[#9496A6] leading-relaxed">
+              Save files as <code class="text-[#6947FF] font-mono">index.html</code>, <code class="text-[#6947FF] font-mono">styles.css</code>, and <code class="text-[#6947FF] font-mono">script.js</code>.
             </p>
           </div>
 
-          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
-              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">3</span>
-              Preview with Live Server
+          <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1.5">
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-[#6947FF] text-white flex items-center justify-center text-[10px] font-mono">3</span>
+              Push to GitHub
             </span>
-            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
-              Open with VS Code Live Server and test responsiveness and your project links.
+            <p class="text-[#696976] dark:text-[#9496A6] leading-relaxed">
+              Initialize Git locally, commit your files, and push to your new GitHub repository.
             </p>
           </div>
 
-          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
-            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
-              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">4</span>
-              Deploy with GitHub Actions
+          <div class="p-4 rounded-xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-1.5">
+            <span class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-[#6947FF] text-white flex items-center justify-center text-[10px] font-mono">4</span>
+              Publish via GitHub Actions
             </span>
-            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
-              Push your repository to GitHub and follow our guide to deploy to GitHub Pages.
+            <p class="text-[#696976] dark:text-[#9496A6] leading-relaxed">
+              Enable GitHub Pages in settings with GitHub Actions source to publish your live URL.
             </p>
           </div>
         </div>
@@ -259,7 +269,7 @@ function handleConfirmReset() {
             class="btn-primary text-xs inline-flex items-center"
           >
             <BookOpen class="w-4 h-4 mr-1.5" />
-            Open Full Deployment Tutorial
+            Open Deployment Tutorial
             <ArrowRight class="w-3.5 h-3.5 ml-1.5" />
           </router-link>
         </div>
