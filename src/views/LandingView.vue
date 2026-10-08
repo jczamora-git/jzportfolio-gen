@@ -49,12 +49,6 @@ function scrollToProcess() {
 
         <!-- Hero Content Stack -->
         <div class="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10 pt-2 sm:pt-4">
-          
-          <!-- Category Marker -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-widest text-[#6947FF] bg-[#F2EEFF] dark:bg-[#252535] dark:text-[#B096FF] uppercase">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#6947FF]"></span>
-            <span>PORTFOLIO LAUNCHPAD // 01</span>
-          </div>
 
           <!-- Bold Centered Headline -->
           <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#17171D] dark:text-[#F8F8FA] leading-[1.05]">
@@ -201,7 +195,7 @@ function scrollToProcess() {
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#242738] pb-8">
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30">
-            <span>02 // THE PROCESS</span>
+            <span>01 // THE PROCESS</span>
           </div>
           <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
             Turning Ideas Into <br />
@@ -250,7 +244,7 @@ function scrollToProcess() {
         <div class="lg:col-span-5 bg-[#161822] border border-[#242738] rounded-3xl p-8 space-y-6 flex flex-col justify-between">
           <div class="space-y-3">
             <span class="text-xs font-mono text-[#6947FF] font-bold block">
-              02 // PERSONA HARNESS
+              PERSONA HARNESS
             </span>
             <h3 class="font-display text-xl sm:text-2xl font-bold text-white">
               5 Preloaded Student Personas
@@ -323,7 +317,7 @@ function scrollToProcess() {
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#242738] pb-6">
           <div class="space-y-3">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30">
-              <span>03 // THE BUILDER</span>
+              <span>02 // THE BUILDER</span>
             </div>
             <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
               Our Builder <span class="text-[#6947FF]">Capabilities</span>
@@ -505,7 +499,7 @@ function scrollToProcess() {
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#242738] pb-6">
           <div class="space-y-3">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30">
-              <span>04 // DEPLOYMENT PIPELINE</span>
+              <span>03 // DEPLOYMENT PIPELINE</span>
             </div>
             <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
               Code. Build. Deploy.
@@ -582,7 +576,7 @@ function scrollToProcess() {
       <div class="bg-gradient-to-br from-[#161822] to-[#12131C] border border-[#242738] rounded-3xl lg:rounded-[3rem] p-10 sm:p-16 text-center space-y-6 relative overflow-hidden">
         
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30 mx-auto">
-          <span>START TODAY // 05</span>
+          <span>START TODAY // 04</span>
         </div>
 
         <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-2xl mx-auto leading-tight">

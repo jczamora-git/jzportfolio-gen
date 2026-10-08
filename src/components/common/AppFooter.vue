@@ -22,9 +22,6 @@ import { Rocket, ShieldCheck, ArrowUpRight } from 'lucide-vue-next'
             <span class="font-medium text-white">"Code. Build. Deploy: Launch Your Portfolio with GitHub Actions"</span> 
             webinar. Helping students and developers structure and publish static portfolios.
           </p>
-          <div class="text-[11px] font-mono text-[#6947FF]">
-            SPEC: HTML5 • CSS3 • VANILLA JS • GITHUB ACTIONS
-          </div>
         </div>
 
         <!-- Navigation (3 cols) -->
