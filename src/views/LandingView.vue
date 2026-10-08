@@ -27,14 +27,14 @@ function scrollToProcess() {
 </script>
 
 <template>
-  <div class="landing-stage w-full bg-[#101014] text-[#17171D] dark:text-[#F8F8FA] overflow-x-hidden">
+  <div class="landing-stage w-full bg-[#0F0F15] text-[#17171D] dark:text-[#F7F6FA] overflow-x-hidden">
     
     <!-- UPPER HERO SHEET: Distinct light stage physically layered above dark stage -->
-    <div class="w-full bg-[#101014]">
-      <section class="upper-hero-sheet relative z-10 w-full bg-white dark:bg-[#1B1B23] border-b border-[#E8E8EF]/80 dark:border-[#282836] rounded-b-[44px] sm:rounded-b-[72px] lg:rounded-b-[96px] shadow-sm transition-colors">
+    <div class="w-full bg-[#0F0F15]">
+      <section class="upper-hero-sheet relative z-10 w-full bg-white dark:bg-[#20202B] border-b border-[#E8E8EF]/80 dark:border-[#414151]/70 rounded-b-[44px] sm:rounded-b-[72px] lg:rounded-b-[96px] shadow-sm transition-colors">
         
         <!-- Decorative Starburst Accent (Hidden on mobile to prevent cluttering headline, top right on sm+) -->
-        <div class="absolute top-8 right-8 sm:right-14 text-[#6947FF]/70 hidden sm:block pointer-events-none">
+        <div class="absolute top-8 right-8 sm:right-14 text-[#6947FF] dark:text-[#987AFF] hidden sm:block pointer-events-none">
           <svg class="w-6 h-6 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
           </svg>
@@ -45,12 +45,12 @@ function scrollToProcess() {
           
           <div class="max-w-5xl mx-auto text-center space-y-7 sm:space-y-8 relative z-10">
 
-            <!-- Bold Centered Headline with deliberate mobile top breathing room -->
-            <h1 class="font-display text-3.5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#17171D] dark:text-[#F8F8FA] leading-[1.08] sm:leading-[1.05] pt-1 sm:pt-2">
+            <!-- Bold Centered Headline with fluid, prominent mobile typography -->
+            <h1 class="font-display text-[clamp(2.5rem,10.6vw,3.25rem)] sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#17171D] dark:text-[#F7F6FA] leading-[1.06] sm:leading-[1.05] pt-1 sm:pt-2 max-w-4xl mx-auto [text-wrap:balance]">
               Your work deserves <br class="hidden sm:inline" />
-              to be <span class="relative inline-block text-[#6947FF]">
+              to be <span class="relative inline-block text-[#6947FF] dark:text-[#805EFF]">
                 seen.
-                <svg class="absolute -bottom-2 left-0 w-full h-2 text-[#6947FF]" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <svg class="absolute -bottom-2 left-0 w-full h-2 text-[#6947FF] dark:text-[#805EFF]" viewBox="0 0 100 20" preserveAspectRatio="none">
                   <path d="M0,10 Q50,20 100,10" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
                 </svg>
               </span>
@@ -62,72 +62,72 @@ function scrollToProcess() {
               <!-- Left: Human Intro Paragraph & Actions (6 cols) -->
               <div class="lg:col-span-6 space-y-5 sm:space-y-6">
                 <div class="space-y-2">
-                  <span class="text-xs font-mono uppercase text-[#6947FF] font-bold tracking-wider block">
+                  <span class="text-xs font-mono uppercase text-[#6947FF] dark:text-[#987AFF] font-bold tracking-wider block">
                     The Prompt Builder
                   </span>
-                  <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#ACACBA] leading-relaxed">
+                  <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#C3C0D0] leading-relaxed">
                     Bring your skills, projects, and experience together. We turn them into a clear AI-ready prompt so you can generate and deploy your portfolio with GitHub Actions.
                   </p>
                 </div>
 
-                <!-- Primary and Secondary Actions -->
-                <div class="flex flex-wrap items-center gap-3 pt-1">
+                <!-- Primary and Secondary Actions (Responsive full-width on tiny screens, natural inline on larger) -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3 pt-1">
                   <button 
                     @click="handleStartBuilding"
-                    class="btn-primary py-3 px-6 text-sm font-semibold shadow-md flex items-center justify-center gap-2"
+                    class="btn-primary py-3 px-6 text-sm font-semibold shadow-md flex items-center justify-center gap-2 w-full sm:w-auto"
                   >
                     <span>Build Your Prompt</span>
                     <ArrowRight class="w-4 h-4" />
                   </button>
                   <button 
                     @click="scrollToProcess"
-                    class="btn-secondary py-3 px-5 text-sm"
+                    class="btn-secondary py-3 px-5 text-sm w-full sm:w-auto text-center"
                   >
                     <span>How It Works</span>
-                    <ArrowRight class="w-3.5 h-3.5 ml-1 text-[#6D6D7A] dark:text-[#ACACBA]" />
+                    <ArrowRight class="w-3.5 h-3.5 ml-1 text-[#6D6D7A] dark:text-[#C3C0D0] inline" />
                   </button>
                 </div>
               </div>
 
               <!-- Right: Tactile Creative Brief Artifact (6 cols) -->
-              <div class="lg:col-span-6">
-                <div class="p-4 sm:p-6 rounded-2.5xl sm:rounded-3xl bg-[#F7F7F9] dark:bg-[#121218] border border-[#E8E8EF] dark:border-[#282836] shadow-sm space-y-3.5 sm:space-y-4 relative group hover:border-[#6947FF]/40 transition-colors">
+              <div class="lg:col-span-6 min-w-0">
+                <div class="p-4 sm:p-6 rounded-2.5xl sm:rounded-3xl bg-[#F7F7F9] dark:bg-[#292936] border border-[#E8E8EF] dark:border-[#414151]/80 shadow-sm space-y-3.5 sm:space-y-4 relative group hover:border-[#6947FF]/40 dark:hover:border-[#805EFF]/50 transition-colors">
                   
-                  <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#282836] pb-3">
+                  <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#414151]/60 pb-3">
                     <div class="flex items-center gap-2">
-                      <div class="w-6 h-6 rounded-lg bg-[#6947FF] text-white flex items-center justify-center">
+                      <div class="w-6 h-6 rounded-lg bg-[#6947FF] dark:bg-[#805EFF] text-white flex items-center justify-center">
                         <Rocket class="w-3.5 h-3.5" />
                       </div>
-                      <span class="font-mono text-[11px] font-bold text-[#17171D] dark:text-[#F8F8FA]">
+                      <span class="font-mono text-[11px] font-bold text-[#17171D] dark:text-[#F7F6FA]">
                         PORTFOLIO BRIEF // 01
                       </span>
                     </div>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-semibold">
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-200/50 dark:border-emerald-800/40">
                       AI-Ready
                     </span>
                   </div>
 
                   <div class="space-y-2.5 text-xs">
-                    <div class="flex justify-between items-start">
-                      <div>
-                        <span class="font-bold text-sm text-[#17171D] dark:text-[#F8F8FA] block">Alex Morgan</span>
-                        <span class="text-[11px] text-[#6D6D7A] dark:text-[#ACACBA]">Aspiring Frontend Engineer</span>
+                    <div class="flex flex-wrap justify-between items-start gap-2">
+                      <div class="min-w-0">
+                        <span class="font-bold text-sm text-[#17171D] dark:text-[#F7F6FA] block truncate">Alex Morgan</span>
+                        <span class="text-[11px] text-[#6D6D7A] dark:text-[#C3C0D0] block">Aspiring Frontend Engineer</span>
                       </div>
-                      <div class="flex gap-1">
-                        <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">Vue.js</span>
-                        <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">TypeScript</span>
+                      <div class="flex flex-wrap gap-1">
+                        <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#323241] border border-[#E8E8EF] dark:border-[#414151] text-[10px] font-medium text-[#17171D] dark:text-[#F7F6FA]">Vue.js</span>
+                        <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#323241] border border-[#E8E8EF] dark:border-[#414151] text-[10px] font-medium text-[#17171D] dark:text-[#F7F6FA]">TypeScript</span>
                       </div>
                     </div>
                     
-                    <div class="p-2.5 rounded-xl bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[11px] text-[#6D6D7A] dark:text-[#ACACBA] space-y-1">
-                      <span class="font-semibold text-[#17171D] dark:text-[#F8F8FA] block">Specification Target:</span>
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-[#323241] border border-[#E8E8EF] dark:border-[#414151] text-[11px] text-[#6D6D7A] dark:text-[#C3C0D0] space-y-1">
+                      <span class="font-semibold text-[#17171D] dark:text-[#F7F6FA] block">Specification Target:</span>
                       <p class="leading-tight">Static HTML5/CSS3/Vanilla JS • High Contrast • GitHub Pages CI/CD</p>
                     </div>
                   </div>
 
                   <!-- Subtle supporting interactive caption -->
                   <div class="pt-1 text-center">
-                    <span class="text-[11px] font-mono text-[#6947FF] dark:text-[#B096FF]">
+                    <span class="text-[11px] font-mono text-[#6947FF] dark:text-[#987AFF]">
                       Deterministic brief generator • Zero hallucinated claims
                     </span>
                   </div>
@@ -144,7 +144,7 @@ function scrollToProcess() {
     </div>
 
     <!-- DARK LOWER STAGE: Continuous Full-Width Stage Flowing Directly Beneath the Upper Sheet -->
-    <div class="lower-stage w-full bg-[#101014] text-[#F1F2F6] pt-10 sm:pt-14 pb-20 sm:pb-28 space-y-16 sm:space-y-24">
+    <div class="lower-stage w-full bg-[#0F0F15] text-[#F1F2F6] pt-10 sm:pt-14 pb-20 sm:pb-28 space-y-16 sm:space-y-24">
       
       <!-- INTEGRATED STATISTICS SECTION: Directly beginning the Dark Lower Stage -->
       <section class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
