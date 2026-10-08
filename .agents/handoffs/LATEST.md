@@ -1,7 +1,7 @@
 # Development Handoff — LATEST
 
 **Last Updated:** 2026-10-08  
-**Current Milestone:** UI Pass 14 — Mobile-First Progressive Scroll Animation Refinement  
+**Current Milestone:** Mobile Hamburger State Synchronization & Interaction Stability  
 **Application Health:** 100% Passing Tests, 0 Build Errors, Clean Architecture
 
 ---
@@ -14,24 +14,21 @@ The application is fully functional and stable. All primary user journeys are wo
 - **Deployment Guide (`/learn/deploy`)**: 5-step GitHub Actions static deployment documentation.
 - **Privacy Page (`/privacy`)**: Client-side execution statement.
 - **Theme System**: Instantaneous, seamless light/dark mode switching with zero rectangular glitching and fixed dark floating navigation.
-- **Mobile Menu**: Fully accessible, permanent dark dropdown with outside-click, Escape key, and route change dismiss.
-- **Motion System (UI Pass 14 Refinement)**:
-  - Desktop: Coordinated section entrance timelines with Lenis smooth scrolling single-RAF driver.
-  - Mobile (<768px): Progressive element-level ScrollTriggers. Section headings, individual feature cards, 4 process step progression cards, interactive builder showcase blocks, and 5 deployment pipeline cards trigger independently upon entering the mobile viewport (`start: "top 88%"` / `"top 90%"`).
-  - Accessibility: Full `prefers-reduced-motion: reduce` compliance bypassing animations for immediate visibility.
+- **Mobile Navigation (Stabilized)**: Single source of truth via `useMobileNavigation()`. Fully accessible, permanent dark dropdown with outside-click containment via `event.composedPath()`, Escape keydown dismiss, route navigation dismiss, and automatic desktop resize reset.
+- **Motion System**: Progressive element-level ScrollTriggers on mobile (<768px), coordinated timelines on desktop, Lenis single-RAF ticker integration, and reduced-motion accessibility.
 
 ---
 
 ## 2. Latest Architectural & Harness Additions
-- Refined mobile GSAP matchMedia block in `LandingView.vue` from monolithic section triggers to progressive element-level triggers.
-- Added 2-row staggered reveal for mobile statistics section (`.stat-row-1`, `.stat-row-2`).
-- Added comprehensive unit tests in `tests/motion-system.test.ts` for easing tokens, duration tokens, reduced-motion detection, and touch/viewport detection.
-- Unified verification command `npm run verify` running unit tests, typechecking, and production build.
+- Created `src/composables/useMobileNavigation.ts` providing deterministic open/close/toggle actions, idempotent state transitions, composedPath boundary containment, and responsive breakpoint auto-reset.
+- Updated `AppHeader.vue` with `@click.stop="toggleMobileMenu"` and `pointer-events-none` on SVG icons to eliminate the race condition where unmounted DOM nodes caused the document outside-click listener to immediately close the menu.
+- Expanded `tests/theme-and-navigation.test.ts` to 16 comprehensive tests covering initial closed state, toggles, rapid tapping, outside-click containment, detached element protection, Escape key, desktop resize auto-dismiss, and theme toggle independence.
+- Updated `.agents/contracts/REGRESSION_MATRIX.md` and `.agents/KNOWN_ISSUES.md` (`ISSUE-08`).
 
 ---
 
 ## 3. Verification & Test Evidence
-- **Vitest Unit Tests**: `22 passed (22)` across 6 test files (`portfolio-schema`, `draft-storage`, `theme-and-navigation`, `sample-profiles`, `prompt-generator`, `motion-system`).
+- **Vitest Unit Tests**: `34 passed (34)` across 6 test files (`portfolio-schema`, `draft-storage`, `theme-and-navigation`, `sample-profiles`, `prompt-generator`, `motion-system`).
 - **TypeScript Typecheck (`vue-tsc --noEmit`)**: 0 errors.
 - **Production Build (`vite build`)**: Clean build output in `dist/`.
 

@@ -2,6 +2,7 @@
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
+import { useMobileNavigation } from '@/composables/useMobileNavigation'
 import { 
   Rocket, 
   Sun, 
@@ -15,44 +16,66 @@ import {
 
 const route = useRoute()
 const { theme, toggleTheme } = useTheme()
-
-const mobileMenuOpen = ref(false)
 const headerRef = ref<HTMLElement | null>(null)
 
-function closeMobileMenu() {
-  mobileMenuOpen.value = false
-}
+const {
+  isOpen: mobileMenuOpen,
+  close: closeMobileMenu,
+  toggle: toggleMobileMenu,
+  handleClickOutside,
+  handleKeydown,
+  handleBreakpointChange
+} = useMobileNavigation()
 
 // Close mobile menu on route navigation
 watch(() => route.path, () => {
   closeMobileMenu()
 })
 
-// Close mobile menu on Escape key
-function handleKeydown(event: KeyboardEvent) {
-  if (event.key === 'Escape' && mobileMenuOpen.value) {
-    closeMobileMenu()
-  }
+function onDocumentClick(event: MouseEvent) {
+  const path = event.composedPath ? event.composedPath() : []
+  handleClickOutside(event.target, headerRef.value, path)
 }
 
-// Close mobile menu on outside click
-function handleClickOutside(event: MouseEvent) {
-  if (mobileMenuOpen.value && headerRef.value && !headerRef.value.contains(event.target as Node)) {
-    closeMobileMenu()
-  }
+function onDocumentKeydown(event: KeyboardEvent) {
+  handleKeydown(event)
+}
+
+let mql: MediaQueryList | null = null
+function onMediaChange(e: MediaQueryListEvent | MediaQueryList) {
+  handleBreakpointChange(e.matches)
 }
 
 onMounted(() => {
   if (typeof window !== 'undefined') {
-    window.addEventListener('keydown', handleKeydown)
-    document.addEventListener('click', handleClickOutside)
+    window.addEventListener('keydown', onDocumentKeydown)
+    document.addEventListener('click', onDocumentClick)
+
+    if (window.matchMedia) {
+      mql = window.matchMedia('(min-width: 768px)')
+      if (mql.addEventListener) {
+        mql.addEventListener('change', onMediaChange)
+      } else if ('addListener' in mql) {
+        // Fallback for older Safari/browsers
+        (mql as MediaQueryList).addListener(onMediaChange)
+      }
+    }
   }
 })
 
 onBeforeUnmount(() => {
   if (typeof window !== 'undefined') {
-    window.removeEventListener('keydown', handleKeydown)
-    document.removeEventListener('click', handleClickOutside)
+    window.removeEventListener('keydown', onDocumentKeydown)
+    document.removeEventListener('click', onDocumentClick)
+
+    if (mql) {
+      if (mql.removeEventListener) {
+        mql.removeEventListener('change', onMediaChange)
+      } else if ('removeListener' in mql) {
+        (mql as MediaQueryList).removeListener(onMediaChange)
+      }
+      mql = null
+    }
   }
 })
 </script>
@@ -136,24 +159,24 @@ onBeforeUnmount(() => {
       <div class="flex items-center gap-1 md:hidden">
         <button 
           type="button"
-          @click="toggleTheme" 
+          @click.stop="toggleTheme" 
           class="p-2 rounded-full text-[#9496A6] hover:text-white focus:outline-none"
           :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
         >
-          <Sun v-if="theme === 'dark'" class="w-4 h-4 text-amber-400" />
-          <Moon v-else class="w-4 h-4" />
+          <Sun v-if="theme === 'dark'" class="w-4 h-4 text-amber-400 pointer-events-none" />
+          <Moon v-else class="w-4 h-4 pointer-events-none" />
         </button>
 
         <button 
           type="button"
-          @click="mobileMenuOpen = !mobileMenuOpen"
-          class="p-2 rounded-full text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#6947FF]/40"
+          @click.stop="toggleMobileMenu"
+          class="p-2 rounded-full text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#6947FF]/40 cursor-pointer"
           :aria-label="mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
           :aria-expanded="mobileMenuOpen"
           aria-controls="mobile-nav-menu"
         >
-          <X v-if="mobileMenuOpen" class="w-5 h-5" />
-          <Menu v-else class="w-5 h-5" />
+          <X v-if="mobileMenuOpen" class="w-5 h-5 pointer-events-none" />
+          <Menu v-else class="w-5 h-5 pointer-events-none" />
         </button>
       </div>
 

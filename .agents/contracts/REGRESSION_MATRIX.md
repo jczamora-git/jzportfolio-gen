@@ -5,7 +5,7 @@ When modifying code in any of the following areas, future agents MUST inspect th
 | Modified Component / Subsystem | Potentially Affected Subsystems | Mandatory Validation Checks |
 | :--- | :--- | :--- |
 | **`useTheme.ts`** | All views (`/`, `/builder`, `/result`, `/learn/deploy`, `/privacy`), `AppHeader.vue`, `AppFooter.vue` | • `tests/theme-and-navigation.test.ts`<br>• Verify light/dark toggle on all routes<br>• Verify no rectangular glitch on rapid toggles |
-| **`AppHeader.vue`** | Global floating navbar, mobile dropdown, route navigation | • `tests/theme-and-navigation.test.ts`<br>• Verify mobile hamburger open/close<br>• Verify dark dropdown appearance in both themes |
+| **`AppHeader.vue` & `useMobileNavigation.ts`** | Global floating navbar, mobile dropdown, route navigation | • `tests/theme-and-navigation.test.ts` (16 tests)<br>• Verify mobile hamburger open/close toggle<br>• Verify outside click & Escape key dismiss<br>• Verify dark dropdown appearance in both themes<br>• Verify event listener cleanup on unmount |
 | **`LandingView.vue` (Hero & Upper Sheet)** | Desktop hero, mobile hero, statistics, curvature boundary | • Inspect 320px–430px mobile responsiveness<br>• Verify Portfolio Brief is hidden on mobile<br>• Verify upper sheet bottom curvature is distinct in light and dark |
 | **`LandingView.vue` (Motion)** | GSAP ScrollTrigger, Lenis smooth scrolling | • Test with `prefers-reduced-motion`<br>• Verify route navigation leaves no stale triggers |
 | **`portfolioStore.ts`** | All 5 wizard steps, result view, sample profiles, localStorage | • `tests/draft-storage.test.ts`<br>• `tests/sample-profiles.test.ts`<br>• Verify draft autosave and reset modal |
