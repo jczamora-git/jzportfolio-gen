@@ -56,16 +56,16 @@ function scrollToProcess() {
               </span>
             </h1>
 
-            <!-- 2-Column Responsive Hero Grid (Left Copy & Actions, Right Creative Brief) -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-8 lg:gap-12 items-center text-left pt-2">
+            <!-- Responsive Hero Grid (Centered on Mobile, 2-Column on Tablet/Desktop md+) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-7 sm:gap-8 lg:gap-12 items-center text-left pt-2">
               
-              <!-- Left: Human Intro Paragraph & Actions (6 cols) -->
-              <div class="lg:col-span-6 space-y-5 sm:space-y-6">
+              <!-- Left/Main: Human Intro Paragraph & Actions (Full width on mobile, 6/7 cols on desktop) -->
+              <div class="md:col-span-12 lg:col-span-6 space-y-5 sm:space-y-6">
                 <div class="space-y-2">
                   <span class="text-xs font-mono uppercase text-[#6947FF] dark:text-[#987AFF] font-bold tracking-wider block">
                     The Prompt Builder
                   </span>
-                  <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#C3C0D0] leading-relaxed">
+                  <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#C3C0D0] leading-relaxed max-w-xl">
                     Bring your skills, projects, and experience together. We turn them into a clear AI-ready prompt so you can generate and deploy your portfolio with GitHub Actions.
                   </p>
                 </div>
@@ -89,9 +89,9 @@ function scrollToProcess() {
                 </div>
               </div>
 
-              <!-- Right: Tactile Creative Brief Artifact (6 cols) -->
-              <div class="lg:col-span-6 min-w-0">
-                <div class="p-4 sm:p-6 rounded-2.5xl sm:rounded-3xl bg-[#F7F7F9] dark:bg-[#292936] border border-[#E8E8EF] dark:border-[#414151]/80 shadow-sm space-y-3.5 sm:space-y-4 relative group hover:border-[#6947FF]/40 dark:hover:border-[#805EFF]/50 transition-colors">
+              <!-- Right: Tactile Creative Brief Artifact (Hidden on mobile below md, visible on tablet/desktop md+) -->
+              <div class="hidden md:block md:col-span-12 lg:col-span-6 min-w-0">
+                <div class="p-5 sm:p-6 rounded-3xl bg-[#F7F7F9] dark:bg-[#292936] border border-[#E8E8EF] dark:border-[#414151]/80 shadow-sm space-y-3.5 sm:space-y-4 relative group hover:border-[#6947FF]/40 dark:hover:border-[#805EFF]/50 transition-colors">
                   
                   <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#414151]/60 pb-3">
                     <div class="flex items-center gap-2">
