@@ -27,129 +27,124 @@ function scrollToProcess() {
 </script>
 
 <template>
-  <div class="bg-transparent text-[#17171D] dark:text-[#F8F8FA]">
+  <div class="landing-stage w-full bg-[#101014] text-[#17171D] dark:text-[#F8F8FA] overflow-x-hidden">
     
-    <!-- UPPER HERO SHEET: Continuous sculpted light stage with large bottom radii -->
-    <section class="relative z-10 w-full bg-white dark:bg-[#1B1B23] border-b border-[#E8E8EF] dark:border-[#252530] rounded-b-[40px] sm:rounded-b-[64px] lg:rounded-b-[88px] shadow-sm overflow-hidden transition-colors">
-      
-      <!-- Decorative Geometric Starburst Accent (Top Left) -->
-      <div class="absolute top-6 left-6 sm:top-10 sm:left-12 text-[#6947FF] opacity-90 pointer-events-none">
-        <svg class="w-8 h-8 sm:w-10 sm:h-10 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-        </svg>
-      </div>
-
-      <!-- Decorative Starburst Accent (Top Right) -->
-      <div class="absolute top-8 right-8 sm:right-12 text-[#6947FF]/60 hidden sm:block pointer-events-none">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-        </svg>
-      </div>
-
-      <!-- Hero Sheet Inner Container -->
-      <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-6 sm:pt-10 pb-14 sm:pb-20 lg:pb-24">
+    <!-- UPPER HERO SHEET: Distinct light stage physically layered above dark stage -->
+    <div class="w-full bg-[#101014]">
+      <section class="upper-hero-sheet relative z-10 w-full bg-white dark:bg-[#1B1B23] border-b border-[#E8E8EF]/80 dark:border-[#282836] rounded-b-[44px] sm:rounded-b-[72px] lg:rounded-b-[96px] shadow-sm transition-colors">
         
-        <div class="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10">
+        <!-- Decorative Starburst Accent (Hidden on mobile to prevent cluttering headline, top right on sm+) -->
+        <div class="absolute top-8 right-8 sm:right-14 text-[#6947FF]/70 hidden sm:block pointer-events-none">
+          <svg class="w-6 h-6 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+          </svg>
+        </div>
 
-          <!-- Bold Centered Headline -->
-          <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#17171D] dark:text-[#F8F8FA] leading-[1.05]">
-            Your work deserves <br class="hidden sm:inline" />
-            to be <span class="relative inline-block text-[#6947FF]">
-              seen.
-              <svg class="absolute -bottom-2 left-0 w-full h-2 text-[#6947FF]" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <path d="M0,10 Q50,20 100,10" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
-              </svg>
-            </span>
-          </h1>
+        <!-- Hero Sheet Content Container -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-8 sm:pt-12 lg:pt-14 pb-14 sm:pb-20 lg:pb-24">
+          
+          <div class="max-w-5xl mx-auto text-center space-y-7 sm:space-y-8 relative z-10">
 
-          <!-- 2-Column Responsive Hero Grid (Left Copy & Actions, Right Creative Brief) -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left pt-2">
-            
-            <!-- Left: Human Intro Paragraph & Actions (6 cols) -->
-            <div class="lg:col-span-6 space-y-6">
-              <div class="space-y-2.5">
-                <span class="text-xs font-mono uppercase text-[#6947FF] font-bold tracking-wider block">
-                  The Prompt Builder
-                </span>
-                <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#ACACBA] leading-relaxed">
-                  Bring your skills, projects, and experience together. We turn them into a clear AI-ready prompt so you can generate and deploy your portfolio with GitHub Actions.
-                </p>
+            <!-- Bold Centered Headline with deliberate mobile top breathing room -->
+            <h1 class="font-display text-3.5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#17171D] dark:text-[#F8F8FA] leading-[1.08] sm:leading-[1.05] pt-1 sm:pt-2">
+              Your work deserves <br class="hidden sm:inline" />
+              to be <span class="relative inline-block text-[#6947FF]">
+                seen.
+                <svg class="absolute -bottom-2 left-0 w-full h-2 text-[#6947FF]" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <path d="M0,10 Q50,20 100,10" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+                </svg>
+              </span>
+            </h1>
+
+            <!-- 2-Column Responsive Hero Grid (Left Copy & Actions, Right Creative Brief) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-8 lg:gap-12 items-center text-left pt-2">
+              
+              <!-- Left: Human Intro Paragraph & Actions (6 cols) -->
+              <div class="lg:col-span-6 space-y-5 sm:space-y-6">
+                <div class="space-y-2">
+                  <span class="text-xs font-mono uppercase text-[#6947FF] font-bold tracking-wider block">
+                    The Prompt Builder
+                  </span>
+                  <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#ACACBA] leading-relaxed">
+                    Bring your skills, projects, and experience together. We turn them into a clear AI-ready prompt so you can generate and deploy your portfolio with GitHub Actions.
+                  </p>
+                </div>
+
+                <!-- Primary and Secondary Actions -->
+                <div class="flex flex-wrap items-center gap-3 pt-1">
+                  <button 
+                    @click="handleStartBuilding"
+                    class="btn-primary py-3 px-6 text-sm font-semibold shadow-md flex items-center justify-center gap-2"
+                  >
+                    <span>Build Your Prompt</span>
+                    <ArrowRight class="w-4 h-4" />
+                  </button>
+                  <button 
+                    @click="scrollToProcess"
+                    class="btn-secondary py-3 px-5 text-sm"
+                  >
+                    <span>How It Works</span>
+                    <ArrowRight class="w-3.5 h-3.5 ml-1 text-[#6D6D7A] dark:text-[#ACACBA]" />
+                  </button>
+                </div>
               </div>
 
-              <!-- Primary and Secondary Actions (Visible on Mobile before preview scrolling) -->
-              <div class="flex flex-wrap items-center gap-3 pt-1">
-                <button 
-                  @click="handleStartBuilding"
-                  class="btn-primary py-3 px-6 text-sm font-semibold shadow-md flex items-center justify-center gap-2"
-                >
-                  <span>Build Your Prompt</span>
-                  <ArrowRight class="w-4 h-4" />
-                </button>
-                <button 
-                  @click="scrollToProcess"
-                  class="btn-secondary py-3 px-5 text-sm"
-                >
-                  <span>How It Works</span>
-                  <ArrowRight class="w-3.5 h-3.5 ml-1 text-[#6D6D7A] dark:text-[#ACACBA]" />
-                </button>
-              </div>
-            </div>
-
-            <!-- Right: Tactile Creative Brief Artifact (6 cols) -->
-            <div class="lg:col-span-6">
-              <div class="p-5 sm:p-6 rounded-3xl bg-[#F7F7F9] dark:bg-[#121218] border border-[#E8E8EF] dark:border-[#282836] shadow-sm space-y-4 relative group hover:border-[#6947FF]/40 transition-colors">
-                
-                <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#282836] pb-3">
-                  <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-lg bg-[#6947FF] text-white flex items-center justify-center">
-                      <Rocket class="w-3.5 h-3.5" />
+              <!-- Right: Tactile Creative Brief Artifact (6 cols) -->
+              <div class="lg:col-span-6">
+                <div class="p-4 sm:p-6 rounded-2.5xl sm:rounded-3xl bg-[#F7F7F9] dark:bg-[#121218] border border-[#E8E8EF] dark:border-[#282836] shadow-sm space-y-3.5 sm:space-y-4 relative group hover:border-[#6947FF]/40 transition-colors">
+                  
+                  <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#282836] pb-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-lg bg-[#6947FF] text-white flex items-center justify-center">
+                        <Rocket class="w-3.5 h-3.5" />
+                      </div>
+                      <span class="font-mono text-[11px] font-bold text-[#17171D] dark:text-[#F8F8FA]">
+                        PORTFOLIO BRIEF // 01
+                      </span>
                     </div>
-                    <span class="font-mono text-[11px] font-bold text-[#17171D] dark:text-[#F8F8FA]">
-                      PORTFOLIO BRIEF // 01
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-semibold">
+                      AI-Ready
                     </span>
                   </div>
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-semibold">
-                    AI-Ready
-                  </span>
-                </div>
 
-                <div class="space-y-2.5 text-xs">
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <span class="font-bold text-sm text-[#17171D] dark:text-[#F8F8FA] block">Alex Morgan</span>
-                      <span class="text-[11px] text-[#6D6D7A] dark:text-[#ACACBA]">Aspiring Frontend Engineer</span>
+                  <div class="space-y-2.5 text-xs">
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <span class="font-bold text-sm text-[#17171D] dark:text-[#F8F8FA] block">Alex Morgan</span>
+                        <span class="text-[11px] text-[#6D6D7A] dark:text-[#ACACBA]">Aspiring Frontend Engineer</span>
+                      </div>
+                      <div class="flex gap-1">
+                        <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">Vue.js</span>
+                        <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">TypeScript</span>
+                      </div>
                     </div>
-                    <div class="flex gap-1">
-                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">Vue.js</span>
-                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">TypeScript</span>
+                    
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[11px] text-[#6D6D7A] dark:text-[#ACACBA] space-y-1">
+                      <span class="font-semibold text-[#17171D] dark:text-[#F8F8FA] block">Specification Target:</span>
+                      <p class="leading-tight">Static HTML5/CSS3/Vanilla JS • High Contrast • GitHub Pages CI/CD</p>
                     </div>
                   </div>
-                  
-                  <div class="p-2.5 rounded-xl bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[11px] text-[#6D6D7A] dark:text-[#ACACBA] space-y-1">
-                    <span class="font-semibold text-[#17171D] dark:text-[#F8F8FA] block">Specification Target:</span>
-                    <p class="leading-tight">Static HTML5/CSS3/Vanilla JS • High Contrast • GitHub Pages CI/CD</p>
+
+                  <!-- Subtle supporting interactive caption -->
+                  <div class="pt-1 text-center">
+                    <span class="text-[11px] font-mono text-[#6947FF] dark:text-[#B096FF]">
+                      Deterministic brief generator • Zero hallucinated claims
+                    </span>
                   </div>
-                </div>
 
-                <!-- Subtle supporting interactive caption -->
-                <div class="pt-1 text-center">
-                  <span class="text-[11px] font-mono text-[#6947FF] dark:text-[#B096FF]">
-                    Deterministic brief generator • Zero hallucinated claims
-                  </span>
                 </div>
-
               </div>
+
             </div>
 
           </div>
 
         </div>
-
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- DARK LOWER STAGE: Continuous Full-Width Stage Flowing Directly Beneath the Upper Sheet -->
-    <div class="w-full bg-[#101014] text-[#F1F2F6] pt-12 sm:pt-16 pb-20 sm:pb-28 space-y-16 sm:space-y-24">
+    <div class="lower-stage w-full bg-[#101014] text-[#F1F2F6] pt-10 sm:pt-14 pb-20 sm:pb-28 space-y-16 sm:space-y-24">
       
       <!-- INTEGRATED STATISTICS SECTION: Directly beginning the Dark Lower Stage -->
       <section class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
