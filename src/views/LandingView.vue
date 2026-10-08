@@ -856,23 +856,9 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
-      <!-- FULL-WIDTH TICKER RIBBON -->
-      <div class="w-full bg-white dark:bg-[#161822] border-y border-[#E2E1EA] dark:border-[#242738] py-4 overflow-hidden transition-colors">
-        <div class="flex items-center justify-around gap-8 text-xs sm:text-sm font-display font-bold uppercase tracking-widest text-[#17171D]/80 dark:text-white/80 whitespace-nowrap">
-          <span>CODE</span>
-          <span class="text-[#6947FF] dark:text-[#805EFF]">✦</span>
-          <span>BUILD</span>
-          <span class="text-[#6947FF] dark:text-[#805EFF]">✦</span>
-          <span>DEPLOY</span>
-          <span class="text-[#6947FF] dark:text-[#805EFF]">✦</span>
-          <span>LAUNCH</span>
-          <span class="text-[#6947FF] dark:text-[#805EFF]">✦</span>
-          <span>NO HALLUCINATIONS</span>
-          <span class="text-[#6947FF] dark:text-[#805EFF]">✦</span>
-          <span>GITHUB ACTIONS</span>
-          <span class="text-[#6947FF] dark:text-[#805EFF]">✦</span>
-          <span>STATIC SITES</span>
-        </div>
+      <!-- FULL-WIDTH ANIMATED TICKER RIBBON (REVERSE DIRECTION) -->
+      <div class="w-full">
+        <TextMarquee speed="normal" direction="right" />
       </div>
 
       <!-- SECTION D — DEPLOYMENT STORYTELLING: Code. Build. Deploy. -->
