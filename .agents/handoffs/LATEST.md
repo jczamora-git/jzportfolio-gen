@@ -1,7 +1,7 @@
 # Development Handoff — LATEST
 
 **Last Updated:** 2026-10-08  
-**Current Milestone:** Complete AI Development Harness Established  
+**Current Milestone:** UI Pass 14 — Mobile-First Progressive Scroll Animation Refinement  
 **Application Health:** 100% Passing Tests, 0 Build Errors, Clean Architecture
 
 ---
@@ -15,20 +15,23 @@ The application is fully functional and stable. All primary user journeys are wo
 - **Privacy Page (`/privacy`)**: Client-side execution statement.
 - **Theme System**: Instantaneous, seamless light/dark mode switching with zero rectangular glitching and fixed dark floating navigation.
 - **Mobile Menu**: Fully accessible, permanent dark dropdown with outside-click, Escape key, and route change dismiss.
-- **Motion System**: GSAP ScrollTrigger coordinated with Lenis smooth scrolling via a single RAF ticker and complete reduced-motion support.
+- **Motion System (UI Pass 14 Refinement)**:
+  - Desktop: Coordinated section entrance timelines with Lenis smooth scrolling single-RAF driver.
+  - Mobile (<768px): Progressive element-level ScrollTriggers. Section headings, individual feature cards, 4 process step progression cards, interactive builder showcase blocks, and 5 deployment pipeline cards trigger independently upon entering the mobile viewport (`start: "top 88%"` / `"top 90%"`).
+  - Accessibility: Full `prefers-reduced-motion: reduce` compliance bypassing animations for immediate visibility.
 
 ---
 
 ## 2. Latest Architectural & Harness Additions
-- Created root `AGENTS.md` defining mandatory change-control rules, risk classification, and definition of done.
-- Established `.agents/` harness structure with 7 specialized skills, 7 domain contracts, architectural decision log, and known issues register.
-- Configured unified verification command `npm run verify` running unit tests, typechecking, and production build.
-- Configured GitHub Actions CI quality gate in `.github/workflows/ci.yml`.
+- Refined mobile GSAP matchMedia block in `LandingView.vue` from monolithic section triggers to progressive element-level triggers.
+- Added 2-row staggered reveal for mobile statistics section (`.stat-row-1`, `.stat-row-2`).
+- Added comprehensive unit tests in `tests/motion-system.test.ts` for easing tokens, duration tokens, reduced-motion detection, and touch/viewport detection.
+- Unified verification command `npm run verify` running unit tests, typechecking, and production build.
 
 ---
 
 ## 3. Verification & Test Evidence
-- **Vitest Unit Tests**: `19 passed (19)` across 5 test files (`portfolio-schema`, `draft-storage`, `theme-and-navigation`, `sample-profiles`, `prompt-generator`).
+- **Vitest Unit Tests**: `22 passed (22)` across 6 test files (`portfolio-schema`, `draft-storage`, `theme-and-navigation`, `sample-profiles`, `prompt-generator`, `motion-system`).
 - **TypeScript Typecheck (`vue-tsc --noEmit`)**: 0 errors.
 - **Production Build (`vite build`)**: Clean build output in `dist/`.
 

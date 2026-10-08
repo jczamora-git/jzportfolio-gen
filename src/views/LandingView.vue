@@ -198,7 +198,7 @@ onMounted(() => {
       })
 
       // ==========================================
-      // 2. MOBILE ANIMATIONS (<768px)
+      // 2. MOBILE ANIMATIONS (<768px) — PROGRESSIVE ELEMENT-LEVEL REVEALS
       // ==========================================
       mm.add('(max-width: 767px)', () => {
         // Lightweight mobile hero reveal (Brief is hidden by responsive CSS, untouched by GSAP)
@@ -208,92 +208,189 @@ onMounted(() => {
 
         mobileHeroTl
           .from('.hero-headline', {
-            y: 18,
+            y: 20,
             opacity: 0,
             duration: 0.6,
             clearProps: 'transform'
           })
           .from('.hero-description', {
-            y: 12,
+            y: 14,
             opacity: 0,
             duration: 0.45,
             clearProps: 'transform'
           }, '-=0.35')
           .from('.hero-actions', {
-            y: 10,
+            y: 12,
             opacity: 0,
             duration: 0.4,
             clearProps: 'transform'
           }, '-=0.25')
 
-        // Mobile Stats (subtle stagger)
-        gsap.from('.stat-item', {
+        // Mobile Stats: Row 1 Reveal (Metrics 1 & 2)
+        gsap.from('.stat-row-1', {
           scrollTrigger: {
-            trigger: '.stats-section',
-            start: 'top 85%',
-            once: true
-          },
-          y: 16,
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.06,
-          ease: EASING.power2Out,
-          clearProps: 'transform'
-        })
-
-        // Mobile Process
-        gsap.from('.process-section', {
-          scrollTrigger: {
-            trigger: '.process-section',
-            start: 'top 85%',
-            once: true
-          },
-          y: 18,
-          opacity: 0,
-          duration: 0.55,
-          ease: EASING.power2Out,
-          clearProps: 'transform'
-        })
-
-        // Mobile Builder Showcase
-        gsap.from('.builder-showcase-section', {
-          scrollTrigger: {
-            trigger: '.builder-showcase-section',
-            start: 'top 85%',
-            once: true
-          },
-          y: 18,
-          opacity: 0,
-          duration: 0.55,
-          ease: EASING.power2Out,
-          clearProps: 'transform'
-        })
-
-        // Mobile Deployment Section
-        gsap.from('.deploy-section', {
-          scrollTrigger: {
-            trigger: '.deploy-section',
-            start: 'top 85%',
-            once: true
-          },
-          y: 18,
-          opacity: 0,
-          duration: 0.55,
-          ease: EASING.power2Out,
-          clearProps: 'transform'
-        })
-
-        // Mobile CTA
-        gsap.from('.cta-card', {
-          scrollTrigger: {
-            trigger: '.cta-section',
-            start: 'top 85%',
+            trigger: '.stat-row-1',
+            start: 'top 88%',
             once: true
           },
           y: 20,
           opacity: 0,
           duration: 0.6,
+          stagger: 0.08,
           ease: EASING.power2Out,
+          clearProps: 'transform'
+        })
+
+        // Mobile Stats: Row 2 Reveal (Metrics 3 & 4)
+        gsap.from('.stat-row-2', {
+          scrollTrigger: {
+            trigger: '.stat-row-2',
+            start: 'top 88%',
+            once: true
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: EASING.power2Out,
+          clearProps: 'transform'
+        })
+
+        // 01 // The Process — Section Header
+        gsap.from('.process-header', {
+          scrollTrigger: {
+            trigger: '.process-header',
+            start: 'top 85%',
+            once: true
+          },
+          y: 28,
+          opacity: 0,
+          duration: 0.65,
+          ease: EASING.power3Out,
+          clearProps: 'transform'
+        })
+
+        // 01 // The Process — Asymmetrical Feature Cards (Independent reveals)
+        const processFeatureCards = gsap.utils.toArray<HTMLElement>('.process-feature-card')
+        processFeatureCards.forEach((card) => {
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              once: true
+            },
+            y: 26,
+            scale: 0.98,
+            opacity: 0,
+            duration: 0.6,
+            ease: EASING.power2Out,
+            clearProps: 'transform,scale'
+          })
+        })
+
+        // 01 // The Process — 4 Step Progression Cards (Independent reveals)
+        const processSteps = gsap.utils.toArray<HTMLElement>('.process-step-card')
+        processSteps.forEach((step) => {
+          gsap.from(step, {
+            scrollTrigger: {
+              trigger: step,
+              start: 'top 90%',
+              once: true
+            },
+            y: 22,
+            opacity: 0,
+            duration: 0.55,
+            ease: EASING.power2Out,
+            clearProps: 'transform'
+          })
+        })
+
+        // 02 // Builder Capabilities — Section Header
+        gsap.from('.builder-header', {
+          scrollTrigger: {
+            trigger: '.builder-header',
+            start: 'top 85%',
+            once: true
+          },
+          y: 28,
+          opacity: 0,
+          duration: 0.65,
+          ease: EASING.power3Out,
+          clearProps: 'transform'
+        })
+
+        // 02 // Builder Capabilities — Tab Controls
+        gsap.from('.builder-tabs', {
+          scrollTrigger: {
+            trigger: '.builder-tabs',
+            start: 'top 88%',
+            once: true
+          },
+          y: 22,
+          opacity: 0,
+          duration: 0.55,
+          ease: EASING.power2Out,
+          clearProps: 'transform'
+        })
+
+        // 02 // Builder Capabilities — Interactive Showcase Display Card
+        gsap.from('.builder-display', {
+          scrollTrigger: {
+            trigger: '.builder-display',
+            start: 'top 88%',
+            once: true
+          },
+          y: 26,
+          scale: 0.98,
+          opacity: 0,
+          duration: 0.6,
+          ease: EASING.power2Out,
+          clearProps: 'transform,scale'
+        })
+
+        // 03 // Deployment Pipeline — Section Header
+        gsap.from('.deploy-header', {
+          scrollTrigger: {
+            trigger: '.deploy-header',
+            start: 'top 85%',
+            once: true
+          },
+          y: 28,
+          opacity: 0,
+          duration: 0.65,
+          ease: EASING.power3Out,
+          clearProps: 'transform'
+        })
+
+        // 03 // Deployment Pipeline — 5 Step Workflow Cards (Independent reveals)
+        const deploySteps = gsap.utils.toArray<HTMLElement>('.deploy-step-card')
+        deploySteps.forEach((step) => {
+          gsap.from(step, {
+            scrollTrigger: {
+              trigger: step,
+              start: 'top 90%',
+              once: true
+            },
+            y: 22,
+            scale: 0.98,
+            opacity: 0,
+            duration: 0.55,
+            ease: EASING.power2Out,
+            clearProps: 'transform,scale'
+          })
+        })
+
+        // 04 // Final CTA — Focal Card Reveal
+        gsap.from('.cta-card', {
+          scrollTrigger: {
+            trigger: '.cta-card',
+            start: 'top 85%',
+            once: true
+          },
+          y: 28,
+          opacity: 0,
+          duration: 0.7,
+          ease: EASING.power3Out,
           clearProps: 'transform'
         })
       })
@@ -433,7 +530,7 @@ onBeforeUnmount(() => {
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left border-b border-[#E2E1EA] dark:border-[#242738]/60 pb-12 sm:pb-16">
           
           <!-- Metric 1: 5+ Starter Personas -->
-          <div class="stat-item space-y-1 border-r border-[#E2E1EA] dark:border-[#242738]/50 pr-2 last:border-none md:last:border-none">
+          <div class="stat-item stat-row-1 space-y-1 border-r border-[#E2E1EA] dark:border-[#242738]/50 pr-2 last:border-none md:last:border-none">
             <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17171D] dark:text-white tracking-tight flex items-baseline gap-1">
               <span>5</span><span class="text-[#6947FF] dark:text-[#805EFF]">+</span>
             </div>
@@ -441,7 +538,7 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- Metric 2: 100% Client-Side & Private -->
-          <div class="stat-item space-y-1 border-r-0 md:border-r md:border-[#E2E1EA] md:dark:border-[#242738]/50 md:pr-2">
+          <div class="stat-item stat-row-1 space-y-1 border-r-0 md:border-r md:border-[#E2E1EA] md:dark:border-[#242738]/50 md:pr-2">
             <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17171D] dark:text-white tracking-tight flex items-baseline gap-1">
               <span>100</span><span class="text-[#6947FF] dark:text-[#805EFF]">%</span>
             </div>
@@ -449,7 +546,7 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- Metric 3: 0DBs Zero Cloud Tracking -->
-          <div class="stat-item space-y-1 border-r border-[#E2E1EA] dark:border-[#242738]/50 pr-2 last:border-none md:last:border-none">
+          <div class="stat-item stat-row-2 space-y-1 border-r border-[#E2E1EA] dark:border-[#242738]/50 pr-2 last:border-none md:last:border-none">
             <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17171D] dark:text-white tracking-tight flex items-baseline gap-1">
               <span>0</span><span class="text-[#6947FF] dark:text-[#805EFF]">DBs</span>
             </div>
@@ -457,7 +554,7 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- Metric 4: CI/CD GitHub Actions Ready -->
-          <div class="stat-item space-y-1">
+          <div class="stat-item stat-row-2 space-y-1">
             <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17171D] dark:text-white tracking-tight flex items-baseline gap-1">
               <span>CI/CD</span>
             </div>
