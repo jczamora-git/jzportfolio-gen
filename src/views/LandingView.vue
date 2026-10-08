@@ -3,13 +3,13 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { 
   ArrowRight, 
-  ArrowDown,
   ArrowUpRight,
   Sparkles,
   Layers, 
   Code2,
   GitBranch,
-  Rocket
+  Rocket,
+  CheckCircle2
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -28,505 +28,600 @@ function scrollToProcess() {
 </script>
 
 <template>
-  <div class="space-y-12 sm:space-y-16 py-4 sm:py-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="space-y-16 sm:space-y-24 pb-16 bg-[#0D0E12] text-[#F1F2F6]">
     
-    <!-- 1. Hero Section: Modular Framed Creative Experience -->
-    <section class="modular-frame p-8 sm:p-12 lg:p-14">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <!-- SECTION A — HERO: Creatix-Inspired Sculpted White Stage -->
+    <section class="max-w-7xl mx-auto px-3 sm:px-6 pt-2 sm:pt-4">
+      <div class="bg-white text-[#14151B] dark:bg-[#161822] dark:text-[#F1F2F6] rounded-3xl sm:rounded-[3.5rem] lg:rounded-b-[4.5rem] p-6 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl border border-white/20">
         
-        <!-- Left Column: Editorial Headline & Actions (6 cols) -->
-        <div class="lg:col-span-6 space-y-6 text-left">
+        <!-- Decorative Geometric Starburst Accent (Top Left) -->
+        <div class="absolute top-6 left-6 sm:top-10 sm:left-10 text-[#6947FF] opacity-90">
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+          </svg>
+        </div>
+
+        <!-- Decorative Starburst Accent (Top Right) -->
+        <div class="absolute top-8 right-8 text-[#6947FF]/60 hidden sm:block">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+          </svg>
+        </div>
+
+        <!-- Hero Content Stack -->
+        <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10 pt-4">
           
           <!-- Category Marker -->
-          <div class="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#6947FF] dark:text-[#B096FF] uppercase">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-widest text-[#6947FF] bg-[#F2EEFF] dark:bg-[#1E202E] dark:text-[#B096FF] uppercase">
             <span class="w-1.5 h-1.5 rounded-full bg-[#6947FF]"></span>
             <span>PORTFOLIO LAUNCHPAD // 01</span>
           </div>
 
-          <!-- Confident Editorial Headline -->
-          <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-[#14151B] dark:text-[#F1F2F6] leading-[1.06]">
-            You did the work.<br />
-            <span class="relative inline-block text-[#14151B] dark:text-[#F1F2F6]">
-              Now show it.
-              <span class="absolute left-0 bottom-1 sm:bottom-1.5 w-full h-[3.5px] bg-[#6947FF] rounded-full"></span>
+          <!-- Bold Centered Headline -->
+          <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#14151B] dark:text-[#F1F2F6] leading-[1.04]">
+            Your work deserves <br class="hidden sm:inline" />
+            to be <span class="relative inline-block text-[#6947FF]">
+              seen.
+              <svg class="absolute -bottom-2 left-0 w-full h-2 text-[#6947FF]" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M0,10 Q50,20 100,10" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+              </svg>
             </span>
           </h1>
 
-          <!-- Concise Supporting Copy -->
-          <p class="text-base sm:text-lg text-[#696976] dark:text-[#9496A6] max-w-xl leading-relaxed">
-            Bring your skills, projects, and experience together. We'll turn them into a clear prompt to help you build your next portfolio.
-          </p>
-
-          <!-- Primary Actions -->
-          <div class="space-y-3 pt-2">
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-              <button 
-                @click="handleStartBuilding"
-                class="btn-primary py-3.5 px-7 text-sm sm:text-base font-semibold group"
-              >
-                <span>Build Your Prompt</span>
-                <ArrowRight class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-              </button>
-
+          <!-- 3-Column Hero Sub-Grid (Left Subtext, Center CTA, Right Readiness Badge) -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center text-left pt-2">
+            
+            <!-- Left: Human Intro Paragraph (4 cols) -->
+            <div class="md:col-span-4 space-y-2">
+              <span class="text-xs font-mono uppercase text-[#6947FF] font-bold block">
+                The Prompt Builder
+              </span>
+              <p class="text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] leading-relaxed">
+                Bring your skills, projects, and experience together. We turn them into a clear AI-ready prompt so you can generate and deploy your portfolio with GitHub Actions.
+              </p>
               <button 
                 @click="scrollToProcess"
-                class="inline-flex items-center text-sm font-medium text-[#696976] dark:text-[#9496A6] hover:text-[#14151B] dark:hover:text-[#F1F2F6] transition-colors group px-1 py-2"
+                class="inline-flex items-center gap-1 text-xs font-semibold text-[#14151B] dark:text-[#F1F2F6] hover:text-[#6947FF] transition-colors pt-1"
               >
-                <span>How It Works</span>
-                <ArrowDown class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-y-0.5" />
+                <span>How it works</span>
+                <ArrowRight class="w-3.5 h-3.5" />
               </button>
             </div>
 
-            <!-- Understated Reassurance -->
-            <p class="text-xs text-[#696976] dark:text-[#9496A6] font-mono">
-              No account needed. Start with your story.
-            </p>
+            <!-- Center: Tactile Creative Brief Artifact (5 cols) -->
+            <div class="md:col-span-5">
+              <div class="p-5 sm:p-6 rounded-3xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] shadow-lg space-y-4 relative group hover:border-[#6947FF]/40 transition-colors">
+                
+                <div class="flex items-center justify-between border-b border-[#E5E4EA] dark:border-[#242738] pb-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-lg bg-[#6947FF] text-white flex items-center justify-center">
+                      <Rocket class="w-3.5 h-3.5" />
+                    </div>
+                    <span class="font-mono text-[11px] font-bold text-[#14151B] dark:text-[#F1F2F6]">
+                      PORTFOLIO BRIEF // 01
+                    </span>
+                  </div>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-semibold">
+                    AI-Ready
+                  </span>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <span class="font-bold text-sm text-[#14151B] dark:text-[#F1F2F6] block">Alex Morgan</span>
+                      <span class="text-[11px] text-[#696976] dark:text-[#9496A6]">Aspiring Frontend Engineer</span>
+                    </div>
+                    <div class="flex gap-1">
+                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[10px] font-medium">Vue.js</span>
+                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[10px] font-medium">TypeScript</span>
+                    </div>
+                  </div>
+                  
+                  <div class="p-2.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[11px] text-[#696976] dark:text-[#9496A6] space-y-1">
+                    <span class="font-semibold text-[#14151B] dark:text-[#F1F2F6] block">Specification Target:</span>
+                    <p class="leading-tight">Static HTML5/CSS3/Vanilla JS • High Contrast • GitHub Pages CI/CD</p>
+                  </div>
+                </div>
+
+                <!-- Floating Solid Purple Button on Brief -->
+                <div class="pt-1">
+                  <button 
+                    @click="handleStartBuilding"
+                    class="btn-primary w-full py-3 text-xs sm:text-sm font-semibold shadow-md flex items-center justify-center gap-2 group-hover:bg-[#5736EB]"
+                  >
+                    <span>Build Your Prompt</span>
+                    <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right: Readiness & Trust Badge (3 cols) -->
+            <div class="md:col-span-3 space-y-3 p-4 rounded-2xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738]">
+              <div class="flex items-center gap-1.5 text-amber-500">
+                <span class="text-xs font-bold font-mono">★★★★★</span>
+                <span class="text-[10px] font-mono text-[#696976] dark:text-[#9496A6]">Verified</span>
+              </div>
+              <div class="font-display font-bold text-2xl text-[#14151B] dark:text-[#F1F2F6] leading-none">
+                100% Free
+              </div>
+              <div class="space-y-1.5 text-[11px] text-[#696976] dark:text-[#9496A6]">
+                <span class="flex items-center gap-1.5 text-[#14151B] dark:text-[#F1F2F6]">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-emerald-500" />
+                  No Account Required
+                </span>
+                <span class="flex items-center gap-1.5 text-[#14151B] dark:text-[#F1F2F6]">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-emerald-500" />
+                  Local Browser Storage
+                </span>
+                <span class="flex items-center gap-1.5 text-[#14151B] dark:text-[#F1F2F6]">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-emerald-500" />
+                  GitHub Actions Ready
+                </span>
+              </div>
+            </div>
+
           </div>
 
         </div>
 
-        <!-- Right Column: Tactile "Portfolio Brief" Creative Document (6 cols) -->
-        <div class="lg:col-span-6">
-          <div class="p-6 sm:p-8 bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] rounded-2xl sm:rounded-3xl space-y-5 relative">
+      </div>
+    </section>
+
+    <!-- METRICS STRIP: Sitting directly on the dark canvas below the hero curve -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-4 text-left border-b border-[#242738] pb-10">
+        
+        <div class="space-y-1">
+          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
+            <span>5</span><span class="text-[#6947FF]">+</span>
+          </div>
+          <p class="text-xs text-[#9496A6]">Starter Personas</p>
+        </div>
+
+        <div class="space-y-1">
+          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
+            <span>100</span><span class="text-[#6947FF]">%</span>
+          </div>
+          <p class="text-xs text-[#9496A6]">Client-Side & Private</p>
+        </div>
+
+        <div class="space-y-1">
+          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
+            <span>0</span><span class="text-[#6947FF]">DBs</span>
+          </div>
+          <p class="text-xs text-[#9496A6]">Zero Cloud Tracking</p>
+        </div>
+
+        <div class="space-y-1">
+          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
+            <span>CI/CD</span>
+          </div>
+          <p class="text-xs text-[#9496A6]">GitHub Actions Ready</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION B — THE TRANSFORMATION: Dark Editorial Narrative -->
+    <section id="process" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#242738] pb-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30">
+            <span>02 // THE PROCESS</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+            Turning Ideas Into <br />
+            <span class="text-[#6947FF]">Launch-Ready Portfolios</span>
+          </h2>
+        </div>
+        <p class="text-sm text-[#9496A6] max-w-md leading-relaxed">
+          We turn your raw details into structured, hallucination-free AI coding prompts that result in clean HTML5, CSS3, and JavaScript repositories.
+        </p>
+      </div>
+
+      <!-- Asymmetrical Editorial Showcase (Left Card + Right Card) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Big Card: The Prompt Builder Purpose (7 cols) -->
+        <div class="lg:col-span-7 bg-[#161822] border border-[#242738] rounded-3xl p-8 space-y-6 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono uppercase bg-white/5 text-[#B096FF] border border-white/10">
+              A PROMPT BUILDER FOR BUILDERS
+            </div>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">
+              No fabrication. Just your verified work.
+            </h3>
+            <p class="text-xs sm:text-sm text-[#9496A6] leading-relaxed">
+              Standard AI prompts invent claims and create broken build chains. Portfolio Launchpad compiles strict rules for static GitHub Pages compatibility with relative links.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 pt-4 border-t border-[#242738] text-xs">
+            <div class="p-3 rounded-2xl bg-[#0D0E12] border border-[#242738]">
+              <span class="text-[10px] font-mono text-[#6947FF] block">01 INPUT</span>
+              <span class="font-bold text-white">Personal Data</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-[#0D0E12] border border-[#242738]">
+              <span class="text-[10px] font-mono text-[#6947FF] block">02 COMPILE</span>
+              <span class="font-bold text-white">Brief Specs</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-[#0D0E12] border border-[#242738]">
+              <span class="text-[10px] font-mono text-[#6947FF] block">03 DEPLOY</span>
+              <span class="font-bold text-white">GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Card: Editorial Persona Snapshot (5 cols) -->
+        <div class="lg:col-span-5 bg-[#161822] border border-[#242738] rounded-3xl p-8 space-y-6 flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-xs font-mono text-[#6947FF] font-bold block">
+              02 // PERSONA HARNESS
+            </span>
+            <h3 class="font-display text-xl sm:text-2xl font-bold text-white">
+              5 Preloaded Student Personas
+            </h3>
+            <p class="text-xs text-[#9496A6] leading-relaxed">
+              Test the workflow instantly with realistic developer, designer, fresh graduate, and analyst fixtures without typing.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0D0E12] border border-[#242738] space-y-2 text-xs">
+            <div class="flex justify-between items-center text-[#B096FF] font-mono text-[11px]">
+              <span>SAMPLE FIXTURES</span>
+              <span>v1.0</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-1 rounded-lg bg-[#161822] border border-[#242738] text-[11px] text-white">Alex Morgan (CS)</span>
+              <span class="px-2 py-1 rounded-lg bg-[#161822] border border-[#242738] text-[11px] text-white">Jamie Reyes (Frontend)</span>
+              <span class="px-2 py-1 rounded-lg bg-[#161822] border border-[#242738] text-[11px] text-white">Taylor Santos (UI/UX)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4-Stage Horizontal Progression Timeline -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        
+        <div class="p-5 rounded-2xl bg-[#161822] border border-[#242738] space-y-2">
+          <div class="font-display text-2xl font-bold text-[#6947FF]">01</div>
+          <h4 class="text-sm font-bold text-white">Define Profile</h4>
+          <p class="text-xs text-[#9496A6] leading-relaxed">
+            Enter your headline, contact links, verified skills, and coursework.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#161822] border border-[#242738] space-y-2">
+          <div class="font-display text-2xl font-bold text-[#6947FF]">02</div>
+          <h4 class="text-sm font-bold text-white">Shape Direction</h4>
+          <p class="text-xs text-[#9496A6] leading-relaxed">
+            Select aesthetic constraints, color palette, and portfolio sections.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#161822] border border-[#242738] space-y-2">
+          <div class="font-display text-2xl font-bold text-[#6947FF]">03</div>
+          <h4 class="text-sm font-bold text-white">Generate Prompt</h4>
+          <p class="text-xs text-[#9496A6] leading-relaxed">
+            Receive deterministic prompt ready for ChatGPT, Gemini, or Claude.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#161822] border border-[#242738] space-y-2">
+          <div class="font-display text-2xl font-bold text-[#6947FF]">04</div>
+          <h4 class="text-sm font-bold text-white">Build & Deploy</h4>
+          <p class="text-xs text-[#9496A6] leading-relaxed">
+            Save in VS Code, push to GitHub, and deploy with GitHub Actions.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SECTION C — BUILDER SHOWCASE: Creatix-Inspired "Our Capabilities" Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="bg-[#161822] border border-[#242738] rounded-3xl lg:rounded-[3rem] p-8 sm:p-12 lg:p-14 space-y-8">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#242738] pb-6">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30">
+              <span>03 // THE BUILDER</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Our Builder <span class="text-[#6947FF]">Capabilities</span>
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-[#9496A6] max-w-md leading-relaxed">
+            Structured inputs designed to prevent AI hallucinations and enforce static web standards.
+          </p>
+        </div>
+
+        <!-- 2-Zone Layout: Left Pill Buttons + Right Interactive Card -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left: Creatix-Style Pill Capabilities List (5 cols) -->
+          <div class="lg:col-span-5 space-y-2.5">
+            <button 
+              type="button"
+              @click="activeTab = 'profile'"
+              class="w-full text-left px-5 py-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between"
+              :class="activeTab === 'profile' 
+                ? 'border-[#6947FF] bg-[#6947FF]/15 text-white font-semibold' 
+                : 'border-[#242738] bg-[#0D0E12] text-[#9496A6] hover:text-white hover:border-slate-700'"
+            >
+              <span>01 &nbsp; Personal Profile & Bio</span>
+              <ArrowRight class="w-4 h-4 text-[#6947FF]" />
+            </button>
+
+            <button 
+              type="button"
+              @click="activeTab = 'projects'"
+              class="w-full text-left px-5 py-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between"
+              :class="activeTab === 'projects' 
+                ? 'border-[#6947FF] bg-[#6947FF]/15 text-white font-semibold' 
+                : 'border-[#242738] bg-[#0D0E12] text-[#9496A6] hover:text-white hover:border-slate-700'"
+            >
+              <span>02 &nbsp; Tech Stack & Projects</span>
+              <ArrowRight class="w-4 h-4 text-[#6947FF]" />
+            </button>
+
+            <button 
+              type="button"
+              @click="activeTab = 'design'"
+              class="w-full text-left px-5 py-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between"
+              :class="activeTab === 'design' 
+                ? 'border-[#6947FF] bg-[#6947FF]/15 text-white font-semibold' 
+                : 'border-[#242738] bg-[#0D0E12] text-[#9496A6] hover:text-white hover:border-slate-700'"
+            >
+              <span>03 &nbsp; Aesthetic Direction</span>
+              <ArrowRight class="w-4 h-4 text-[#6947FF]" />
+            </button>
+
+            <button 
+              type="button"
+              @click="activeTab = 'output'"
+              class="w-full text-left px-5 py-4 rounded-2xl border transition-all text-xs sm:text-sm flex items-center justify-between"
+              :class="activeTab === 'output' 
+                ? 'border-[#6947FF] bg-[#6947FF]/15 text-white font-semibold' 
+                : 'border-[#242738] bg-[#0D0E12] text-[#9496A6] hover:text-white hover:border-slate-700'"
+            >
+              <span>04 &nbsp; AI Prompt Deliverable</span>
+              <ArrowRight class="w-4 h-4 text-[#6947FF]" />
+            </button>
+          </div>
+
+          <!-- Right: Interactive Showcase Display (7 cols) -->
+          <div class="lg:col-span-7 bg-[#0D0E12] border border-[#242738] rounded-3xl p-6 sm:p-8 space-y-4">
             
-            <!-- Document Header -->
-            <div class="flex items-start justify-between border-b border-[#E5E4EA] dark:border-[#242738] pb-4">
-              <div class="space-y-0.5">
-                <span class="text-[10px] font-mono uppercase tracking-wider text-[#6947FF] font-bold">
-                  PORTFOLIO BRIEF // 01
-                </span>
-                <h3 class="font-display text-base sm:text-lg font-bold text-[#14151B] dark:text-[#F1F2F6]">
-                  Personal Portfolio Specification
-                </h3>
-                <p class="text-xs text-[#696976] dark:text-[#9496A6]">
-                  Prepared from your personal background & projects
-                </p>
+            <div v-if="activeTab === 'profile'" class="space-y-4 animate-fadeIn">
+              <div class="flex items-center justify-between pb-3 border-b border-[#242738]">
+                <span class="text-xs font-mono text-[#B096FF]">DIMENSION // PROFILE & IDENTITY</span>
+                <span class="text-xs font-semibold text-emerald-400">Zero Hallucinations</span>
               </div>
-
-              <div class="w-7 h-7 rounded-lg bg-[#F2EEFF] dark:bg-[#1E202E] text-[#6947FF] flex items-center justify-center shrink-0">
-                <Rocket class="w-3.5 h-3.5" />
-              </div>
-            </div>
-
-            <!-- Profile Summary Strip -->
-            <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] grid grid-cols-2 gap-3 text-xs">
-              <div>
-                <span class="text-[10px] font-mono uppercase text-[#696976] dark:text-[#9496A6] block">Developer</span>
-                <span class="font-bold text-[#14151B] dark:text-[#F1F2F6]">Alex Morgan</span>
-                <span class="text-[11px] text-[#696976] dark:text-[#9496A6] block">Aspiring Frontend Engineer</span>
-              </div>
-              <div>
-                <span class="text-[10px] font-mono uppercase text-[#696976] dark:text-[#9496A6] block">Stack</span>
-                <span class="font-medium text-[#14151B] dark:text-[#F1F2F6]">Vue.js, TypeScript, CSS</span>
-                <span class="text-[11px] text-[#696976] dark:text-[#9496A6] block">2 Highlighted Builds</span>
-              </div>
-            </div>
-
-            <!-- Brief Requirements Excerpt -->
-            <div class="space-y-3 text-xs leading-relaxed">
-              <div class="space-y-1">
-                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-[#14151B] dark:text-[#F1F2F6] block">
-                  Core Objective
-                </span>
-                <p class="text-[#696976] dark:text-[#9496A6]">
-                  Build a responsive single-page personal portfolio highlighting frontend engineering coursework, open-source builds, and technical proficiency.
-                </p>
-              </div>
-
-              <div class="grid grid-cols-2 gap-3 pt-2 border-t border-[#E5E4EA] dark:border-[#242738]">
-                <div class="space-y-1">
-                  <span class="font-mono text-[10px] uppercase text-[#696976] dark:text-[#9496A6] block">Aesthetic Direction</span>
-                  <p class="font-medium text-[#14151B] dark:text-[#F1F2F6]">Minimalist Clean • High Contrast</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div class="p-3.5 rounded-xl bg-[#161822] border border-[#242738] space-y-1">
+                  <span class="text-[10px] uppercase font-mono text-[#9496A6]">Full Name</span>
+                  <p class="font-bold text-white">Jamie Reyes</p>
                 </div>
-                <div class="space-y-1">
-                  <span class="font-mono text-[10px] uppercase text-[#696976] dark:text-[#9496A6] block">Architecture</span>
-                  <p class="font-medium text-[#14151B] dark:text-[#F1F2F6]">HTML5 • CSS3 • Vanilla JS</p>
+                <div class="p-3.5 rounded-xl bg-[#161822] border border-[#242738] space-y-1">
+                  <span class="text-[10px] uppercase font-mono text-[#9496A6]">Target Role</span>
+                  <p class="font-bold text-white">Fresh Graduate • CS Major</p>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-[#161822] border border-[#242738] text-xs space-y-1">
+                <span class="text-[10px] uppercase font-mono text-[#9496A6]">Bio Excerpt</span>
+                <p class="text-[#9496A6] leading-relaxed">
+                  Computer Science graduate passionate about full-stack web engineering, algorithms, and building accessible digital tools.
+                </p>
+              </div>
+            </div>
+
+            <div v-else-if="activeTab === 'projects'" class="space-y-4 animate-fadeIn">
+              <div class="flex items-center justify-between pb-3 border-b border-[#242738]">
+                <span class="text-xs font-mono text-[#B096FF]">DIMENSION // FEATURED BUILDS</span>
+                <span class="text-xs font-semibold text-[#6947FF]">5 Personas Ready</span>
+              </div>
+              <div class="p-4 rounded-xl bg-[#161822] border border-[#242738] space-y-2 text-xs">
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-white">EcoTrack Carbon Calculator</span>
+                  <span class="text-[10px] font-mono text-emerald-400">Live Web App</span>
+                </div>
+                <p class="text-[#9496A6]">
+                  A responsive web app that computes household carbon footprints with visual analytics charts.
+                </p>
+                <div class="flex gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded bg-[#0D0E12] text-[10px] border border-[#242738] text-white">Vue 3</span>
+                  <span class="px-2 py-0.5 rounded bg-[#0D0E12] text-[10px] border border-[#242738] text-white">Chart.js</span>
+                  <span class="px-2 py-0.5 rounded bg-[#0D0E12] text-[10px] border border-[#242738] text-white">Tailwind</span>
                 </div>
               </div>
             </div>
 
-            <!-- Footer Action Connector -->
-            <div class="pt-3 border-t border-[#E5E4EA] dark:border-[#242738] flex items-center justify-between text-xs">
-              <span class="text-[11px] font-mono text-[#696976] dark:text-[#9496A6]">
-                Ready to paste into ChatGPT, Gemini, or Claude
-              </span>
-              <router-link 
-                to="/builder" 
-                class="text-[#6947FF] hover:underline font-semibold inline-flex items-center gap-1 text-xs"
-              >
-                <span>Create Yours</span>
-                <ArrowRight class="w-3.5 h-3.5" />
+            <div v-else-if="activeTab === 'design'" class="space-y-4 animate-fadeIn">
+              <div class="flex items-center justify-between pb-3 border-b border-[#242738]">
+                <span class="text-xs font-mono text-[#B096FF]">DIMENSION // AESTHETIC DIRECTION</span>
+                <span class="text-xs font-semibold text-[#6947FF]">4 Archetypes</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="p-3.5 rounded-xl border border-[#6947FF] bg-[#6947FF]/15">
+                  <span class="font-bold block text-white">Minimalist Clean</span>
+                  <span class="text-[11px] text-[#9496A6]">Spacious typography & contrast</span>
+                </div>
+                <div class="p-3.5 rounded-xl border border-[#242738] bg-[#161822]">
+                  <span class="font-bold block text-white">Developer Terminal</span>
+                  <span class="text-[11px] text-[#9496A6]">Dark slate & code badges</span>
+                </div>
+              </div>
+            </div>
+
+            <div v-else-if="activeTab === 'output'" class="space-y-4 animate-fadeIn">
+              <div class="flex items-center justify-between pb-3 border-b border-[#242738]">
+                <span class="text-xs font-mono text-[#B096FF]">DIMENSION // PROMPT OUTPUT</span>
+                <span class="text-xs font-semibold text-emerald-400">Ready for Claude & ChatGPT</span>
+              </div>
+              <div class="p-4 rounded-xl bg-[#161822] text-[#F1F2F6] font-mono text-xs space-y-1.5 border border-[#242738]">
+                <p class="text-[#B096FF]"># PORTFOLIO SPECIFICATION FOR AI CODE GENERATION</p>
+                <p class="text-slate-300">- Architecture: Clean Static HTML5 + CSS3 + JS</p>
+                <p class="text-emerald-400">- Target CI: GitHub Actions Pages Deploy</p>
+              </div>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between">
+              <span class="text-xs text-[#9496A6]">Takes ~3 minutes to complete.</span>
+              <router-link to="/builder" class="btn-primary text-xs py-2 px-5">
+                Open Builder
               </router-link>
             </div>
 
           </div>
+
         </div>
 
       </div>
     </section>
 
-    <!-- 2. The Process Section: Modular Framed Timeline (01 / 02 / 03 / 04) -->
-    <section id="process" class="modular-frame p-8 sm:p-12 space-y-8">
-      
-      <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <div class="inline-flex items-center gap-2 text-xs font-mono text-[#6947FF] dark:text-brand-300 uppercase tracking-wider mb-2">
-            <span>02 // THE PROCESS</span>
-          </div>
-          <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#14151B] dark:text-[#F1F2F6]">
-            From your story to a live portfolio.
-          </h2>
-        </div>
-        <p class="text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] max-w-md">
-          A predictable 4-stage pipeline designed for the "Code. Build. Deploy" webinar.
-        </p>
+    <!-- FULL-WIDTH TICKER RIBBON (Creatix Style) -->
+    <div class="w-full bg-[#161822] border-y border-[#242738] py-4 overflow-hidden">
+      <div class="flex items-center justify-around gap-8 text-xs sm:text-sm font-display font-bold uppercase tracking-widest text-white/80 whitespace-nowrap">
+        <span>CODE</span>
+        <span class="text-[#6947FF]">✦</span>
+        <span>BUILD</span>
+        <span class="text-[#6947FF]">✦</span>
+        <span>DEPLOY</span>
+        <span class="text-[#6947FF]">✦</span>
+        <span>LAUNCH</span>
+        <span class="text-[#6947FF]">✦</span>
+        <span>NO HALLUCINATIONS</span>
+        <span class="text-[#6947FF]">✦</span>
+        <span>GITHUB ACTIONS</span>
+        <span class="text-[#6947FF]">✦</span>
+        <span>STATIC SITES</span>
       </div>
+    </div>
 
-      <!-- 4 Modular Step Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- SECTION D — DEPLOYMENT STORYTELLING: Code. Build. Deploy. -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="bg-[#161822] border border-[#242738] rounded-3xl lg:rounded-[3rem] p-8 sm:p-12 space-y-8">
         
-        <div class="p-5 rounded-2xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-3">
-          <div class="font-display text-3xl font-bold text-[#6947FF]">
-            01
-          </div>
-          <h3 class="text-sm font-bold text-[#14151B] dark:text-[#F1F2F6]">
-            Define Profile
-          </h3>
-          <p class="text-xs text-[#696976] dark:text-[#9496A6] leading-relaxed">
-            Enter your headline, contact links, verified skills, coursework, and personal projects. Zero prior job experience required.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-3">
-          <div class="font-display text-3xl font-bold text-[#6947FF]">
-            02
-          </div>
-          <h3 class="text-sm font-bold text-[#14151B] dark:text-[#F1F2F6]">
-            Shape Direction
-          </h3>
-          <p class="text-xs text-[#696976] dark:text-[#9496A6] leading-relaxed">
-            Select aesthetic constraints (Minimal, Modern, Creative, Developer), color palette, and desired portfolio sections.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-3">
-          <div class="font-display text-3xl font-bold text-[#6947FF]">
-            03
-          </div>
-          <h3 class="text-sm font-bold text-[#14151B] dark:text-[#F1F2F6]">
-            Generate Prompt
-          </h3>
-          <p class="text-xs text-[#696976] dark:text-[#9496A6] leading-relaxed">
-            Receive a deterministic prompt ready for AI assistants, enforcing valid semantic HTML5, pure CSS, and zero hallucinated claims.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] space-y-3">
-          <div class="font-display text-3xl font-bold text-[#6947FF]">
-            04
-          </div>
-          <h3 class="text-sm font-bold text-[#14151B] dark:text-[#F1F2F6]">
-            Build & Deploy
-          </h3>
-          <p class="text-xs text-[#696976] dark:text-[#9496A6] leading-relaxed">
-            Generate website code with AI, save locally in VS Code, push to GitHub, and automatically publish via GitHub Actions.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 3. Product Showcase: Modular Split Showcase -->
-    <section class="modular-frame p-8 sm:p-12 space-y-8">
-      
-      <div class="border-b border-[#E5E4EA] dark:border-[#242738] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <div class="inline-flex items-center gap-2 text-xs font-mono text-[#6947FF] dark:text-brand-300 uppercase tracking-wider mb-2">
-            <span>03 // THE BUILDER</span>
-          </div>
-          <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#14151B] dark:text-[#F1F2F6]">
-            Structured inputs. Real outputs.
-          </h2>
-        </div>
-        <p class="text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] max-w-md">
-          Explore the five modular dimensions that produce your launch-ready prompt.
-        </p>
-      </div>
-
-      <!-- Interactive Modular Showcase Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        
-        <!-- Feature Navigation Tabs (4 cols) -->
-        <div class="lg:col-span-4 space-y-2">
-          <button 
-            type="button"
-            @click="activeTab = 'profile'"
-            class="w-full text-left p-4 rounded-2xl border transition-all text-xs sm:text-sm"
-            :class="activeTab === 'profile' 
-              ? 'border-[#6947FF] bg-[#F8F8F7] dark:bg-[#0E1017] shadow-sm ring-1 ring-[#6947FF]' 
-              : 'border-[#E5E4EA] dark:border-[#242738] bg-transparent hover:bg-[#F8F8F7]/60 dark:hover:bg-[#0E1017]/60'"
-          >
-            <div class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center justify-between">
-              <span>01. Profile & Bio</span>
-              <span class="text-[11px] font-mono text-[#6947FF]">Step 1</span>
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#242738] pb-6">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30">
+              <span>04 // DEPLOYMENT PIPELINE</span>
             </div>
-            <p class="text-xs text-[#696976] dark:text-[#9496A6] mt-1">
-              Headline, professional bio, avatar URL, and verified social links.
+            <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+              Code. Build. Deploy.
+            </h2>
+            <p class="text-xs sm:text-sm text-[#9496A6] max-w-lg leading-relaxed">
+              Generate static files with AI, commit to GitHub, and let GitHub Actions publish your live URL automatically.
             </p>
-          </button>
-
-          <button 
-            type="button"
-            @click="activeTab = 'projects'"
-            class="w-full text-left p-4 rounded-2xl border transition-all text-xs sm:text-sm"
-            :class="activeTab === 'projects' 
-              ? 'border-[#6947FF] bg-[#F8F8F7] dark:bg-[#0E1017] shadow-sm ring-1 ring-[#6947FF]' 
-              : 'border-[#E5E4EA] dark:border-[#242738] bg-transparent hover:bg-[#F8F8F7]/60 dark:hover:bg-[#0E1017]/60'"
-          >
-            <div class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center justify-between">
-              <span>02. Skills & Projects</span>
-              <span class="text-[11px] font-mono text-[#6947FF]">Steps 2 & 3</span>
-            </div>
-            <p class="text-xs text-[#696976] dark:text-[#9496A6] mt-1">
-              Technical tools, education history, and highlighted showcase builds.
-            </p>
-          </button>
-
-          <button 
-            type="button"
-            @click="activeTab = 'design'"
-            class="w-full text-left p-4 rounded-2xl border transition-all text-xs sm:text-sm"
-            :class="activeTab === 'design' 
-              ? 'border-[#6947FF] bg-[#F8F8F7] dark:bg-[#0E1017] shadow-sm ring-1 ring-[#6947FF]' 
-              : 'border-[#E5E4EA] dark:border-[#242738] bg-transparent hover:bg-[#F8F8F7]/60 dark:hover:bg-[#0E1017]/60'"
-          >
-            <div class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center justify-between">
-              <span>03. Design Constraints</span>
-              <span class="text-[11px] font-mono text-[#6947FF]">Step 4</span>
-            </div>
-            <p class="text-xs text-[#696976] dark:text-[#9496A6] mt-1">
-              Aesthetic direction, color themes, section toggles, and motion level.
-            </p>
-          </button>
-
-          <button 
-            type="button"
-            @click="activeTab = 'output'"
-            class="w-full text-left p-4 rounded-2xl border transition-all text-xs sm:text-sm"
-            :class="activeTab === 'output' 
-              ? 'border-[#6947FF] bg-[#F8F8F7] dark:bg-[#0E1017] shadow-sm ring-1 ring-[#6947FF]' 
-              : 'border-[#E5E4EA] dark:border-[#242738] bg-transparent hover:bg-[#F8F8F7]/60 dark:hover:bg-[#0E1017]/60'"
-          >
-            <div class="font-bold text-[#14151B] dark:text-[#F1F2F6] flex items-center justify-between">
-              <span>04. Prompt Deliverable</span>
-              <span class="text-[11px] font-mono text-[#6947FF]">Step 5</span>
-            </div>
-            <p class="text-xs text-[#696976] dark:text-[#9496A6] mt-1">
-              Deterministic, copy-ready markdown brief with export options.
-            </p>
-          </button>
-        </div>
-
-        <!-- Live Visual Representation (8 cols) -->
-        <div class="lg:col-span-8 p-6 sm:p-8 bg-[#F8F8F7] dark:bg-[#0E1017] rounded-2xl sm:rounded-3xl border border-[#E5E4EA] dark:border-[#242738] space-y-4">
-          
-          <div v-if="activeTab === 'profile'" class="space-y-4 animate-fadeIn">
-            <div class="flex items-center justify-between pb-3 border-b border-[#E5E4EA] dark:border-[#242738]">
-              <span class="text-xs font-mono text-[#696976] dark:text-[#9496A6]">DIMENSION // PROFILE & IDENTITY</span>
-              <span class="text-xs font-semibold text-[#6947FF]">Zero Hallucination Guarantee</span>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
-                <span class="text-[10px] uppercase font-mono text-[#696976] dark:text-[#9496A6]">Full Name</span>
-                <p class="font-bold text-[#14151B] dark:text-[#F1F2F6]">Jamie Reyes</p>
-              </div>
-              <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-1">
-                <span class="text-[10px] uppercase font-mono text-[#696976] dark:text-[#9496A6]">Target Role</span>
-                <p class="font-bold text-[#14151B] dark:text-[#F1F2F6]">Fresh Graduate • CS Major</p>
-              </div>
-            </div>
-            <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-1 text-xs">
-              <span class="text-[10px] uppercase font-mono text-[#696976] dark:text-[#9496A6]">Professional Bio</span>
-              <p class="text-[#696976] dark:text-[#9496A6] leading-relaxed">
-                Computer Science graduate passionate about full-stack web engineering, algorithms, and building accessible digital tools for students.
-              </p>
-            </div>
           </div>
 
-          <div v-else-if="activeTab === 'projects'" class="space-y-4 animate-fadeIn">
-            <div class="flex items-center justify-between pb-3 border-b border-[#E5E4EA] dark:border-[#242738]">
-              <span class="text-xs font-mono text-[#696976] dark:text-[#9496A6]">DIMENSION // SKILLS & BUILDS</span>
-              <span class="text-xs font-semibold text-[#6947FF]">5 Preloaded Sample Personas</span>
-            </div>
-            <div class="space-y-3 text-xs">
-              <div class="p-3.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] space-y-2">
-                <div class="flex justify-between items-center">
-                  <span class="font-bold text-[#14151B] dark:text-[#F1F2F6]">EcoTrack Carbon Calculator</span>
-                  <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400">Deployed App</span>
-                </div>
-                <p class="text-[#696976] dark:text-[#9496A6]">
-                  A responsive web app that computes daily household carbon footprints with visual analytics charts.
-                </p>
-                <div class="flex gap-1.5 pt-1">
-                  <span class="px-2 py-0.5 rounded bg-[#F8F8F7] dark:bg-[#0E1017] text-[10px] border border-[#E5E4EA] dark:border-[#242738]">Vue 3</span>
-                  <span class="px-2 py-0.5 rounded bg-[#F8F8F7] dark:bg-[#0E1017] text-[10px] border border-[#E5E4EA] dark:border-[#242738]">Chart.js</span>
-                  <span class="px-2 py-0.5 rounded bg-[#F8F8F7] dark:bg-[#0E1017] text-[10px] border border-[#E5E4EA] dark:border-[#242738]">Tailwind</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div v-else-if="activeTab === 'design'" class="space-y-4 animate-fadeIn">
-            <div class="flex items-center justify-between pb-3 border-b border-[#E5E4EA] dark:border-[#242738]">
-              <span class="text-xs font-mono text-[#696976] dark:text-[#9496A6]">DIMENSION // AESTHETIC CONFIGURATION</span>
-              <span class="text-xs font-semibold text-[#6947FF]">4 Design Archetypes</span>
-            </div>
-            <div class="grid grid-cols-2 gap-3 text-xs">
-              <div class="p-3 rounded-xl border border-[#6947FF] bg-[#F2EEFF]/40 dark:bg-[#6947FF]/10">
-                <span class="font-bold block text-[#14151B] dark:text-[#F1F2F6]">Minimalist Clean</span>
-                <span class="text-[11px] text-[#696976] dark:text-[#9496A6]">Spacious typography & high contrast</span>
-              </div>
-              <div class="p-3 rounded-xl border border-[#E5E4EA] dark:border-[#242738] bg-white dark:bg-[#161822]">
-                <span class="font-bold block text-[#14151B] dark:text-[#F1F2F6]">Developer Terminal</span>
-                <span class="text-[11px] text-[#696976] dark:text-[#9496A6]">Dark slate & code badge styling</span>
-              </div>
-            </div>
-          </div>
-
-          <div v-else-if="activeTab === 'output'" class="space-y-4 animate-fadeIn">
-            <div class="flex items-center justify-between pb-3 border-b border-[#E5E4EA] dark:border-[#242738]">
-              <span class="text-xs font-mono text-[#696976] dark:text-[#9496A6]">DIMENSION // PROMPT DELIVERABLE</span>
-              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Ready for ChatGPT / Claude</span>
-            </div>
-            <div class="p-4 rounded-xl bg-[#0E1017] text-[#F1F2F6] font-mono text-xs space-y-2 border border-[#242738]">
-              <p class="text-[#B096FF]"># PORTFOLIO SPECIFICATION FOR AI CODE GENERATION</p>
-              <p class="text-slate-300">- Style: Modern Minimalist</p>
-              <p class="text-slate-300">- Architecture: Clean Static HTML5 + CSS3 + Vanilla JS</p>
-              <p class="text-emerald-400">- Workflow: GitHub Actions Pages Deploy</p>
-            </div>
-          </div>
-
-          <div class="pt-2 flex items-center justify-between">
-            <span class="text-xs text-[#696976] dark:text-[#9496A6]">Takes ~3 minutes to complete.</span>
-            <router-link to="/builder" class="btn-primary text-xs py-2 px-4">
-              Try It in Builder
+          <div>
+            <router-link 
+              to="/learn/deploy" 
+              class="btn-primary py-2.5 px-6 text-xs sm:text-sm font-semibold"
+            >
+              <span>Read Deployment Tutorial</span>
+              <ArrowUpRight class="w-4 h-4 ml-1.5" />
             </router-link>
           </div>
+        </div>
 
+        <!-- 5-Stage Visual Workflow -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+          <div class="p-4 rounded-2xl bg-[#0D0E12] border border-[#242738] space-y-2">
+            <div class="text-[10px] font-mono text-[#6947FF]">STEP 01</div>
+            <div class="text-xs font-bold text-white flex items-center gap-1.5">
+              <Sparkles class="w-3.5 h-3.5 text-[#6947FF]" />
+              AI Prompt
+            </div>
+            <p class="text-[11px] text-[#9496A6]">Generate prompt from Launchpad</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0D0E12] border border-[#242738] space-y-2">
+            <div class="text-[10px] font-mono text-[#6947FF]">STEP 02</div>
+            <div class="text-xs font-bold text-white flex items-center gap-1.5">
+              <Code2 class="w-3.5 h-3.5 text-blue-400" />
+              Source Files
+            </div>
+            <p class="text-[11px] text-[#9496A6]">Save HTML, CSS, & JS in VS Code</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0D0E12] border border-[#242738] space-y-2">
+            <div class="text-[10px] font-mono text-[#6947FF]">STEP 03</div>
+            <div class="text-xs font-bold text-white flex items-center gap-1.5">
+              <GitBranch class="w-3.5 h-3.5 text-amber-400" />
+              Git Commit
+            </div>
+            <p class="text-[11px] text-[#9496A6]">Push to main on GitHub</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0D0E12] border border-[#242738] space-y-2">
+            <div class="text-[10px] font-mono text-[#6947FF]">STEP 04</div>
+            <div class="text-xs font-bold text-white flex items-center gap-1.5">
+              <Layers class="w-3.5 h-3.5 text-emerald-400" />
+              GitHub Actions
+            </div>
+            <p class="text-[11px] text-[#9496A6]">Automated build & packaging</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0D0E12] border border-[#242738] space-y-2">
+            <div class="text-[10px] font-mono text-[#6947FF]">STEP 05</div>
+            <div class="text-xs font-bold text-white flex items-center gap-1.5">
+              <Rocket class="w-3.5 h-3.5 text-rose-400" />
+              Live Site
+            </div>
+            <p class="text-[11px] text-[#9496A6]">Published on GitHub Pages URL</p>
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- 4. Deployment Storytelling Section: Code. Build. Deploy. (High Contrast Dark Modular Frame) -->
-    <section class="modular-frame-dark p-8 sm:p-12 lg:p-14 space-y-8">
-      
-      <!-- Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#242738] pb-6">
-        <div class="space-y-3">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30">
-            <span>04 // DEPLOYMENT PIPELINE</span>
-          </div>
-          <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
-            Code. Build. Deploy.
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-300 max-w-lg leading-relaxed">
-            Portfolio Launchpad prepares your structured prompt so you can generate your codebase with AI, commit to GitHub, and let GitHub Actions publish your site automatically.
-          </p>
+    <!-- SECTION E — FINAL CALL TO ACTION (Creatix Inspired High Impact Stage) -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-[#161822] to-[#12131C] border border-[#242738] rounded-3xl lg:rounded-[3rem] p-10 sm:p-16 text-center space-y-6 relative overflow-hidden">
+        
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-[#6947FF]/20 text-[#B096FF] border border-[#6947FF]/30 mx-auto">
+          <span>START TODAY // 05</span>
         </div>
 
-        <div>
+        <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-2xl mx-auto leading-tight">
+          Your next portfolio <br />
+          <span class="text-[#6947FF]">starts here.</span>
+        </h2>
+
+        <p class="text-xs sm:text-sm text-[#9496A6] max-w-md mx-auto leading-relaxed">
+          Create a personalized, deterministic brief for your AI assistant in under 5 minutes. Free, client-side, and stored locally in your browser.
+        </p>
+
+        <div class="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button 
+            @click="handleStartBuilding"
+            class="btn-primary py-3.5 px-8 text-sm font-semibold shadow-lg group"
+          >
+            <span>Build Your Prompt</span>
+            <ArrowRight class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+          </button>
+
           <router-link 
             to="/learn/deploy" 
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#6947FF] hover:bg-[#5736EB] text-white text-xs sm:text-sm font-medium transition-all"
+            class="btn-secondary py-3.5 px-6 text-sm"
           >
-            <span>Read Deployment Guide</span>
-            <ArrowUpRight class="w-4 h-4" />
+            View Deployment Guide
           </router-link>
         </div>
-      </div>
 
-      <!-- Visual Flow Diagram -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
-        
-        <div class="p-4 rounded-2xl bg-[#1C1E2C] border border-[#2A2D40] space-y-2">
-          <div class="text-[10px] font-mono text-[#B096FF]">STEP 01</div>
-          <div class="text-xs font-bold text-white flex items-center gap-1.5">
-            <Sparkles class="w-3.5 h-3.5 text-[#6947FF]" />
-            AI Prompt
-          </div>
-          <p class="text-[11px] text-slate-400">Generate prompt brief from Launchpad</p>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-[#1C1E2C] border border-[#2A2D40] space-y-2">
-          <div class="text-[10px] font-mono text-[#B096FF]">STEP 02</div>
-          <div class="text-xs font-bold text-white flex items-center gap-1.5">
-            <Code2 class="w-3.5 h-3.5 text-blue-400" />
-            Source Files
-          </div>
-          <p class="text-[11px] text-slate-400">Save HTML, CSS, & JS in VS Code</p>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-[#1C1E2C] border border-[#2A2D40] space-y-2">
-          <div class="text-[10px] font-mono text-[#B096FF]">STEP 03</div>
-          <div class="text-xs font-bold text-white flex items-center gap-1.5">
-            <GitBranch class="w-3.5 h-3.5 text-amber-400" />
-            Git Commit
-          </div>
-          <p class="text-[11px] text-slate-400">Push repo to GitHub on main branch</p>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-[#1C1E2C] border border-[#2A2D40] space-y-2">
-          <div class="text-[10px] font-mono text-[#B096FF]">STEP 04</div>
-          <div class="text-xs font-bold text-white flex items-center gap-1.5">
-            <Layers class="w-3.5 h-3.5 text-emerald-400" />
-            GitHub Actions
-          </div>
-          <p class="text-[11px] text-slate-400">CI/CD pipeline builds static artifact</p>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-[#1C1E2C] border border-[#2A2D40] space-y-2">
-          <div class="text-[10px] font-mono text-[#B096FF]">STEP 05</div>
-          <div class="text-xs font-bold text-white flex items-center gap-1.5">
-            <Rocket class="w-3.5 h-3.5 text-rose-400" />
-            Live Site
-          </div>
-          <p class="text-[11px] text-slate-400">Published to GitHub Pages URL</p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- 5. Final Modular CTA Section -->
-    <section class="modular-frame p-8 sm:p-14 text-center space-y-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono tracking-wider bg-[#F2EEFF] text-[#6947FF] dark:bg-[#1E202E] dark:text-[#B096FF] border border-[#E6DCFF] dark:border-[#2A1783]/40 mx-auto">
-        <span>START CREATING // 05</span>
-      </div>
-
-      <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#14151B] dark:text-[#F1F2F6]">
-        Ready to launch your portfolio?
-      </h2>
-
-      <p class="text-sm sm:text-base text-[#696976] dark:text-[#9496A6] max-w-md mx-auto leading-relaxed">
-        Create a personalized, deterministic prompt for your AI assistant in under 5 minutes. Free, client-side, and stored locally in your browser.
-      </p>
-
-      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-        <button 
-          @click="handleStartBuilding"
-          class="btn-primary py-3.5 px-8 text-sm group"
-        >
-          <span>Start Building Now</span>
-          <ArrowRight class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-        </button>
-
-        <router-link 
-          to="/learn/deploy" 
-          class="btn-secondary py-3.5 px-6 text-sm"
-        >
-          View Deployment Guide
-        </router-link>
       </div>
     </section>
 
