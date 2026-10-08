@@ -3,7 +3,7 @@ import { Rocket, ShieldCheck, ArrowUpRight } from 'lucide-vue-next'
 </script>
 
 <template>
-  <footer class="bg-[#0D0E12] text-[#F1F2F6] border-t border-[#242738] mt-auto transition-colors">
+  <footer class="bg-[#F8F7FA] dark:bg-[#0D0E12] text-[#17171D] dark:text-[#F1F2F6] border-t border-[#E2E1EA] dark:border-[#242738] mt-auto transition-colors duration-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
         
@@ -13,40 +13,40 @@ import { Rocket, ShieldCheck, ArrowUpRight } from 'lucide-vue-next'
             <div class="w-7 h-7 rounded-lg bg-[#6947FF] flex items-center justify-center text-white shadow-sm">
               <Rocket class="w-3.5 h-3.5" />
             </div>
-            <span class="font-display font-bold text-base text-white">
+            <span class="font-display font-bold text-base text-[#17171D] dark:text-white">
               Portfolio<span class="text-[#6947FF]">Launchpad</span>
             </span>
           </div>
-          <p class="text-xs sm:text-sm text-[#9496A6] max-w-md leading-relaxed">
+          <p class="text-xs sm:text-sm text-[#666675] dark:text-[#9496A6] max-w-md leading-relaxed">
             An open educational AI prompt generator crafted for the 
-            <span class="font-medium text-white">"Code. Build. Deploy: Launch Your Portfolio with GitHub Actions"</span> 
+            <span class="font-medium text-[#17171D] dark:text-white">"Code. Build. Deploy: Launch Your Portfolio with GitHub Actions"</span> 
             webinar. Helping students and developers structure and publish static portfolios.
           </p>
         </div>
 
         <!-- Navigation (3 cols) -->
         <div class="md:col-span-3 space-y-3">
-          <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider">
+          <h4 class="text-xs font-mono font-bold text-[#17171D] dark:text-white uppercase tracking-wider">
             Navigation
           </h4>
           <ul class="space-y-2 text-xs">
             <li>
-              <router-link to="/" class="text-[#9496A6] hover:text-[#6947FF] transition-colors">
+              <router-link to="/" class="text-[#666675] dark:text-[#9496A6] hover:text-[#6947FF] dark:hover:text-[#6947FF] transition-colors">
                 Overview & Process
               </router-link>
             </li>
             <li>
-              <router-link to="/builder" class="text-[#9496A6] hover:text-[#6947FF] transition-colors">
+              <router-link to="/builder" class="text-[#666675] dark:text-[#9496A6] hover:text-[#6947FF] dark:hover:text-[#6947FF] transition-colors">
                 Prompt Builder
               </router-link>
             </li>
             <li>
-              <router-link to="/learn/deploy" class="text-[#9496A6] hover:text-[#6947FF] transition-colors">
+              <router-link to="/learn/deploy" class="text-[#666675] dark:text-[#9496A6] hover:text-[#6947FF] dark:hover:text-[#6947FF] transition-colors">
                 Deployment Guide
               </router-link>
             </li>
             <li>
-              <router-link to="/privacy" class="text-[#9496A6] hover:text-[#6947FF] transition-colors">
+              <router-link to="/privacy" class="text-[#666675] dark:text-[#9496A6] hover:text-[#6947FF] dark:hover:text-[#6947FF] transition-colors">
                 Privacy & Data Handling
               </router-link>
             </li>
@@ -55,10 +55,10 @@ import { Rocket, ShieldCheck, ArrowUpRight } from 'lucide-vue-next'
 
         <!-- Privacy & Local Drafts (3 cols) -->
         <div class="md:col-span-3 space-y-3">
-          <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider">
+          <h4 class="text-xs font-mono font-bold text-[#17171D] dark:text-white uppercase tracking-wider">
             Data Handling
           </h4>
-          <p class="text-xs text-[#9496A6] leading-relaxed">
+          <p class="text-xs text-[#666675] dark:text-[#9496A6] leading-relaxed">
             100% client-side execution. Your drafts stay in browser localStorage. No databases, accounts, or telemetry.
           </p>
           <div>
@@ -76,16 +76,16 @@ import { Rocket, ShieldCheck, ArrowUpRight } from 'lucide-vue-next'
       </div>
 
       <!-- Bottom Bar -->
-      <div class="pt-6 border-t border-[#242738] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#9496A6]">
+      <div class="pt-6 border-t border-[#E2E1EA] dark:border-[#242738] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#666675] dark:text-[#9496A6]">
         <p>
           Portfolio Launchpad — Educational Open Initiative
         </p>
         <div class="flex items-center gap-4">
-          <router-link to="/learn/deploy" class="hover:text-white transition-colors">
+          <router-link to="/learn/deploy" class="hover:text-[#17171D] dark:hover:text-white transition-colors">
             Deployment Docs
           </router-link>
           <span>•</span>
-          <router-link to="/privacy" class="hover:text-white transition-colors">
+          <router-link to="/privacy" class="hover:text-[#17171D] dark:hover:text-white transition-colors">
             Privacy
           </router-link>
         </div>
