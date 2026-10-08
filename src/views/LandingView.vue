@@ -8,8 +8,7 @@ import {
   Layers, 
   Code2,
   GitBranch,
-  Rocket,
-  CheckCircle2
+  Rocket
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -28,11 +27,11 @@ function scrollToProcess() {
 </script>
 
 <template>
-  <div class="space-y-16 sm:space-y-24 pb-16 bg-[#0D0E12] text-[#F1F2F6]">
+  <div class="space-y-12 sm:space-y-20 pb-16 bg-transparent text-[#17171D] dark:text-[#F8F8FA]">
     
-    <!-- SECTION A — HERO: Creatix-Inspired Sculpted White Stage -->
-    <section class="max-w-7xl mx-auto px-3 sm:px-6 pt-2 sm:pt-4">
-      <div class="bg-white text-[#14151B] dark:bg-[#161822] dark:text-[#F1F2F6] rounded-3xl sm:rounded-[3.5rem] lg:rounded-b-[4.5rem] p-6 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl border border-white/20">
+    <!-- SECTION A — HERO: Clean Sculpted Surface (Light White on Light Gray / Dark Elevated Charcoal in Dark Mode) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6">
+      <div class="bg-white text-[#17171D] dark:bg-[#1B1B23] dark:text-[#F8F8FA] rounded-3xl sm:rounded-[3.5rem] lg:rounded-b-[4.5rem] p-6 sm:p-12 lg:p-16 relative overflow-hidden shadow-card-soft dark:shadow-2xl border border-[#E8E8EF] dark:border-[#252530]">
         
         <!-- Decorative Geometric Starburst Accent (Top Left) -->
         <div class="absolute top-6 left-6 sm:top-10 sm:left-10 text-[#6947FF] opacity-90">
@@ -49,16 +48,16 @@ function scrollToProcess() {
         </div>
 
         <!-- Hero Content Stack -->
-        <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10 pt-4">
+        <div class="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10 pt-2 sm:pt-4">
           
           <!-- Category Marker -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-widest text-[#6947FF] bg-[#F2EEFF] dark:bg-[#1E202E] dark:text-[#B096FF] uppercase">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-widest text-[#6947FF] bg-[#F2EEFF] dark:bg-[#252535] dark:text-[#B096FF] uppercase">
             <span class="w-1.5 h-1.5 rounded-full bg-[#6947FF]"></span>
             <span>PORTFOLIO LAUNCHPAD // 01</span>
           </div>
 
           <!-- Bold Centered Headline -->
-          <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#14151B] dark:text-[#F1F2F6] leading-[1.04]">
+          <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#17171D] dark:text-[#F8F8FA] leading-[1.05]">
             Your work deserves <br class="hidden sm:inline" />
             to be <span class="relative inline-block text-[#6947FF]">
               seen.
@@ -68,36 +67,49 @@ function scrollToProcess() {
             </span>
           </h1>
 
-          <!-- 3-Column Hero Sub-Grid (Left Subtext, Center CTA, Right Readiness Badge) -->
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center text-left pt-2">
+          <!-- 2-Column Responsive Hero Grid (Left Copy & Actions, Right Creative Brief) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left pt-2">
             
-            <!-- Left: Human Intro Paragraph (4 cols) -->
-            <div class="md:col-span-4 space-y-2">
-              <span class="text-xs font-mono uppercase text-[#6947FF] font-bold block">
-                The Prompt Builder
-              </span>
-              <p class="text-xs sm:text-sm text-[#696976] dark:text-[#9496A6] leading-relaxed">
-                Bring your skills, projects, and experience together. We turn them into a clear AI-ready prompt so you can generate and deploy your portfolio with GitHub Actions.
-              </p>
-              <button 
-                @click="scrollToProcess"
-                class="inline-flex items-center gap-1 text-xs font-semibold text-[#14151B] dark:text-[#F1F2F6] hover:text-[#6947FF] transition-colors pt-1"
-              >
-                <span>How it works</span>
-                <ArrowRight class="w-3.5 h-3.5" />
-              </button>
+            <!-- Left: Human Intro Paragraph & Actions (7 cols) -->
+            <div class="lg:col-span-6 space-y-5">
+              <div class="space-y-2">
+                <span class="text-xs font-mono uppercase text-[#6947FF] font-bold block">
+                  The Prompt Builder
+                </span>
+                <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#ACACBA] leading-relaxed">
+                  Bring your skills, projects, and experience together. We turn them into a clear AI-ready prompt so you can generate and deploy your portfolio with GitHub Actions.
+                </p>
+              </div>
+
+              <!-- Primary and Secondary Actions (Visible on Mobile before preview scrolling) -->
+              <div class="flex flex-wrap items-center gap-3 pt-1">
+                <button 
+                  @click="handleStartBuilding"
+                  class="btn-primary py-3 px-6 text-sm font-semibold shadow-md flex items-center justify-center gap-2"
+                >
+                  <span>Build Your Prompt</span>
+                  <ArrowRight class="w-4 h-4" />
+                </button>
+                <button 
+                  @click="scrollToProcess"
+                  class="btn-secondary py-3 px-5 text-sm"
+                >
+                  <span>How It Works</span>
+                  <ArrowRight class="w-3.5 h-3.5 ml-1 text-[#6D6D7A] dark:text-[#ACACBA]" />
+                </button>
+              </div>
             </div>
 
-            <!-- Center: Tactile Creative Brief Artifact (5 cols) -->
-            <div class="md:col-span-5">
-              <div class="p-5 sm:p-6 rounded-3xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738] shadow-lg space-y-4 relative group hover:border-[#6947FF]/40 transition-colors">
+            <!-- Right: Tactile Creative Brief Artifact (6 cols) -->
+            <div class="lg:col-span-6">
+              <div class="p-5 sm:p-6 rounded-3xl bg-[#F7F7F9] dark:bg-[#121218] border border-[#E8E8EF] dark:border-[#282836] shadow-sm space-y-4 relative group hover:border-[#6947FF]/40 transition-colors">
                 
-                <div class="flex items-center justify-between border-b border-[#E5E4EA] dark:border-[#242738] pb-3">
+                <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#282836] pb-3">
                   <div class="flex items-center gap-2">
                     <div class="w-6 h-6 rounded-lg bg-[#6947FF] text-white flex items-center justify-center">
                       <Rocket class="w-3.5 h-3.5" />
                     </div>
-                    <span class="font-mono text-[11px] font-bold text-[#14151B] dark:text-[#F1F2F6]">
+                    <span class="font-mono text-[11px] font-bold text-[#17171D] dark:text-[#F8F8FA]">
                       PORTFOLIO BRIEF // 01
                     </span>
                   </div>
@@ -106,60 +118,31 @@ function scrollToProcess() {
                   </span>
                 </div>
 
-                <div class="space-y-2 text-xs">
+                <div class="space-y-2.5 text-xs">
                   <div class="flex justify-between items-start">
                     <div>
-                      <span class="font-bold text-sm text-[#14151B] dark:text-[#F1F2F6] block">Alex Morgan</span>
-                      <span class="text-[11px] text-[#696976] dark:text-[#9496A6]">Aspiring Frontend Engineer</span>
+                      <span class="font-bold text-sm text-[#17171D] dark:text-[#F8F8FA] block">Alex Morgan</span>
+                      <span class="text-[11px] text-[#6D6D7A] dark:text-[#ACACBA]">Aspiring Frontend Engineer</span>
                     </div>
                     <div class="flex gap-1">
-                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[10px] font-medium">Vue.js</span>
-                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[10px] font-medium">TypeScript</span>
+                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">Vue.js</span>
+                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[10px] font-medium text-[#17171D] dark:text-[#F8F8FA]">TypeScript</span>
                     </div>
                   </div>
                   
-                  <div class="p-2.5 rounded-xl bg-white dark:bg-[#161822] border border-[#E5E4EA] dark:border-[#242738] text-[11px] text-[#696976] dark:text-[#9496A6] space-y-1">
-                    <span class="font-semibold text-[#14151B] dark:text-[#F1F2F6] block">Specification Target:</span>
+                  <div class="p-2.5 rounded-xl bg-white dark:bg-[#1B1B23] border border-[#E8E8EF] dark:border-[#282836] text-[11px] text-[#6D6D7A] dark:text-[#ACACBA] space-y-1">
+                    <span class="font-semibold text-[#17171D] dark:text-[#F8F8FA] block">Specification Target:</span>
                     <p class="leading-tight">Static HTML5/CSS3/Vanilla JS • High Contrast • GitHub Pages CI/CD</p>
                   </div>
                 </div>
 
-                <!-- Floating Solid Purple Button on Brief -->
-                <div class="pt-1">
-                  <button 
-                    @click="handleStartBuilding"
-                    class="btn-primary w-full py-3 text-xs sm:text-sm font-semibold shadow-md flex items-center justify-center gap-2 group-hover:bg-[#5736EB]"
-                  >
-                    <span>Build Your Prompt</span>
-                    <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </button>
+                <!-- Subtle supporting interactive link -->
+                <div class="pt-1 text-center">
+                  <span class="text-[11px] font-mono text-[#6947FF] dark:text-[#B096FF]">
+                    Deterministic brief generator • Zero hallucinated claims
+                  </span>
                 </div>
 
-              </div>
-            </div>
-
-            <!-- Right: Readiness & Trust Badge (3 cols) -->
-            <div class="md:col-span-3 space-y-3 p-4 rounded-2xl bg-[#F8F8F7] dark:bg-[#0E1017] border border-[#E5E4EA] dark:border-[#242738]">
-              <div class="flex items-center gap-1.5 text-amber-500">
-                <span class="text-xs font-bold font-mono">★★★★★</span>
-                <span class="text-[10px] font-mono text-[#696976] dark:text-[#9496A6]">Verified</span>
-              </div>
-              <div class="font-display font-bold text-2xl text-[#14151B] dark:text-[#F1F2F6] leading-none">
-                100% Free
-              </div>
-              <div class="space-y-1.5 text-[11px] text-[#696976] dark:text-[#9496A6]">
-                <span class="flex items-center gap-1.5 text-[#14151B] dark:text-[#F1F2F6]">
-                  <CheckCircle2 class="w-3.5 h-3.5 text-emerald-500" />
-                  No Account Required
-                </span>
-                <span class="flex items-center gap-1.5 text-[#14151B] dark:text-[#F1F2F6]">
-                  <CheckCircle2 class="w-3.5 h-3.5 text-emerald-500" />
-                  Local Browser Storage
-                </span>
-                <span class="flex items-center gap-1.5 text-[#14151B] dark:text-[#F1F2F6]">
-                  <CheckCircle2 class="w-3.5 h-3.5 text-emerald-500" />
-                  GitHub Actions Ready
-                </span>
               </div>
             </div>
 
@@ -170,38 +153,44 @@ function scrollToProcess() {
       </div>
     </section>
 
-    <!-- METRICS STRIP: Sitting directly on the dark canvas below the hero curve -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-4 text-left border-b border-[#242738] pb-10">
-        
-        <div class="space-y-1">
-          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
-            <span>5</span><span class="text-[#6947FF]">+</span>
+    <!-- SECTION 3: DARK STATISTICS BAND BELOW HERO (Dedicated high-contrast section) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="bg-[#111116] dark:bg-[#16161F] text-[#F1F2F6] border border-[#242738] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left">
+          
+          <!-- Metric 1: 5+ Starter Personas -->
+          <div class="space-y-1 border-r border-[#242738]/50 pr-2 last:border-none md:last:border-none">
+            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight flex items-baseline gap-1">
+              <span>5</span><span class="text-[#6947FF]">+</span>
+            </div>
+            <p class="text-xs sm:text-sm text-[#ACACBA] font-medium">Starter Personas</p>
           </div>
-          <p class="text-xs text-[#9496A6]">Starter Personas</p>
-        </div>
 
-        <div class="space-y-1">
-          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
-            <span>100</span><span class="text-[#6947FF]">%</span>
+          <!-- Metric 2: 100% Client-Side & Private -->
+          <div class="space-y-1 border-r-0 md:border-r md:border-[#242738]/50 md:pr-2">
+            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight flex items-baseline gap-1">
+              <span>100</span><span class="text-[#6947FF]">%</span>
+            </div>
+            <p class="text-xs sm:text-sm text-[#ACACBA] font-medium">Client-Side & Private</p>
           </div>
-          <p class="text-xs text-[#9496A6]">Client-Side & Private</p>
-        </div>
 
-        <div class="space-y-1">
-          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
-            <span>0</span><span class="text-[#6947FF]">DBs</span>
+          <!-- Metric 3: 0DBs Zero Cloud Tracking -->
+          <div class="space-y-1 border-r border-[#242738]/50 pr-2 last:border-none md:last:border-none">
+            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight flex items-baseline gap-1">
+              <span>0</span><span class="text-[#6947FF]">DBs</span>
+            </div>
+            <p class="text-xs sm:text-sm text-[#ACACBA] font-medium">Zero Cloud Tracking</p>
           </div>
-          <p class="text-xs text-[#9496A6]">Zero Cloud Tracking</p>
-        </div>
 
-        <div class="space-y-1">
-          <div class="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-1">
-            <span>CI/CD</span>
+          <!-- Metric 4: CI/CD GitHub Actions Ready -->
+          <div class="space-y-1">
+            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight flex items-baseline gap-1">
+              <span>CI/CD</span>
+            </div>
+            <p class="text-xs sm:text-sm text-[#ACACBA] font-medium">GitHub Actions Ready</p>
           </div>
-          <p class="text-xs text-[#9496A6]">GitHub Actions Ready</p>
-        </div>
 
+        </div>
       </div>
     </section>
 

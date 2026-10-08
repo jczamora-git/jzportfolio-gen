@@ -17,7 +17,7 @@
   }
 
   body {
-    @apply font-sans bg-[#0D0E12] text-[#F1F2F6] transition-colors duration-200;
+    @apply font-sans bg-[#F7F7F9] text-[#17171D] dark:bg-[#101015] dark:text-[#F8F8FA] transition-colors duration-200;
   }
 
   /* Editorial display headings */

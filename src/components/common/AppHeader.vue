@@ -20,9 +20,9 @@ const mobileMenuOpen = ref(false)
 </script>
 
 <template>
-  <header class="sticky top-3 z-50 w-full px-4 sm:px-6 transition-all duration-200">
+  <header class="sticky top-3 sm:top-4 z-50 w-full px-4 sm:px-6 transition-all duration-200">
     <!-- Creatix-Inspired Floating Capsule Nav -->
-    <div class="max-w-5xl mx-auto bg-[#12131C]/95 backdrop-blur-md text-[#F1F2F6] border border-[#242738] rounded-full px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between shadow-2xl">
+    <div class="max-w-5xl mx-auto bg-[#12131C]/95 dark:bg-[#161824]/95 backdrop-blur-md text-[#F1F2F6] border border-[#242738] rounded-full px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between shadow-xl">
       
       <!-- Left Navigation Links (Desktop) -->
       <nav class="hidden md:flex items-center gap-1">
@@ -119,7 +119,7 @@ const mobileMenuOpen = ref(false)
     <!-- Mobile Dropdown Capsule -->
     <div 
       v-if="mobileMenuOpen" 
-      class="md:hidden mt-2 max-w-5xl mx-auto bg-[#12131C]/98 backdrop-blur-lg border border-[#242738] rounded-3xl p-5 space-y-2.5 shadow-2xl text-xs animate-fadeIn"
+      class="md:hidden mt-2 max-w-5xl mx-auto bg-[#12131C]/98 dark:bg-[#161824]/98 backdrop-blur-lg border border-[#242738] rounded-3xl p-5 space-y-2.5 shadow-2xl text-xs animate-fadeIn"
     >
       <router-link 
         to="/" 

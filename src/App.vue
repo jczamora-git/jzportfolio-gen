@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
+  <div class="min-h-screen flex flex-col bg-[#F7F7F9] dark:bg-[#101015] text-[#17171D] dark:text-[#F8F8FA] transition-colors">
     <AppHeader />
     <div class="flex-1">
       <router-view />
