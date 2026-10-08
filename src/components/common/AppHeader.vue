@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
 import { 
@@ -17,15 +17,53 @@ const route = useRoute()
 const { theme, toggleTheme } = useTheme()
 
 const mobileMenuOpen = ref(false)
+const headerRef = ref<HTMLElement | null>(null)
+
+function closeMobileMenu() {
+  mobileMenuOpen.value = false
+}
+
+// Close mobile menu on route navigation
+watch(() => route.path, () => {
+  closeMobileMenu()
+})
+
+// Close mobile menu on Escape key
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape' && mobileMenuOpen.value) {
+    closeMobileMenu()
+  }
+}
+
+// Close mobile menu on outside click
+function handleClickOutside(event: MouseEvent) {
+  if (mobileMenuOpen.value && headerRef.value && !headerRef.value.contains(event.target as Node)) {
+    closeMobileMenu()
+  }
+}
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('keydown', handleKeydown)
+    document.addEventListener('click', handleClickOutside)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('keydown', handleKeydown)
+    document.removeEventListener('click', handleClickOutside)
+  }
+})
 </script>
 
 <template>
-  <header class="sticky top-3 sm:top-4 z-50 w-full px-4 sm:px-6 transition-all duration-200">
-    <!-- Creatix-Inspired Floating Capsule Nav -->
+  <header ref="headerRef" class="sticky top-3 sm:top-4 z-50 w-full px-4 sm:px-6">
+    <!-- Creatix-Inspired Floating Capsule Nav (Permanent Dark Appearance in Both Themes) -->
     <div class="max-w-5xl mx-auto bg-[#12131C]/95 dark:bg-[#1A1A24]/95 backdrop-blur-md text-[#F1F2F6] border border-[#242738] dark:border-[#414151]/80 rounded-full px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between shadow-xl">
       
       <!-- Left Navigation Links (Desktop) -->
-      <nav class="hidden md:flex items-center gap-1">
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main Navigation">
         <router-link 
           to="/" 
           class="px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors"
@@ -47,7 +85,7 @@ const mobileMenuOpen = ref(false)
       </nav>
 
       <!-- Center: Brand Logo -->
-      <router-link to="/" class="flex items-center gap-2.5 group focus:outline-none">
+      <router-link to="/" class="flex items-center gap-2.5 group focus:outline-none" aria-label="Portfolio Launchpad Home">
         <div class="w-7 h-7 rounded-lg bg-[#6947FF] flex items-center justify-center text-white shadow-sm transition-transform duration-200 group-hover:scale-105">
           <Rocket class="w-3.5 h-3.5" />
         </div>
@@ -72,10 +110,11 @@ const mobileMenuOpen = ref(false)
           </span>
         </router-link>
 
-        <!-- Theme Toggle -->
+        <!-- Theme Toggle Button -->
         <button 
+          type="button"
           @click="toggleTheme" 
-          class="p-2 rounded-full text-[#9496A6] hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
+          class="p-2 rounded-full text-[#9496A6] hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#6947FF]/30"
           :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
         >
           <Sun v-if="theme === 'dark'" class="w-3.5 h-3.5 text-amber-400" />
@@ -96,8 +135,9 @@ const mobileMenuOpen = ref(false)
       <!-- Mobile Menu Controls -->
       <div class="flex items-center gap-1 md:hidden">
         <button 
+          type="button"
           @click="toggleTheme" 
-          class="p-2 rounded-full text-[#9496A6] hover:text-white"
+          class="p-2 rounded-full text-[#9496A6] hover:text-white focus:outline-none"
           :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
         >
           <Sun v-if="theme === 'dark'" class="w-4 h-4 text-amber-400" />
@@ -105,9 +145,12 @@ const mobileMenuOpen = ref(false)
         </button>
 
         <button 
+          type="button"
           @click="mobileMenuOpen = !mobileMenuOpen"
-          class="p-2 rounded-full text-white hover:bg-white/10"
-          aria-label="Toggle navigation menu"
+          class="p-2 rounded-full text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#6947FF]/40"
+          :aria-label="mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+          :aria-expanded="mobileMenuOpen"
+          aria-controls="mobile-nav-menu"
         >
           <X v-if="mobileMenuOpen" class="w-5 h-5" />
           <Menu v-else class="w-5 h-5" />
@@ -116,41 +159,52 @@ const mobileMenuOpen = ref(false)
 
     </div>
 
-    <!-- Mobile Dropdown Capsule -->
-    <div 
-      v-if="mobileMenuOpen" 
-      class="md:hidden mt-2 max-w-5xl mx-auto bg-[#12131C]/98 dark:bg-[#1A1A24]/98 backdrop-blur-lg border border-[#242738] dark:border-[#414151]/80 rounded-3xl p-5 space-y-2.5 shadow-2xl text-xs animate-fadeIn"
-    >
-      <router-link 
-        to="/" 
-        @click="mobileMenuOpen = false"
-        class="block px-4 py-2.5 rounded-2xl text-sm font-medium text-white hover:bg-white/5"
+    <!-- Mobile Dropdown Capsule (Consistent Dark Appearance in BOTH Light & Dark Modes) -->
+    <Transition name="mobile-menu">
+      <div 
+        v-if="mobileMenuOpen" 
+        id="mobile-nav-menu"
+        class="md:hidden mt-2 max-w-5xl mx-auto bg-[#12131C]/98 dark:bg-[#1A1A24]/98 backdrop-blur-lg border border-[#242738] dark:border-[#414151]/80 rounded-3xl p-4 sm:p-5 space-y-2 shadow-2xl text-xs text-white"
       >
-        Overview
-      </router-link>
-      <router-link 
-        to="/builder" 
-        @click="mobileMenuOpen = false"
-        class="block px-4 py-2.5 rounded-2xl text-sm font-medium text-white hover:bg-white/5"
-      >
-        Prompt Builder
-      </router-link>
-      <router-link 
-        to="/learn/deploy" 
-        @click="mobileMenuOpen = false"
-        class="block px-4 py-2.5 rounded-2xl text-sm font-medium text-white hover:bg-white/5"
-      >
-        Deployment Guide
-      </router-link>
-      <div class="pt-2 border-t border-[#242738]">
-        <router-link 
-          to="/builder" 
-          @click="mobileMenuOpen = false"
-          class="btn-primary w-full text-center text-xs py-2.5"
-        >
-          Start Building Now
-        </router-link>
+        <nav class="space-y-1" aria-label="Mobile Navigation">
+          <router-link 
+            to="/" 
+            @click="closeMobileMenu"
+            class="block px-4 py-2.5 rounded-2xl text-sm font-medium transition-colors"
+            :class="route.path === '/' ? 'bg-[#6947FF]/20 text-[#B096FF] font-semibold border border-[#6947FF]/30' : 'text-white hover:bg-white/10'"
+          >
+            Overview
+          </router-link>
+          
+          <router-link 
+            to="/builder" 
+            @click="closeMobileMenu"
+            class="block px-4 py-2.5 rounded-2xl text-sm font-medium transition-colors"
+            :class="route.path === '/builder' ? 'bg-[#6947FF]/20 text-[#B096FF] font-semibold border border-[#6947FF]/30' : 'text-white hover:bg-white/10'"
+          >
+            Prompt Builder
+          </router-link>
+          
+          <router-link 
+            to="/learn/deploy" 
+            @click="closeMobileMenu"
+            class="block px-4 py-2.5 rounded-2xl text-sm font-medium transition-colors"
+            :class="route.path === '/learn/deploy' ? 'bg-[#6947FF]/20 text-[#B096FF] font-semibold border border-[#6947FF]/30' : 'text-white hover:bg-white/10'"
+          >
+            Deployment Guide
+          </router-link>
+        </nav>
+
+        <div class="pt-2 border-t border-[#242738] dark:border-[#414151]/60">
+          <router-link 
+            to="/builder" 
+            @click="closeMobileMenu"
+            class="btn-primary w-full text-center text-xs py-2.5 font-semibold block"
+          >
+            Start Building Now
+          </router-link>
+        </div>
       </div>
-    </div>
+    </Transition>
   </header>
 </template>

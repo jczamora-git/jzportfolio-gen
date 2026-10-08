@@ -20,7 +20,7 @@ onMounted(() => {
 
 <template>
   <div 
-    class="min-h-screen flex flex-col transition-colors duration-200"
+    class="min-h-screen flex flex-col"
     :class="isLandingPage ? 'bg-white dark:bg-[#20202B] text-[#17171D] dark:text-[#F8F8FA]' : 'bg-[#F7F7F9] dark:bg-[#101015] text-[#17171D] dark:text-[#F8F8FA]'"
   >
     <AppHeader />

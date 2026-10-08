@@ -309,11 +309,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="landingRef" class="landing-stage w-full bg-[#F1F0F6] dark:bg-[#0F0F15] text-[#17171D] dark:text-[#F7F6FA] overflow-x-hidden transition-colors duration-200">
+  <div ref="landingRef" class="landing-stage w-full bg-[#F1F0F6] dark:bg-[#0F0F15] text-[#17171D] dark:text-[#F7F6FA] overflow-x-hidden">
     
     <!-- UPPER HERO SHEET: Distinct light stage physically layered above lower stage -->
-    <div class="w-full bg-[#F1F0F6] dark:bg-[#0F0F15] transition-colors duration-200">
-      <section class="upper-hero-sheet relative z-10 w-full bg-white dark:bg-[#20202B] border-b border-[#E2E1EA] dark:border-[#414151]/70 rounded-b-[44px] sm:rounded-b-[72px] lg:rounded-b-[96px] shadow-sm transition-colors duration-200">
+    <div class="w-full bg-[#F1F0F6] dark:bg-[#0F0F15]">
+      <section class="upper-hero-sheet relative z-10 w-full bg-white dark:bg-[#20202B] border-b border-[#E2E1EA] dark:border-[#414151]/70 rounded-b-[44px] sm:rounded-b-[72px] lg:rounded-b-[96px] shadow-sm">
         
         <!-- Decorative Starburst Accent (Hidden on mobile to prevent cluttering headline, top right on sm+) -->
         <div class="absolute top-8 right-8 sm:right-14 text-[#6947FF] dark:text-[#987AFF] hidden sm:block pointer-events-none">
@@ -426,7 +426,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- LOWER STAGE: Responsive Full-Width Stage Flowing Beneath the Upper Sheet -->
-    <div class="lower-stage w-full bg-[#F1F0F6] dark:bg-[#0F0F15] text-[#17171D] dark:text-[#F1F2F6] pt-10 sm:pt-14 pb-20 sm:pb-28 space-y-16 sm:space-y-24 transition-colors duration-200">
+    <div class="lower-stage w-full bg-[#F1F0F6] dark:bg-[#0F0F15] text-[#17171D] dark:text-[#F1F2F6] pt-10 sm:pt-14 pb-20 sm:pb-28 space-y-16 sm:space-y-24">
       
       <!-- INTEGRATED STATISTICS SECTION: Seamlessly Beginning Lower Stage -->
       <section class="stats-section max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">

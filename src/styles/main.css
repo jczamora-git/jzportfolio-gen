@@ -35,7 +35,7 @@
   }
 
   body {
-    @apply font-sans bg-[#F7F7F9] text-[#17171D] dark:bg-[#101015] dark:text-[#F8F8FA] transition-colors duration-200;
+    @apply font-sans bg-[#F7F7F9] text-[#17171D] dark:bg-[#101015] dark:text-[#F8F8FA];
   }
 
   /* Editorial display headings */
@@ -151,4 +151,16 @@
 .tab-fade-leave-to {
   opacity: 0;
   transform: translateY(-6px);
+}
+
+/* Mobile Navigation Dropdown Animation */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: opacity 0.18s ease-out, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
 }
