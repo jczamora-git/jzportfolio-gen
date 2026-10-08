@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Rocket, Github, Heart, Shield, BookOpen, Sparkles } from 'lucide-vue-next'
+import { Rocket, Shield, Sparkles } from 'lucide-vue-next'
 </script>
 
 <template>

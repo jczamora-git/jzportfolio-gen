@@ -8,13 +8,8 @@ import {
   Trash2, 
   Github, 
   ExternalLink, 
-  Layers, 
-  Sparkles, 
-  CheckCircle2, 
   X,
-  Code,
-  Lightbulb,
-  ListPlus
+  Code
 } from 'lucide-vue-next'
 
 const portfolioStore = usePortfolioStore()

@@ -3,20 +3,10 @@ import { ref } from 'vue'
 import { useToast } from '@/composables/useToast'
 import { 
   BookOpen, 
-  GitBranch, 
-  Terminal, 
   Check, 
   Copy, 
   ExternalLink, 
-  ShieldCheck, 
-  Sparkles, 
-  Layers, 
   ArrowRight,
-  Code,
-  FileCode,
-  Globe,
-  RefreshCw,
-  FolderPlus,
   HelpCircle,
   Info
 } from 'lucide-vue-next'

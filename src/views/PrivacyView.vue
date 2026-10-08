@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { usePortfolioStore } from '@/stores/portfolioStore'
 import { useToast } from '@/composables/useToast'
 import ConfirmModal from '@/components/common/ConfirmModal.vue'
@@ -9,13 +8,9 @@ import {
   Database, 
   Lock, 
   Trash2, 
-  ArrowLeft, 
-  Sparkles, 
-  CheckCircle2, 
-  AlertCircle 
+  ArrowLeft 
 } from 'lucide-vue-next'
 
-const router = useRouter()
 const portfolioStore = usePortfolioStore()
 const { showToast } = useToast()
 

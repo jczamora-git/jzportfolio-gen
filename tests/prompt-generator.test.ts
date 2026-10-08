@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { generatePortfolioPrompt } from '@/lib/prompt/generatePortfolioPrompt'
-import { SAMPLE_PORTFOLIO_DRAFT, INITIAL_EMPTY_DRAFT } from '@/data/sampleProfile'
+import { SAMPLE_PORTFOLIO_DRAFT } from '@/data/sampleProfile'
 import type { PortfolioDraft } from '@/types/portfolio'
 
 describe('Prompt Generator Engine', () => {

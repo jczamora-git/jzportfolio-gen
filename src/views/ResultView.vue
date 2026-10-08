@@ -10,8 +10,6 @@ import {
 import PromptOutput from '@/components/prompt/PromptOutput.vue'
 import ConfirmModal from '@/components/common/ConfirmModal.vue'
 import { 
-  Sparkles, 
-  Copy, 
   Download, 
   Edit3, 
   RotateCcw, 
@@ -19,13 +17,6 @@ import {
   CheckCircle2, 
   ArrowRight, 
   FileText, 
-  FolderGit2, 
-  User, 
-  Code2, 
-  Palette,
-  ExternalLink,
-  HelpCircle,
-  ShieldCheck,
   AlertTriangle
 } from 'lucide-vue-next'
 

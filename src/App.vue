@@ -7,7 +7,7 @@ import { usePortfolioStore } from '@/stores/portfolioStore'
 import { useTheme } from '@/composables/useTheme'
 
 const portfolioStore = usePortfolioStore()
-const { theme } = useTheme()
+useTheme()
 
 onMounted(() => {
   portfolioStore.initStore()

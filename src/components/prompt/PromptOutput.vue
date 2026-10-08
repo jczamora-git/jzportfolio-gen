@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useToast } from '@/composables/useToast'
-import { Copy, Check, Terminal, FileText } from 'lucide-vue-next'
+import { Copy, Check, Terminal } from 'lucide-vue-next'
 
 const props = defineProps<{
   promptText: string

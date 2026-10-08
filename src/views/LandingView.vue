@@ -10,12 +10,9 @@ import {
   GitBranch, 
   ShieldCheck, 
   CheckCircle2, 
-  Laptop, 
   Terminal,
   FileCode,
   Palette,
-  HelpCircle,
-  ExternalLink,
   BookOpen
 } from 'lucide-vue-next'
 

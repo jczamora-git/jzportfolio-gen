@@ -11,12 +11,8 @@ import {
   Award, 
   Plus, 
   X, 
-  Sparkles, 
   Trash2, 
-  Check,
-  Building,
-  Calendar,
-  Layers
+  Check
 } from 'lucide-vue-next'
 
 const portfolioStore = usePortfolioStore()

@@ -12,7 +12,6 @@ import {
   Code2, 
   FolderGit2, 
   Palette, 
-  ExternalLink,
   ArrowRight,
   ShieldCheck
 } from 'lucide-vue-next'

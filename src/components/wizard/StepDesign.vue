@@ -3,9 +3,7 @@ import { computed } from 'vue'
 import { usePortfolioStore } from '@/stores/portfolioStore'
 import type { 
   PortfolioStyle, 
-  PortfolioTheme, 
   AccentColor, 
-  AnimationPreference,
   PortfolioSection 
 } from '@/types/portfolio'
 import { 
@@ -13,14 +11,8 @@ import {
   Sun, 
   Moon, 
   Monitor, 
-  Sparkles, 
   Check, 
-  Layout, 
-  Sliders, 
-  Eye, 
-  Info,
-  CheckCircle2,
-  Square
+  Info
 } from 'lucide-vue-next'
 
 const portfolioStore = usePortfolioStore()

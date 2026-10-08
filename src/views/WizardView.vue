@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { usePortfolioStore } from '@/stores/portfolioStore'
 import { useToast } from '@/composables/useToast'
 import WizardProgress from '@/components/wizard/WizardProgress.vue'
@@ -14,13 +13,9 @@ import {
   ArrowLeft, 
   ArrowRight, 
   Sparkles, 
-  RotateCcw, 
-  Save, 
-  CheckCircle2, 
-  AlertCircle 
+  RotateCcw
 } from 'lucide-vue-next'
 
-const router = useRouter()
 const portfolioStore = usePortfolioStore()
 const { showToast } = useToast()
 
