@@ -1,0 +1,13 @@
+# Known Issues & Defect Register
+
+This register tracks defect categories, root causes, historical fixes, and regression prevention rules.
+
+| ID | Issue Title | Status | Component | Root Cause & Resolution | Regression Test / Safeguard |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **ISSUE-01** | Theme toggle desynchronization | **FIXED** | `src/composables/useTheme.ts` | Multiple `onMounted` hooks in components caused async overwriting of theme state. Fixed by making theme state resolution synchronous on module import and direct `.dark` root class toggle. | `tests/theme-and-navigation.test.ts` |
+| **ISSUE-02** | Header/Hero background seam in dark mode | **FIXED** | `src/App.vue`, `src/views/LandingView.vue` | Root wrapper on landing route applied `#101015` behind navbar, creating a horizontal line above `#20202B` hero. Fixed by dynamically binding `App.vue` background to `bg-white dark:bg-[#20202B]` on `/`. | `.agents/contracts/THEME_CONTRACT.md` |
+| **ISSUE-03** | Mobile dropdown menu styling & click-outside | **FIXED** | `src/components/common/AppHeader.vue` | Mobile menu was turning white in light mode and lacked outside-click / Escape key handlers. Fixed by setting permanent dark styling (`bg-[#12131C]/98`) and adding global event listeners with unmount cleanup. | `tests/theme-and-navigation.test.ts` |
+| **ISSUE-04** | Rectangular color glitches on rapid theme toggle | **FIXED** | `src/styles/main.css`, `src/views/LandingView.vue` | `transition-colors duration-200` on nested structural wrappers caused delayed interpolation. Removed transition delays from structural wrappers for instantaneous switching. | `tests/theme-and-navigation.test.ts` |
+| **ISSUE-05** | Lower landing sections dark in light mode | **FIXED** | `src/views/LandingView.vue`, `src/components/common/AppFooter.vue` | Lower stage had hardcoded dark utility classes (`bg-[#0F0F15]`, `bg-[#161822]`, `text-white`). Refactored all sections to use full light/dark theme classes with `#F1F0F6` lower stage. | Verified in UI Pass 12 |
+| **ISSUE-06** | Mobile headline too small on 375px/393px | **FIXED** | `src/views/LandingView.vue` | Tailwind breakpoint classes shrank font on mobile. Replaced with fluid `text-[clamp(2.5rem,10.6vw,3.25rem)]` and `[text-wrap:balance]`. | `.agents/contracts/RESPONSIVE_CONTRACT.md` |
+| **ISSUE-07** | Stale GSAP / ScrollTrigger on route change | **FIXED** | `src/composables/useScrollAnimations.ts` | Navigating between routes duplicated animation instances. Solved by wrapping in `gsap.context()` with `ctx.revert()` on `onBeforeUnmount`. | `src/composables/useScrollAnimations.ts` |
