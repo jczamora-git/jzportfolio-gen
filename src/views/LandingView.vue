@@ -27,28 +27,29 @@ function scrollToProcess() {
 </script>
 
 <template>
-  <div class="space-y-12 sm:space-y-20 pb-16 bg-transparent text-[#17171D] dark:text-[#F8F8FA]">
+  <div class="bg-transparent text-[#17171D] dark:text-[#F8F8FA]">
     
-    <!-- SECTION A — HERO: Clean Sculpted Surface (Light White on Light Gray / Dark Elevated Charcoal in Dark Mode) -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6">
-      <div class="bg-white text-[#17171D] dark:bg-[#1B1B23] dark:text-[#F8F8FA] rounded-3xl sm:rounded-[3.5rem] lg:rounded-b-[4.5rem] p-6 sm:p-12 lg:p-16 relative overflow-hidden shadow-card-soft dark:shadow-2xl border border-[#E8E8EF] dark:border-[#252530]">
+    <!-- UPPER HERO SHEET: Continuous sculpted light stage with large bottom radii -->
+    <section class="relative z-10 w-full bg-white dark:bg-[#1B1B23] border-b border-[#E8E8EF] dark:border-[#252530] rounded-b-[40px] sm:rounded-b-[64px] lg:rounded-b-[88px] shadow-sm overflow-hidden transition-colors">
+      
+      <!-- Decorative Geometric Starburst Accent (Top Left) -->
+      <div class="absolute top-6 left-6 sm:top-10 sm:left-12 text-[#6947FF] opacity-90 pointer-events-none">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+        </svg>
+      </div>
+
+      <!-- Decorative Starburst Accent (Top Right) -->
+      <div class="absolute top-8 right-8 sm:right-12 text-[#6947FF]/60 hidden sm:block pointer-events-none">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+        </svg>
+      </div>
+
+      <!-- Hero Sheet Inner Container -->
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pt-6 sm:pt-10 pb-14 sm:pb-20 lg:pb-24">
         
-        <!-- Decorative Geometric Starburst Accent (Top Left) -->
-        <div class="absolute top-6 left-6 sm:top-10 sm:left-10 text-[#6947FF] opacity-90">
-          <svg class="w-8 h-8 sm:w-10 sm:h-10 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-          </svg>
-        </div>
-
-        <!-- Decorative Starburst Accent (Top Right) -->
-        <div class="absolute top-8 right-8 text-[#6947FF]/60 hidden sm:block">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-          </svg>
-        </div>
-
-        <!-- Hero Content Stack -->
-        <div class="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10 pt-2 sm:pt-4">
+        <div class="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10">
 
           <!-- Bold Centered Headline -->
           <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#17171D] dark:text-[#F8F8FA] leading-[1.05]">
@@ -62,12 +63,12 @@ function scrollToProcess() {
           </h1>
 
           <!-- 2-Column Responsive Hero Grid (Left Copy & Actions, Right Creative Brief) -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left pt-2">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left pt-2">
             
-            <!-- Left: Human Intro Paragraph & Actions (7 cols) -->
-            <div class="lg:col-span-6 space-y-5">
-              <div class="space-y-2">
-                <span class="text-xs font-mono uppercase text-[#6947FF] font-bold block">
+            <!-- Left: Human Intro Paragraph & Actions (6 cols) -->
+            <div class="lg:col-span-6 space-y-6">
+              <div class="space-y-2.5">
+                <span class="text-xs font-mono uppercase text-[#6947FF] font-bold tracking-wider block">
                   The Prompt Builder
                 </span>
                 <p class="text-sm sm:text-base text-[#6D6D7A] dark:text-[#ACACBA] leading-relaxed">
@@ -130,7 +131,7 @@ function scrollToProcess() {
                   </div>
                 </div>
 
-                <!-- Subtle supporting interactive link -->
+                <!-- Subtle supporting interactive caption -->
                 <div class="pt-1 text-center">
                   <span class="text-[11px] font-mono text-[#6947FF] dark:text-[#B096FF]">
                     Deterministic brief generator • Zero hallucinated claims
@@ -147,10 +148,12 @@ function scrollToProcess() {
       </div>
     </section>
 
-    <!-- SECTION 3: DARK STATISTICS BAND BELOW HERO (Dedicated high-contrast section) -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="bg-[#111116] dark:bg-[#16161F] text-[#F1F2F6] border border-[#242738] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left">
+    <!-- DARK LOWER STAGE: Continuous Full-Width Stage Flowing Directly Beneath the Upper Sheet -->
+    <div class="w-full bg-[#101014] text-[#F1F2F6] pt-12 sm:pt-16 pb-20 sm:pb-28 space-y-16 sm:space-y-24">
+      
+      <!-- INTEGRATED STATISTICS SECTION: Directly beginning the Dark Lower Stage -->
+      <section class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left border-b border-[#242738]/60 pb-12 sm:pb-16">
           
           <!-- Metric 1: 5+ Starter Personas -->
           <div class="space-y-1 border-r border-[#242738]/50 pr-2 last:border-none md:last:border-none">
@@ -185,8 +188,7 @@ function scrollToProcess() {
           </div>
 
         </div>
-      </div>
-    </section>
+      </section>
 
     <!-- SECTION B — THE TRANSFORMATION: Dark Editorial Narrative -->
     <section id="process" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -608,5 +610,6 @@ function scrollToProcess() {
       </div>
     </section>
 
+    </div>
   </div>
 </template>
