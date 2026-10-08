@@ -8,6 +8,7 @@ import StepSkills from '@/components/wizard/StepSkills.vue'
 import StepProjects from '@/components/wizard/StepProjects.vue'
 import StepDesign from '@/components/wizard/StepDesign.vue'
 import StepReview from '@/components/wizard/StepReview.vue'
+import SampleProfileSelector from '@/components/wizard/SampleProfileSelector.vue'
 import ConfirmModal from '@/components/common/ConfirmModal.vue'
 import { 
   ArrowLeft, 
@@ -20,6 +21,7 @@ const portfolioStore = usePortfolioStore()
 const { showToast } = useToast()
 
 const showResetModal = ref(false)
+const showSampleSelector = ref(false)
 
 onMounted(() => {
   portfolioStore.initStore()
@@ -55,7 +57,7 @@ function nextStep() {
     } else if (currentStep.value === 2) {
       showToast({
         title: 'Skills Required',
-        description: 'Please select or type at least one skill.',
+        description: 'Please select or add at least one technical skill.',
         type: 'warning'
       })
     } else if (currentStep.value === 3) {
@@ -82,7 +84,6 @@ function prevStep() {
 }
 
 function handleSelectStep(step: number) {
-  // Only allow jumping forward if prior steps are valid
   if (step > currentStep.value) {
     if (currentStep.value === 1 && !portfolioStore.isProfileValid) return
     if (currentStep.value === 2 && !portfolioStore.isSkillsValid) return
@@ -105,10 +106,10 @@ function confirmReset() {
 <template>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
     
-    <!-- Top Bar: Autosave indicator & draft utilities -->
-    <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
-      <!-- Autosave status -->
-      <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+    <!-- Top Utility Row -->
+    <div class="flex items-center justify-between gap-3 text-xs border-b border-[#E8E8EF] dark:border-[#232738] pb-3">
+      <!-- Autosave Status Indicator -->
+      <div class="flex items-center gap-2 text-[#737385] dark:text-[#9496A8]">
         <span 
           class="w-2 h-2 rounded-full"
           :class="{
@@ -117,28 +118,26 @@ function confirmReset() {
             'bg-slate-300 dark:bg-slate-700': portfolioStore.saveIndicator === 'idle'
           }"
         ></span>
-        <span v-if="portfolioStore.saveIndicator === 'saving'">Saving draft...</span>
-        <span v-else-if="portfolioStore.lastSavedAt">
-          Draft saved locally ({{ portfolioStore.lastSavedAt }})
-        </span>
-        <span v-else>Autosave active</span>
+        <span v-if="portfolioStore.saveIndicator === 'saving'">Saving...</span>
+        <span v-else-if="portfolioStore.lastSavedAt">Saved locally ({{ portfolioStore.lastSavedAt }})</span>
+        <span v-else>Saved locally</span>
       </div>
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2">
         <button 
-          @click="portfolioStore.loadSample"
+          @click="showSampleSelector = true"
           type="button"
-          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E8E8EF] dark:border-[#232738] bg-white dark:bg-[#141827] text-[#181824] dark:text-[#F3F4F8] hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-subtle"
         >
-          <Sparkles class="w-3.5 h-3.5 text-indigo-500" />
-          Load Sample
+          <Sparkles class="w-3.5 h-3.5 text-[#6D4AFF]" />
+          Explore Examples
         </button>
 
         <button 
           @click="showResetModal = true"
           type="button"
-          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[#737385] hover:text-rose-600 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-[#1A2033] transition-colors"
           title="Clear all fields"
         >
           <RotateCcw class="w-3.5 h-3.5" />
@@ -154,7 +153,7 @@ function confirmReset() {
       @select-step="handleSelectStep" 
     />
 
-    <!-- Step Content Container -->
+    <!-- Main Wizard Form Container -->
     <main class="card-surface p-6 sm:p-8">
       <StepProfile v-if="currentStep === 1" />
       <StepSkills v-else-if="currentStep === 2" />
@@ -164,7 +163,7 @@ function confirmReset() {
     </main>
 
     <!-- Bottom Navigation Bar -->
-    <div class="flex items-center justify-between gap-4 pt-2">
+    <div class="flex items-center justify-between gap-4 pt-1">
       <button 
         type="button" 
         @click="prevStep"
@@ -176,21 +175,25 @@ function confirmReset() {
         Back
       </button>
 
-      <div class="flex items-center gap-3">
-        <button 
-          v-if="currentStep < 5"
-          type="button" 
-          @click="nextStep"
-          :disabled="!canProceedNext"
-          class="btn-primary"
-        >
-          Continue
-          <ArrowRight class="w-4 h-4 ml-2" />
-        </button>
-      </div>
+      <button 
+        v-if="currentStep < 5"
+        type="button" 
+        @click="nextStep"
+        :disabled="!canProceedNext"
+        class="btn-primary"
+      >
+        Continue
+        <ArrowRight class="w-4 h-4 ml-2" />
+      </button>
     </div>
 
-    <!-- Confirmation Modal for Reset -->
+    <!-- Sample Profile Selector Modal -->
+    <SampleProfileSelector 
+      :is-open="showSampleSelector"
+      @close="showSampleSelector = false"
+    />
+
+    <!-- Reset Confirmation Modal -->
     <ConfirmModal 
       :show="showResetModal"
       title="Reset Portfolio Draft?"

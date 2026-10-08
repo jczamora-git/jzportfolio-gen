@@ -5,7 +5,6 @@ import { POPULAR_SKILL_CATEGORIES } from '@/data/skillSuggestions'
 import type { ParticipantStatus } from '@/types/portfolio'
 import FormField from '@/components/common/FormField.vue'
 import { 
-  Code2, 
   GraduationCap, 
   Briefcase, 
   Award, 
@@ -23,11 +22,11 @@ const newCertInput = ref('')
 const activeCategoryIndex = ref(0)
 
 const statusOptions: { id: ParticipantStatus; label: string; desc: string }[] = [
-  { id: 'student', label: 'Student / Undergraduate', desc: 'Currently enrolled; showcasing coursework & personal builds.' },
-  { id: 'fresh_graduate', label: 'Fresh Graduate', desc: 'Recently graduated, eager to launch full-time career.' },
-  { id: 'professional', label: 'Working Professional', desc: 'Industry experience looking to showcase projects & growth.' },
-  { id: 'freelancer', label: 'Independent Freelancer', desc: 'Client-focused work, contracts, and services.' },
-  { id: 'other', label: 'Self-Taught / Career Changer', desc: 'Independent learner transitioning into tech.' },
+  { id: 'student', label: 'Student / Undergraduate', desc: 'Showcase coursework, personal builds & learning milestones.' },
+  { id: 'fresh_graduate', label: 'Fresh Graduate', desc: 'Highlight degree, internships & capstone systems.' },
+  { id: 'professional', label: 'Working Professional', desc: 'Industry experience, project architecture & growth.' },
+  { id: 'freelancer', label: 'Freelancer / Contractor', desc: 'Client solutions, independent products & services.' },
+  { id: 'other', label: 'Career Shifter / Self-Taught', desc: 'Independent builds & continuous technical learning.' },
 ]
 
 function handleAddSkill() {
@@ -54,27 +53,26 @@ function toggleSuggestedSkill(skill: string) {
 </script>
 
 <template>
-  <div class="space-y-8 animate-fadeIn">
-    <!-- Section Header -->
-    <div class="border-b border-slate-200/80 dark:border-slate-800 pb-5">
-      <div class="flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">
-        <Code2 class="w-4 h-4" />
+  <div class="space-y-7 animate-fadeIn">
+    <!-- Step Header -->
+    <div class="border-b border-[#E8E8EF] dark:border-[#232738] pb-4">
+      <div class="text-[11px] font-bold text-[#6D4AFF] uppercase tracking-wider mb-1">
         Step 2 of 5
       </div>
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+      <h2 class="text-xl sm:text-2xl font-bold text-[#181824] dark:text-[#F3F4F8] tracking-tight">
         Skills & Educational Background
       </h2>
-      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-        Highlight your technical toolbelt, study background, and any past experience or certifications.
+      <p class="text-xs sm:text-sm text-[#737385] dark:text-[#9496A8] mt-1">
+        Highlight your technical toolbelt, study background, and any past experience.
       </p>
     </div>
 
-    <!-- 1. Current Status -->
+    <!-- 1. Current Journey Status -->
     <div class="space-y-3">
-      <label class="block text-sm font-semibold text-slate-900 dark:text-white">
+      <label class="block text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]">
         What best describes your current journey?
       </label>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
         <button 
           v-for="opt in statusOptions"
           :key="opt.id"
@@ -83,37 +81,37 @@ function toggleSuggestedSkill(skill: string) {
           class="text-left p-3.5 rounded-xl border transition-all duration-150 flex flex-col justify-between"
           :class="[
             background.status === opt.id 
-              ? 'border-indigo-600 dark:border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/40 text-slate-900 dark:text-white ring-2 ring-indigo-500/20' 
-              : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700 text-slate-700 dark:text-slate-300'
+              ? 'border-[#6D4AFF] bg-[#F2EEFF]/60 dark:bg-[#6D4AFF]/10 text-[#181824] dark:text-[#F3F4F8] ring-1 ring-[#6D4AFF]' 
+              : 'border-[#E8E8EF] dark:border-[#232738] bg-white dark:bg-[#141827] hover:border-slate-300 dark:hover:border-slate-700 text-[#737385] dark:text-[#9496A8]'
           ]"
         >
           <div class="flex items-center justify-between mb-1">
-            <span class="text-xs font-bold tracking-tight">{{ opt.label }}</span>
-            <Check v-if="background.status === opt.id" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
+            <span class="text-xs font-bold tracking-tight text-[#181824] dark:text-[#F3F4F8]">{{ opt.label }}</span>
+            <Check v-if="background.status === opt.id" class="w-3.5 h-3.5 text-[#6D4AFF] shrink-0 stroke-[2.5]" />
           </div>
-          <span class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">{{ opt.desc }}</span>
+          <span class="text-[11px] text-[#737385] dark:text-[#9496A8] leading-snug">{{ opt.desc }}</span>
         </button>
       </div>
     </div>
 
     <!-- 2. Skills Management -->
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+    <div class="space-y-3.5 pt-4 border-t border-[#E8E8EF] dark:border-[#232738]">
+      <div class="flex items-center justify-between">
         <div>
-          <label class="block text-sm font-semibold text-slate-900 dark:text-white">
+          <label class="block text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]">
             Technical Skills & Technologies <span class="text-rose-500">*</span>
           </label>
-          <p class="text-xs text-slate-500 dark:text-slate-400">
-            Select from suggestions or type your own. At least 1 skill required.
+          <p class="text-[11px] text-[#737385] dark:text-[#9496A8]">
+            Pick from suggestions or enter custom technologies. At least 1 required.
           </p>
         </div>
-        <span class="text-xs font-medium text-slate-400">
+        <span class="text-xs font-medium text-[#737385] dark:text-[#9496A8]">
           {{ background.skills.length }} selected
         </span>
       </div>
 
       <!-- Selected Skills Chips -->
-      <div class="min-h-12 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-wrap gap-2 items-center">
+      <div class="min-h-12 p-3 rounded-xl border border-[#E8E8EF] dark:border-[#232738] bg-[#FAFAFC] dark:bg-[#0B0D17]/50 flex flex-wrap gap-1.5 items-center">
         <span 
           v-if="background.skills.length === 0" 
           class="text-xs text-rose-500 dark:text-rose-400 italic"
@@ -124,13 +122,13 @@ function toggleSuggestedSkill(skill: string) {
         <span 
           v-for="skill in background.skills" 
           :key="skill"
-          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-indigo-600 text-white shadow-sm shadow-indigo-500/20"
+          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-[#6D4AFF] text-white shadow-sm"
         >
           {{ skill }}
           <button 
             type="button" 
             @click="portfolioStore.removeSkill(skill)"
-            class="hover:bg-indigo-700 p-0.5 rounded-full transition-colors focus:outline-none"
+            class="hover:bg-[#5938E8] p-0.5 rounded transition-colors focus:outline-none"
             :aria-label="`Remove ${skill}`"
           >
             <X class="w-3 h-3" />
@@ -144,36 +142,36 @@ function toggleSuggestedSkill(skill: string) {
           type="text" 
           v-model="newSkillInput"
           @keydown.enter.prevent="handleAddSkill"
-          placeholder="Type custom skill (e.g. Docker, GraphQL, Figma) and press Enter" 
-          class="input-base"
+          placeholder="Add custom skill (e.g. Docker, GraphQL, Figma) and press Enter" 
+          class="input-base text-xs"
         />
         <button 
           type="button" 
           @click="handleAddSkill"
           :disabled="!newSkillInput.trim()"
-          class="btn-secondary shrink-0 px-4"
+          class="btn-secondary shrink-0 px-3.5 text-xs"
         >
-          <Plus class="w-4 h-4 mr-1" />
-          Add Skill
+          <Plus class="w-3.5 h-3.5 mr-1" />
+          Add
         </button>
       </div>
 
       <!-- Suggested Skill Tabs & Chips -->
-      <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 p-4 space-y-3">
-        <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs scrollbar-thin">
+      <div class="bg-white dark:bg-[#141827] rounded-xl border border-[#E8E8EF] dark:border-[#232738] p-3.5 space-y-2.5">
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
           <button 
             v-for="(cat, idx) in POPULAR_SKILL_CATEGORIES"
             :key="cat.category"
             type="button"
             @click="activeCategoryIndex = idx"
-            class="px-2.5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors"
-            :class="activeCategoryIndex === idx ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'"
+            class="px-2.5 py-1 rounded-lg font-medium whitespace-nowrap transition-colors"
+            :class="activeCategoryIndex === idx ? 'bg-[#181824] text-white dark:bg-[#F3F4F8] dark:text-[#181824]' : 'text-[#737385] dark:text-[#9496A8] hover:bg-slate-100 dark:hover:bg-[#1A2033]'"
           >
             {{ cat.category }}
           </button>
         </div>
 
-        <div class="flex flex-wrap gap-1.5 pt-1">
+        <div class="flex flex-wrap gap-1.5 pt-0.5">
           <button 
             v-for="s in POPULAR_SKILL_CATEGORIES[activeCategoryIndex].skills"
             :key="s"
@@ -182,11 +180,11 @@ function toggleSuggestedSkill(skill: string) {
             class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border transition-all"
             :class="[
               background.skills.includes(s)
-                ? 'bg-indigo-50 dark:bg-indigo-950/60 border-indigo-300 dark:border-indigo-700 text-indigo-700 dark:text-indigo-300'
-                : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-700'
+                ? 'bg-[#F2EEFF] dark:bg-brand-950/60 border-[#6D4AFF] text-[#6D4AFF] dark:text-brand-300'
+                : 'bg-[#FAFAFC] dark:bg-[#1A2033] border-[#E8E8EF] dark:border-[#232738] text-[#737385] dark:text-[#9496A8] hover:border-slate-300'
             ]"
           >
-            <Check v-if="background.skills.includes(s)" class="w-3 h-3 text-indigo-600 dark:text-indigo-400" />
+            <Check v-if="background.skills.includes(s)" class="w-3 h-3 text-[#6D4AFF] dark:text-brand-400 stroke-[2.5]" />
             <Plus v-else class="w-3 h-3 text-slate-400" />
             {{ s }}
           </button>
@@ -195,24 +193,24 @@ function toggleSuggestedSkill(skill: string) {
     </div>
 
     <!-- 3. Education (Optional) -->
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-      <div class="flex items-center gap-2">
-        <GraduationCap class="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-        <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
+    <div class="space-y-3 pt-4 border-t border-[#E8E8EF] dark:border-[#232738]">
+      <div class="flex items-center gap-1.5">
+        <GraduationCap class="w-4 h-4 text-[#6D4AFF]" />
+        <h3 class="text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]">
           Education & Degree Details
         </h3>
-        <span class="text-xs text-slate-400 font-normal">(Optional)</span>
+        <span class="text-[11px] text-[#737385] dark:text-[#9496A8] font-normal">(Optional)</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
         <FormField label="School / University" id="eduSchool" optional>
           <input 
             id="eduSchool"
             type="text" 
             :value="background.education?.school || ''"
             @input="portfolioStore.updateEducation(($event.target as HTMLInputElement).value, undefined, undefined)"
-            placeholder="e.g. University of Washington" 
-            class="input-base"
+            placeholder="e.g. Pacific Tech University" 
+            class="input-base text-xs"
           />
         </FormField>
 
@@ -223,7 +221,7 @@ function toggleSuggestedSkill(skill: string) {
             :value="background.education?.program || ''"
             @input="portfolioStore.updateEducation(undefined, ($event.target as HTMLInputElement).value, undefined)"
             placeholder="e.g. B.S. in Computer Science" 
-            class="input-base"
+            class="input-base text-xs"
           />
         </FormField>
 
@@ -233,22 +231,22 @@ function toggleSuggestedSkill(skill: string) {
             type="text" 
             :value="background.education?.year || ''"
             @input="portfolioStore.updateEducation(undefined, undefined, ($event.target as HTMLInputElement).value)"
-            placeholder="e.g. 2022 - 2026 (Expected)" 
-            class="input-base"
+            placeholder="e.g. Expected 2026" 
+            class="input-base text-xs"
           />
         </FormField>
       </div>
     </div>
 
-    <!-- 4. Work Experience / Internships (Optional) -->
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+    <!-- 4. Experience (Optional) -->
+    <div class="space-y-3 pt-4 border-t border-[#E8E8EF] dark:border-[#232738]">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <Briefcase class="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-          <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
+        <div class="flex items-center gap-1.5">
+          <Briefcase class="w-4 h-4 text-[#6D4AFF]" />
+          <h3 class="text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]">
             Experience & Internships
           </h3>
-          <span class="text-xs text-slate-400 font-normal">(Optional)</span>
+          <span class="text-[11px] text-[#737385] dark:text-[#9496A8] font-normal">(Optional)</span>
         </div>
         <button 
           type="button" 
@@ -260,35 +258,35 @@ function toggleSuggestedSkill(skill: string) {
         </button>
       </div>
 
-      <div v-if="!background.experience || background.experience.length === 0" class="p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/40 dark:bg-slate-900/30 text-center">
-        <p class="text-xs text-slate-500 dark:text-slate-400">
-          No formal work experience? No problem! Students and beginners can skip this section entirely.
+      <div v-if="!background.experience || background.experience.length === 0" class="p-3.5 rounded-xl border border-dashed border-[#E8E8EF] dark:border-[#232738] bg-[#FAFAFC] dark:bg-[#0B0D17]/40 text-center">
+        <p class="text-xs text-[#737385] dark:text-[#9496A8]">
+          No formal work experience yet? Students and beginners can skip this without penalty.
         </p>
       </div>
 
-      <div v-else class="space-y-4">
+      <div v-else class="space-y-3">
         <div 
           v-for="(exp, idx) in background.experience" 
           :key="exp.id"
-          class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-3 relative group"
+          class="p-4 rounded-xl border border-[#E8E8EF] dark:border-[#232738] bg-white dark:bg-[#141827] space-y-3 relative group"
         >
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <span class="text-[11px] font-bold text-[#737385] uppercase tracking-wider">
               Experience #{{ idx + 1 }}
             </span>
             <button 
               type="button"
               @click="portfolioStore.removeExperience(exp.id)"
-              class="text-slate-400 hover:text-rose-500 p-1 rounded-lg transition-colors"
-              title="Remove this experience"
+              class="text-slate-400 hover:text-rose-500 p-1 rounded transition-colors"
+              title="Remove this role"
             >
-              <Trash2 class="w-4 h-4" />
+              <Trash2 class="w-3.5 h-3.5" />
             </button>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div>
-              <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <label class="block text-xs font-medium text-[#737385] dark:text-[#9496A8] mb-1">
                 Role / Title <span class="text-rose-500">*</span>
               </label>
               <input 
@@ -300,7 +298,7 @@ function toggleSuggestedSkill(skill: string) {
               />
             </div>
             <div>
-              <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <label class="block text-xs font-medium text-[#737385] dark:text-[#9496A8] mb-1">
                 Company / Organization
               </label>
               <input 
@@ -311,7 +309,7 @@ function toggleSuggestedSkill(skill: string) {
               />
             </div>
             <div>
-              <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <label class="block text-xs font-medium text-[#737385] dark:text-[#9496A8] mb-1">
                 Duration
               </label>
               <input 
@@ -324,13 +322,13 @@ function toggleSuggestedSkill(skill: string) {
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
-              Key Contributions & Responsibilities
+            <label class="block text-xs font-medium text-[#737385] dark:text-[#9496A8] mb-1">
+              Key Contributions
             </label>
             <textarea 
               rows="2" 
               v-model="exp.summary"
-              placeholder="e.g. Built interactive dashboard components using Vue.js and helped improve mobile responsiveness across 3 internal portals." 
+              placeholder="e.g. Built interactive dashboard components using Vue.js." 
               class="input-base text-xs"
             ></textarea>
           </div>
@@ -338,14 +336,14 @@ function toggleSuggestedSkill(skill: string) {
       </div>
     </div>
 
-    <!-- 5. Certifications & Achievements (Optional) -->
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-      <div class="flex items-center gap-2">
-        <Award class="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-        <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
-          Certifications & Awards
+    <!-- 5. Certifications & Achievements -->
+    <div class="space-y-3 pt-4 border-t border-[#E8E8EF] dark:border-[#232738]">
+      <div class="flex items-center gap-1.5">
+        <Award class="w-4 h-4 text-[#6D4AFF]" />
+        <h3 class="text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]">
+          Certifications & Achievements
         </h3>
-        <span class="text-xs text-slate-400 font-normal">(Optional)</span>
+        <span class="text-[11px] text-[#737385] dark:text-[#9496A8] font-normal">(Optional)</span>
       </div>
 
       <div class="flex gap-2">
@@ -353,27 +351,27 @@ function toggleSuggestedSkill(skill: string) {
           type="text" 
           v-model="newCertInput"
           @keydown.enter.prevent="handleAddCert"
-          placeholder="e.g. AWS Certified Cloud Practitioner or Hackathon 1st Place" 
-          class="input-base"
+          placeholder="e.g. AWS Cloud Practitioner or Hackathon 1st Place" 
+          class="input-base text-xs"
         />
         <button 
           type="button" 
           @click="handleAddCert"
           :disabled="!newCertInput.trim()"
-          class="btn-secondary shrink-0 px-4"
+          class="btn-secondary shrink-0 px-3.5 text-xs"
         >
-          <Plus class="w-4 h-4 mr-1" />
+          <Plus class="w-3.5 h-3.5 mr-1" />
           Add
         </button>
       </div>
 
-      <div v-if="background.certifications && background.certifications.length > 0" class="flex flex-wrap gap-2">
+      <div v-if="background.certifications && background.certifications.length > 0" class="flex flex-wrap gap-2 pt-1">
         <span 
           v-for="cert in background.certifications" 
           :key="cert"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-amber-800"
+          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-[#FAFAFC] dark:bg-[#1A2033] text-[#181824] dark:text-[#F3F4F8] border border-[#E8E8EF] dark:border-[#232738]"
         >
-          <Award class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+          <Award class="w-3 h-3 text-[#6D4AFF]" />
           {{ cert }}
           <button 
             type="button" 

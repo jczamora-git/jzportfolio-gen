@@ -8,9 +8,9 @@ describe('Prompt Generator Engine', () => {
     const prompt = generatePortfolioPrompt(SAMPLE_PORTFOLIO_DRAFT)
 
     expect(prompt).toContain('Alex Morgan')
-    expect(prompt).toContain('Aspiring Full-Stack Developer & CS Undergraduate')
+    expect(prompt).toContain('Aspiring Frontend Developer & CS Student')
     expect(prompt).toContain('DevPulse — Developer Activity Hub')
-    expect(prompt).toContain('Campus Pantry Connect')
+    expect(prompt).toContain('TaskFlow — Minimalist Study Planner')
     expect(prompt).toContain('Pacific Tech University')
     expect(prompt).toContain('TypeScript')
     expect(prompt).toContain('GitHub Pages')

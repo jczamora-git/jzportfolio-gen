@@ -15,7 +15,6 @@ import {
 const portfolioStore = usePortfolioStore()
 const projects = computed(() => portfolioStore.draft.projects)
 
-// State for active tag input within project cards
 const techInputState = ref<Record<string, string>>({})
 const featureInputState = ref<Record<string, string>>({})
 
@@ -72,87 +71,83 @@ const urlError = (url?: string) => {
 </script>
 
 <template>
-  <div class="space-y-8 animate-fadeIn">
-    <!-- Section Header -->
-    <div class="border-b border-slate-200/80 dark:border-slate-800 pb-5">
-      <div class="flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">
-        <FolderGit2 class="w-4 h-4" />
+  <div class="space-y-6 animate-fadeIn">
+    <!-- Step Header -->
+    <div class="border-b border-[#E8E8EF] dark:border-[#232738] pb-4">
+      <div class="text-[11px] font-bold text-[#6D4AFF] uppercase tracking-wider mb-1">
         Step 3 of 5
       </div>
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Featured Projects & Portfolio Work
+          <h2 class="text-xl sm:text-2xl font-bold text-[#181824] dark:text-[#F3F4F8] tracking-tight">
+            Featured Projects & Work
           </h2>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-            Showcase your best builds, academic assignments, hackathon projects, or personal experiments.
+          <p class="text-xs sm:text-sm text-[#737385] dark:text-[#9496A8] mt-1">
+            Showcase your builds, coursework, hackathon entries, or personal experiments.
           </p>
         </div>
         
         <button 
           type="button" 
           @click="portfolioStore.addProject"
-          class="btn-primary shrink-0 self-start sm:self-auto"
+          class="btn-primary text-xs py-2 px-3.5 shrink-0 self-start sm:self-auto"
         >
-          <Plus class="w-4 h-4 mr-1.5" />
+          <Plus class="w-3.5 h-3.5 mr-1" />
           Add Project
         </button>
       </div>
     </div>
 
-    <!-- Empty State Guidance -->
+    <!-- Empty State -->
     <div 
       v-if="projects.length === 0" 
-      class="card-surface p-8 text-center space-y-4 border-dashed border-2 border-slate-300 dark:border-slate-800"
+      class="p-8 rounded-2xl text-center space-y-3 border border-dashed border-[#E8E8EF] dark:border-[#232738] bg-[#FAFAFC] dark:bg-[#0B0D17]/30"
     >
-      <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mx-auto shadow-sm">
-        <FolderGit2 class="w-6 h-6" />
+      <div class="w-10 h-10 rounded-xl bg-[#F2EEFF] dark:bg-brand-950/60 text-[#6D4AFF] flex items-center justify-center mx-auto">
+        <FolderGit2 class="w-5 h-5" />
       </div>
-      <div class="max-w-md mx-auto space-y-1.5">
-        <h3 class="text-base font-bold text-slate-900 dark:text-white">
+      <div class="max-w-sm mx-auto space-y-1">
+        <h3 class="text-sm font-bold text-[#181824] dark:text-[#F3F4F8]">
           No projects added yet
         </h3>
-        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          School projects, capstone assignments, practice apps, and open-source experiments are all great to include!
-        </p>
-        <p class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">
-          If you don't have projects yet, you can continue anyway — the AI prompt will generate a "Learning Journey & Tech Stack" section instead of fabricating fake repositories.
+        <p class="text-xs text-[#737385] dark:text-[#9496A8] leading-relaxed">
+          Coursework, hackathon hacks, practice apps, and open-source experiments are all great to include.
         </p>
       </div>
       <div>
         <button 
           type="button" 
           @click="portfolioStore.addProject"
-          class="btn-primary text-xs"
+          class="btn-secondary text-xs"
         >
-          <Plus class="w-4 h-4 mr-1.5" />
-          Add My First Project
+          <Plus class="w-3.5 h-3.5 mr-1 text-[#6D4AFF]" />
+          Add First Project
         </button>
       </div>
     </div>
 
-    <!-- Project List -->
-    <div v-else class="space-y-6">
+    <!-- Projects List -->
+    <div v-else class="space-y-5">
       <div 
         v-for="(project, index) in projects" 
         :key="project.id"
-        class="card-surface p-5 sm:p-6 space-y-5 relative group"
+        class="card-surface p-5 sm:p-6 space-y-4 relative"
       >
-        <!-- Card Header -->
-        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <!-- Card Top Bar -->
+        <div class="flex items-center justify-between border-b border-[#E8E8EF] dark:border-[#232738] pb-3">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-lg bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 text-xs font-bold flex items-center justify-center">
+            <span class="w-5 h-5 rounded-md bg-[#F2EEFF] dark:bg-[#1A2033] text-[#6D4AFF] text-xs font-bold flex items-center justify-center">
               {{ index + 1 }}
             </span>
-            <span class="font-bold text-sm text-slate-900 dark:text-white">
-              {{ project.name || `Untitled Project #${index + 1}` }}
+            <span class="font-bold text-xs sm:text-sm text-[#181824] dark:text-[#F3F4F8]">
+              {{ project.name || `Project #${index + 1}` }}
             </span>
           </div>
 
           <button 
             type="button" 
             @click="portfolioStore.removeProject(project.id)"
-            class="text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-colors"
+            class="text-[#737385] hover:text-rose-500 p-1 rounded transition-colors"
             title="Delete this project"
           >
             <Trash2 class="w-4 h-4" />
@@ -160,8 +155,8 @@ const urlError = (url?: string) => {
         </div>
 
         <!-- Project Fields -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <!-- Project Name (Required for added project) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Project Name -->
           <FormField 
             label="Project Name" 
             :id="`proj-name-${project.id}`" 
@@ -173,12 +168,12 @@ const urlError = (url?: string) => {
               type="text" 
               v-model="project.name"
               placeholder="e.g. EcoTracker Dashboard" 
-              class="input-base"
+              class="input-base text-xs sm:text-sm"
               required
             />
           </FormField>
 
-          <!-- Short Description (Required for added project) -->
+          <!-- Short Description -->
           <FormField 
             label="One-Line Description" 
             :id="`proj-desc-${project.id}`" 
@@ -189,23 +184,23 @@ const urlError = (url?: string) => {
               :id="`proj-desc-${project.id}`"
               type="text" 
               v-model="project.description"
-              placeholder="e.g. A responsive analytics web app visualizing solar energy usage" 
-              class="input-base"
+              placeholder="e.g. A responsive analytics web app visualizing solar usage" 
+              class="input-base text-xs sm:text-sm"
               required
             />
           </FormField>
 
           <!-- Technologies Used (Tags) -->
           <div class="md:col-span-2 space-y-2">
-            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">
-              Technologies & Tools Used
+            <label class="block text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]">
+              Technologies Used
             </label>
             <div class="flex gap-2">
               <input 
                 type="text" 
                 v-model="techInputState[project.id]"
                 @keydown.enter.prevent="addTechToProject(project.id)"
-                placeholder="e.g. React, TypeScript, Tailwind, Chart.js (press Enter to add)" 
+                placeholder="e.g. Vue 3, TypeScript, Tailwind (press Enter to add)" 
                 class="input-base text-xs"
               />
               <button 
@@ -217,13 +212,13 @@ const urlError = (url?: string) => {
               </button>
             </div>
             <!-- Tech chips -->
-            <div v-if="project.technologies && project.technologies.length > 0" class="flex flex-wrap gap-1.5 pt-1">
+            <div v-if="project.technologies && project.technologies.length > 0" class="flex flex-wrap gap-1.5 pt-0.5">
               <span 
                 v-for="tech in project.technologies" 
                 :key="tech"
-                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-[#FAFAFC] dark:bg-[#1A2033] text-[#181824] dark:text-[#F3F4F8] border border-[#E8E8EF] dark:border-[#232738]"
               >
-                <Code class="w-3 h-3 text-indigo-500" />
+                <Code class="w-3 h-3 text-[#6D4AFF]" />
                 {{ tech }}
                 <button 
                   type="button" 
@@ -236,40 +231,40 @@ const urlError = (url?: string) => {
             </div>
           </div>
 
-          <!-- Problem / Goal (Optional) -->
-          <FormField label="Problem or Goal" :id="`proj-goal-${project.id}`" optional help="What problem does this project address?">
+          <!-- Problem / Goal -->
+          <FormField label="Problem or Goal" :id="`proj-goal-${project.id}`" optional>
             <textarea 
               :id="`proj-goal-${project.id}`"
               rows="2" 
               v-model="project.goal"
-              placeholder="e.g. Help homeowners visualize their power consumption to identify peak energy cost periods." 
+              placeholder="e.g. Help homeowners visualize power consumption during peak cost periods." 
               class="input-base text-xs resize-y"
             ></textarea>
           </FormField>
 
-          <!-- Personal Contribution (Optional) -->
-          <FormField label="Your Role & Contribution" :id="`proj-contrib-${project.id}`" optional help="What parts of this project did you personally build?">
+          <!-- Personal Contribution -->
+          <FormField label="Your Role & Contribution" :id="`proj-contrib-${project.id}`" optional>
             <textarea 
               :id="`proj-contrib-${project.id}`"
               rows="2" 
               v-model="project.contribution"
-              placeholder="e.g. Developed responsive UI components, integrated open weather API, and optimized page load speed." 
+              placeholder="e.g. Developed responsive UI components and optimized page load speed." 
               class="input-base text-xs resize-y"
             ></textarea>
           </FormField>
 
-          <!-- Key Features Bullet List (Optional) -->
+          <!-- Key Features Bullet List -->
           <div class="md:col-span-2 space-y-2">
-            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">
+            <label class="block text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]">
               Key Features
-              <span class="text-xs text-slate-400 font-normal ml-1">(Optional)</span>
+              <span class="text-[11px] text-[#737385] dark:text-[#9496A8] font-normal ml-1">(Optional)</span>
             </label>
             <div class="flex gap-2">
               <input 
                 type="text" 
                 v-model="featureInputState[project.id]"
                 @keydown.enter.prevent="addFeatureToProject(project.id)"
-                placeholder="e.g. Real-time data sync, Dark mode support, CSV export" 
+                placeholder="e.g. Real-time data sync, Dark mode, CSV export" 
                 class="input-base text-xs"
               />
               <button 
@@ -280,14 +275,14 @@ const urlError = (url?: string) => {
                 Add Feature
               </button>
             </div>
-            <ul v-if="project.keyFeatures && project.keyFeatures.length > 0" class="space-y-1.5 pt-1">
+            <ul v-if="project.keyFeatures && project.keyFeatures.length > 0" class="space-y-1 pt-1">
               <li 
                 v-for="(feature, fIndex) in project.keyFeatures" 
                 :key="fIndex"
-                class="flex items-center justify-between text-xs p-2 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60"
+                class="flex items-center justify-between text-xs p-2 rounded-lg bg-[#FAFAFC] dark:bg-[#1A2033] border border-[#E8E8EF] dark:border-[#232738]"
               >
-                <span class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                <span class="flex items-center gap-2 text-[#181824] dark:text-[#F3F4F8]">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#6D4AFF]"></span>
                   {{ feature }}
                 </span>
                 <button 
@@ -301,7 +296,7 @@ const urlError = (url?: string) => {
             </ul>
           </div>
 
-          <!-- Outcome / Learning (Optional) -->
+          <!-- Outcome / Learning -->
           <div class="md:col-span-2">
             <FormField label="Outcome or What You Learned" :id="`proj-outcome-${project.id}`" optional>
               <input 

@@ -12,7 +12,7 @@ import {
   saveDraftToStorage, 
   clearDraftFromStorage 
 } from '@/lib/storage/draftStorage'
-import { INITIAL_EMPTY_DRAFT, SAMPLE_PORTFOLIO_DRAFT } from '@/data/sampleProfile'
+import { INITIAL_EMPTY_DRAFT, SAMPLE_PROFILES } from '@/data/sampleProfiles'
 import { generatePortfolioPrompt } from '@/lib/prompt/generatePortfolioPrompt'
 
 export const usePortfolioStore = defineStore('portfolio', () => {
@@ -20,6 +20,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   const currentStep = ref<number>(1)
   const isHydrated = ref<boolean>(false)
   const isUsingSampleData = ref<boolean>(false)
+  const activeSampleId = ref<string | null>(null)
   const lastSavedAt = ref<string | null>(null)
   const saveIndicator = ref<'saved' | 'saving' | 'idle'>('idle')
 
@@ -34,12 +35,12 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       draft.value.updatedAt = new Date().toISOString()
       const success = saveDraftToStorage(draft.value)
       if (success) {
-        lastSavedAt.value = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+        lastSavedAt.value = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         saveIndicator.value = 'saved'
       } else {
         saveIndicator.value = 'idle'
       }
-    }, 400)
+    }, 300)
   }
 
   // Hydrate draft from storage on mount
@@ -175,20 +176,33 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   }
 
   // Reset & Sample
-  function loadSample() {
-    draft.value = JSON.parse(JSON.stringify(SAMPLE_PORTFOLIO_DRAFT))
+  function loadSample(sampleId?: string) {
+    const target = SAMPLE_PROFILES.find(s => s.id === sampleId) || SAMPLE_PROFILES[0]
+    draft.value = JSON.parse(JSON.stringify(target.draft))
     isUsingSampleData.value = true
+    activeSampleId.value = target.id
     triggerAutoSave()
   }
 
   function resetToBlank() {
     draft.value = JSON.parse(JSON.stringify(INITIAL_EMPTY_DRAFT))
     isUsingSampleData.value = false
+    activeSampleId.value = null
     clearDraftFromStorage()
     lastSavedAt.value = null
     saveIndicator.value = 'idle'
     currentStep.value = 1
   }
+
+  // Check whether draft has user-entered content (for replacement confirmations)
+  const hasUserEnteredData = computed(() => {
+    return (
+      draft.value.profile.fullName.trim().length > 0 ||
+      draft.value.profile.headline.trim().length > 0 ||
+      draft.value.background.skills.length > 0 ||
+      draft.value.projects.length > 0
+    )
+  })
 
   // Validation Statuses
   const isProfileValid = computed(() => {
@@ -203,7 +217,6 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   })
 
   const isProjectsValid = computed(() => {
-    // Projects are optional, but if present, each must have a name & description
     if (draft.value.projects.length === 0) return true
     return draft.value.projects.every(p => p.name.trim().length > 0 && p.description.trim().length > 0)
   })
@@ -221,6 +234,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     currentStep,
     isHydrated,
     isUsingSampleData,
+    activeSampleId,
     lastSavedAt,
     saveIndicator,
     initStore,
@@ -240,6 +254,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     updatePreferences,
     loadSample,
     resetToBlank,
+    hasUserEnteredData,
     isProfileValid,
     isSkillsValid,
     isProjectsValid,

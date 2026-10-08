@@ -14,12 +14,12 @@ defineProps<{
     <div v-if="label" class="flex items-center justify-between">
       <label 
         :for="id" 
-        class="block text-sm font-medium text-slate-700 dark:text-slate-300"
+        class="block text-xs sm:text-sm font-semibold text-[#181824] dark:text-[#F3F4F8]"
       >
         {{ label }}
         <span v-if="required" class="text-rose-500 font-bold ml-0.5">*</span>
       </label>
-      <span v-if="optional" class="text-xs text-slate-400 dark:text-slate-500 font-normal">
+      <span v-if="optional" class="text-[11px] text-[#737385] dark:text-[#9496A8] font-normal">
         Optional
       </span>
     </div>
@@ -29,7 +29,7 @@ defineProps<{
     <p v-if="error" class="text-xs text-rose-600 dark:text-rose-400 font-medium flex items-center gap-1 mt-1">
       {{ error }}
     </p>
-    <p v-else-if="help" class="text-xs text-slate-500 dark:text-slate-400 leading-normal">
+    <p v-else-if="help" class="text-[11px] sm:text-xs text-[#737385] dark:text-[#9496A8] leading-normal">
       {{ help }}
     </p>
   </div>

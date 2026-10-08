@@ -46,7 +46,7 @@ function handleDownloadPrompt() {
   downloadPromptMarkdown(draft.value)
   showToast({
     title: 'Prompt Downloaded',
-    description: 'Saved as Markdown (.md) file to your downloads.',
+    description: 'Saved as Markdown (.md) to your downloads.',
     type: 'success'
   })
 }
@@ -55,7 +55,7 @@ function handleDownloadBrief() {
   downloadBriefMarkdown(draft.value)
   showToast({
     title: 'Portfolio Brief Downloaded',
-    description: 'Saved structured portfolio summary (.md) to your downloads.',
+    description: 'Saved portfolio brief (.md) to your downloads.',
     type: 'success'
   })
 }
@@ -68,7 +68,7 @@ function handleEdit() {
 function handleRegenerate() {
   showToast({
     title: 'Prompt Refreshed',
-    description: 'Re-evaluated deterministic prompt with your latest data.',
+    description: 'Deterministic prompt re-evaluated with your latest data.',
     type: 'info'
   })
 }
@@ -81,99 +81,93 @@ function handleConfirmReset() {
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10 animate-fadeIn">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-8 animate-fadeIn">
     
-    <!-- Recovery State if User Directly visits /result without data -->
+    <!-- Empty State Recovery -->
     <div 
       v-if="!hasValidDraft" 
-      class="card-surface p-8 sm:p-12 text-center max-w-lg mx-auto space-y-5 border-dashed"
+      class="card-surface p-8 sm:p-12 text-center max-w-md mx-auto space-y-4 border-dashed"
     >
-      <div class="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto">
-        <AlertTriangle class="w-6 h-6" />
+      <div class="w-10 h-10 rounded-xl bg-[#F2EEFF] dark:bg-brand-950/60 text-[#6D4AFF] flex items-center justify-center mx-auto">
+        <AlertTriangle class="w-5 h-5" />
       </div>
-      <div class="space-y-1.5">
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white">No Portfolio Draft Found</h2>
-        <p class="text-xs text-slate-600 dark:text-slate-400">
-          It looks like you haven't filled out your profile details yet. Let's create one or try out our sample data!
+      <div class="space-y-1">
+        <h2 class="text-base font-bold text-[#181824] dark:text-[#F3F4F8]">No Active Draft Found</h2>
+        <p class="text-xs text-[#737385] dark:text-[#9496A8]">
+          You haven't entered your profile details yet. Let's start building your customized portfolio prompt!
         </p>
       </div>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-        <router-link to="/builder" class="btn-primary w-full sm:w-auto text-xs">
+      <div class="pt-2">
+        <router-link to="/builder" class="btn-primary text-xs">
           Open Prompt Builder
         </router-link>
-        <button 
-          @click="portfolioStore.loadSample()" 
-          class="btn-secondary w-full sm:w-auto text-xs"
-        >
-          Load Demo Profile
-        </button>
       </div>
     </div>
 
-    <!-- Active Result Content -->
+    <!-- Active Result View -->
     <template v-else>
       
       <!-- 1. Header Banner -->
-      <div class="bg-gradient-to-r from-indigo-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-indigo-800/80 shadow-xl space-y-4">
+      <div class="space-y-4 border-b border-[#E8E8EF] dark:border-[#232738] pb-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold mb-2 border border-emerald-500/30">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold mb-1.5 border border-emerald-200 dark:border-emerald-800">
               <CheckCircle2 class="w-3.5 h-3.5" />
-              Generation Complete
+              Prompt Ready
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Your Portfolio Prompt Is Ready!
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-[#181824] dark:text-[#F3F4F8] tracking-tight">
+              Your Portfolio Prompt Is Ready
             </h1>
-            <p class="text-xs sm:text-sm text-indigo-200 mt-1">
-              Deterministic, production-ready AI instructions customized for <span class="font-semibold text-white">{{ draft.profile.fullName }}</span>.
+            <p class="text-xs sm:text-sm text-[#737385] dark:text-[#9496A8] mt-1">
+              Review, copy, and bring your portfolio to life with ChatGPT, Gemini, or Claude.
             </p>
           </div>
 
-          <!-- Quick Action Buttons -->
-          <div class="flex flex-wrap items-center gap-2">
+          <!-- Actions -->
+          <div class="flex items-center gap-2">
             <button 
               @click="handleEdit" 
-              class="btn-secondary bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs py-2 px-3.5"
+              class="btn-secondary text-xs"
             >
               <Edit3 class="w-3.5 h-3.5 mr-1.5" />
               Edit Data
             </button>
             <button 
               @click="handleRegenerate" 
-              class="btn-secondary bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs py-2 px-3.5"
+              class="btn-secondary text-xs"
             >
               <RotateCcw class="w-3.5 h-3.5 mr-1.5" />
-              Regenerate
+              Refresh
             </button>
           </div>
         </div>
 
-        <!-- Mini Stats Bar -->
-        <div class="pt-4 border-t border-indigo-800/80 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-          <div>
-            <span class="text-indigo-300 block text-[11px]">Role:</span>
-            <span class="font-medium text-white line-clamp-1">{{ draft.profile.headline }}</span>
+        <!-- Mini Stats Summary -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs text-[#737385] dark:text-[#9496A8]">
+          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
+            <span class="block text-[10px] text-slate-400">Name / Role</span>
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] truncate block">{{ draft.profile.fullName }}</span>
           </div>
-          <div>
-            <span class="text-indigo-300 block text-[11px]">Skills Included:</span>
-            <span class="font-medium text-white">{{ draft.background.skills.length }} verified skills</span>
+          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
+            <span class="block text-[10px] text-slate-400">Skills</span>
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] block">{{ draft.background.skills.length }} verified skills</span>
           </div>
-          <div>
-            <span class="text-indigo-300 block text-[11px]">Projects:</span>
-            <span class="font-medium text-white">{{ draft.projects.length }} project(s)</span>
+          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
+            <span class="block text-[10px] text-slate-400">Projects</span>
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] block">{{ draft.projects.length }} showcase build(s)</span>
           </div>
-          <div>
-            <span class="text-indigo-300 block text-[11px]">Style / Theme:</span>
-            <span class="font-medium text-white capitalize">{{ draft.preferences.style }} ({{ draft.preferences.theme }})</span>
+          <div class="p-2.5 rounded-xl bg-[#FAFAFC] dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738]">
+            <span class="block text-[10px] text-slate-400">Aesthetic</span>
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] capitalize block">{{ draft.preferences.style }} ({{ draft.preferences.theme }})</span>
           </div>
         </div>
       </div>
 
-      <!-- 2. Export & Action Bar -->
-      <div class="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm text-xs">
-        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-          <FileText class="w-4 h-4 text-indigo-500" />
-          <span class="font-semibold text-slate-900 dark:text-white">Export Options</span>
+      <!-- 2. Export Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white dark:bg-[#141827] border border-[#E8E8EF] dark:border-[#232738] shadow-subtle text-xs">
+        <div class="flex items-center gap-2 text-[#737385] dark:text-[#9496A8]">
+          <FileText class="w-4 h-4 text-[#6D4AFF]" />
+          <span class="font-semibold text-[#181824] dark:text-[#F3F4F8]">Download Files</span>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
@@ -181,112 +175,103 @@ function handleConfirmReset() {
             @click="handleDownloadPrompt" 
             class="btn-secondary text-xs py-1.5 px-3"
           >
-            <Download class="w-3.5 h-3.5 mr-1.5 text-indigo-500" />
-            Download Prompt (.md)
+            <Download class="w-3.5 h-3.5 mr-1 text-[#6D4AFF]" />
+            Prompt (.md)
           </button>
 
           <button 
             @click="handleDownloadBrief" 
             class="btn-secondary text-xs py-1.5 px-3"
           >
-            <Download class="w-3.5 h-3.5 mr-1.5 text-indigo-500" />
-            Download Brief (.md)
+            <Download class="w-3.5 h-3.5 mr-1 text-[#6D4AFF]" />
+            Portfolio Brief (.md)
           </button>
 
           <button 
             @click="showResetModal = true" 
-            class="text-slate-400 hover:text-rose-500 p-1.5 rounded transition-colors"
-            title="Start new portfolio"
+            class="text-[#737385] hover:text-rose-600 p-1.5 rounded transition-colors text-xs"
+            title="Start fresh with a new portfolio"
           >
-            Start New
+            Start Fresh
           </button>
         </div>
       </div>
 
-      <!-- 3. Prompt Output Box -->
+      <!-- 3. Prompt Container Component -->
       <PromptOutput :prompt-text="promptText" />
 
-      <!-- 4. Next Steps: How to Use Your Prompt -->
-      <div class="card-surface p-6 sm:p-8 space-y-6">
-        <div class="space-y-1">
-          <div class="flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
-            <BookOpen class="w-4 h-4" />
-            What to do next
+      <!-- 4. Next Steps Walkthrough -->
+      <div class="card-surface p-6 space-y-4">
+        <div class="space-y-0.5">
+          <div class="text-[11px] font-bold text-[#6D4AFF] uppercase tracking-wider">
+            Execution Steps
           </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-            From AI Prompt to Live Website
+          <h3 class="text-base font-bold text-[#181824] dark:text-[#F3F4F8]">
+            What to do next?
           </h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400">
-            Follow these simple steps to generate and deploy your portfolio using GitHub Actions.
-          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <!-- Step 1 -->
-          <div class="p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 space-y-1.5">
-            <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px]">1</span>
-              Copy & Paste Prompt
-            </div>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Click <strong>Copy Prompt</strong> above and paste it into ChatGPT, Google Gemini, Claude, or GitHub Copilot.
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">1</span>
+              Paste Prompt into AI
+            </span>
+            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
+              Open ChatGPT, Gemini, or Claude. Paste the copied prompt and request complete source code files.
             </p>
           </div>
 
-          <!-- Step 2 -->
-          <div class="p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 space-y-1.5">
-            <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px]">2</span>
-              Save Source Files
-            </div>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Create a local project folder and save the AI-generated code as <code class="bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded text-indigo-600 dark:text-indigo-400">index.html</code>, <code class="bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded text-indigo-600 dark:text-indigo-400">styles.css</code>, and <code class="bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded text-indigo-600 dark:text-indigo-400">script.js</code>.
+          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">2</span>
+              Save Files in VS Code
+            </span>
+            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
+              Save the generated output as <code class="text-[#6D4AFF]">index.html</code>, <code class="text-[#6D4AFF]">styles.css</code>, and <code class="text-[#6D4AFF]">script.js</code>.
             </p>
           </div>
 
-          <!-- Step 3 -->
-          <div class="p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 space-y-1.5">
-            <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px]">3</span>
-              Preview Locally
-            </div>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Open the project folder in VS Code, launch Live Server, and verify your responsive layout and text.
+          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">3</span>
+              Preview with Live Server
+            </span>
+            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
+              Open with VS Code Live Server and test responsiveness and your project links.
             </p>
           </div>
 
-          <!-- Step 4 -->
-          <div class="p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 space-y-1.5">
-            <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px]">4</span>
-              Push & Deploy with Actions
-            </div>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Initialize Git, push to GitHub, and let GitHub Actions publish your live portfolio on GitHub Pages.
+          <div class="p-3.5 rounded-xl bg-[#FAFAFC] dark:bg-[#0B0D17]/50 border border-[#E8E8EF] dark:border-[#232738] space-y-1">
+            <span class="font-bold text-[#181824] dark:text-[#F3F4F8] flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-[#6D4AFF] text-white flex items-center justify-center text-[10px]">4</span>
+              Deploy with GitHub Actions
+            </span>
+            <p class="text-[#737385] dark:text-[#9496A8] leading-relaxed">
+              Push your repository to GitHub and follow our guide to deploy to GitHub Pages.
             </p>
           </div>
         </div>
 
-        <!-- Tutorial Link Button -->
         <div class="pt-2">
           <router-link 
             to="/learn/deploy" 
-            class="btn-primary inline-flex items-center text-xs"
+            class="btn-primary text-xs inline-flex items-center"
           >
-            <BookOpen class="w-4 h-4 mr-2" />
-            Open Step-by-Step Deployment Tutorial
-            <ArrowRight class="w-4 h-4 ml-2" />
+            <BookOpen class="w-4 h-4 mr-1.5" />
+            Open Full Deployment Tutorial
+            <ArrowRight class="w-3.5 h-3.5 ml-1.5" />
           </router-link>
         </div>
       </div>
 
     </template>
 
-    <!-- Confirm Modal for Start New -->
+    <!-- Reset Confirm Modal -->
     <ConfirmModal 
       :show="showResetModal"
-      title="Start New Portfolio?"
-      message="This will reset your current draft so you can build a new one. Ensure you have copied or downloaded your current prompt."
+      title="Start a New Portfolio?"
+      message="This will reset your current draft so you can begin fresh. Ensure you have copied or downloaded your current prompt."
       confirm-text="Start Fresh"
       cancel-text="Keep Current"
       :is-destructive="true"

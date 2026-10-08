@@ -9,24 +9,43 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1', // Primary Indigo / Electric
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-          950: '#1e1b4b',
+          50: '#F2EEFF',
+          100: '#E5DCFF',
+          200: '#CEBEFF',
+          300: '#B096FF',
+          400: '#8E67FF',
+          500: '#6D4AFF', // Primary Brand Purple
+          600: '#5938E8', // Primary Hover
+          700: '#482BC9',
+          800: '#3A22A5',
+          900: '#2F1D85',
+          950: '#1B0F54',
+        },
+        surface: {
+          light: '#FAFAFC',
+          card: '#FFFFFF',
+          dark: '#0B0D17',
+          darkCard: '#141827',
+          darkElevated: '#1A2033',
+        },
+        textPrimary: {
+          light: '#181824',
+          dark: '#F3F4F8',
+        },
+        textSecondary: {
+          light: '#737385',
+          dark: '#9496A8',
+        },
+        borderSubtle: {
+          light: '#E8E8EF',
+          dark: '#232738',
         },
         accent: {
+          purple: '#6D4AFF',
           blue: '#3b82f6',
-          purple: '#8b5cf6',
           emerald: '#10b981',
           orange: '#f97316',
-          neutral: '#64748b',
+          neutral: '#737385',
         }
       },
       fontFamily: {
@@ -34,10 +53,10 @@ export default {
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       boxShadow: {
-        'glow-brand': '0 0 25px -5px rgba(99, 102, 241, 0.3)',
-        'glow-purple': '0 0 25px -5px rgba(139, 92, 246, 0.3)',
-        'card-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-        'card-hover': '0 12px 30px -4px rgba(0, 0, 0, 0.1)',
+        'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04)',
+        'card-soft': '0 4px 20px -2px rgba(24, 24, 36, 0.04)',
+        'card-hover': '0 10px 25px -3px rgba(24, 24, 36, 0.08)',
+        'elevated': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
       }
     },
   },
