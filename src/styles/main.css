@@ -7,13 +7,30 @@
     --color-brand: #6947FF;
     --color-brand-hover: #5736EB;
     --color-brand-subtle: #F2EEFF;
-    --color-bg-light: #F8F8F7;
-    --color-bg-dark: #0D0E12;
+    --color-bg-light: #F7F7F9;
+    --color-bg-dark: #101015;
+    --landing-sheet-light: #FFFFFF;
+    --landing-sheet-dark: #20202B;
+    --landing-stage-dark: #0F0F15;
   }
   
   html {
     scroll-behavior: smooth;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Lenis smooth scroll optimization */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
 
   body {
@@ -117,4 +134,20 @@
     @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider
            bg-[#F2EEFF] text-[#6947FF] dark:bg-[#1E202E] dark:text-[#B096FF] border border-[#E6DCFF] dark:border-[#2A1783]/50;
   }
+}
+
+/* Tab Crossfade Animation */
+.tab-fade-enter-active,
+.tab-fade-leave-active {
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-fade-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.tab-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
 }
